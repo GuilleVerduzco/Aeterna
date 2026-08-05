@@ -54,6 +54,14 @@ export interface AnalysisResult {
   errors: string[];
 }
 
+export type AnalysisEvent =
+  | { type: "crawl_started" }
+  | { type: "crawl_completed"; finalUrl: string; screenshots: ViewportScreenshot[] }
+  | { type: "category_completed"; result: CategoryResult }
+  | { type: "category_failed"; category: Category; error: string }
+  | { type: "job_completed"; result: AnalysisResult }
+  | { type: "job_failed"; error: string };
+
 export type JobStatus = "queued" | "running" | "completed" | "failed";
 
 export interface Job {

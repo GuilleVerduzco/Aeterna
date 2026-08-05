@@ -1,13 +1,31 @@
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
 import Fastify, { type FastifyInstance, type FastifyError } from "fastify";
 import cors from "@fastify/cors";
 import rateLimit from "@fastify/rate-limit";
 import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
+import fastifyStatic from "@fastify/static";
 import { healthRoutes } from "./routes/health.js";
 import { analysesRoutes } from "./routes/analyses.js";
 import { config, authEnabled } from "./config.js";
 
-const PUBLIC_PATHS = new Set(["/health", "/docs", "/docs/json", "/docs/uiConfig", "/docs/static/index.html"]);
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const PUBLIC_ASSETS_DIR = join(__dirname, "..", "public");
+
+const PUBLIC_EXACT_PATHS = new Set(["/health", "/docs", "/docs/json", "/docs/uiConfig", "/docs/static/index.html"]);
+// El producto de auditoría (crear análisis, seguir su progreso por SSE, leer el reporte) es de cara al
+// público: se pensó para incrustarse en un sitio web y ser llamado desde JS en el navegador del visitante,
+// donde una API key no puede mantenerse en secreto. Se protege en su lugar con SSRF guard + rate limiting
+// (ver routes/analyses.ts). Si necesitas una API privada además de esta, despliega una segunda instancia
+// con API_KEYS definido y sin esta excepción.
+const PUBLIC_PATH_PREFIXES = ["/docs", "/public", "/api/v1/analyses"];
+
+function isPublicPath(url: string): boolean {
+  const path = url.split("?")[0] ?? url;
+  if (PUBLIC_EXACT_PATHS.has(path)) return true;
+  return PUBLIC_PATH_PREFIXES.some((prefix) => path.startsWith(prefix));
+}
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({
@@ -42,11 +60,11 @@ export async function buildApp(): Promise<FastifyInstance> {
     },
   });
   await app.register(swaggerUi, { routePrefix: "/docs" });
+  await app.register(fastifyStatic, { root: PUBLIC_ASSETS_DIR, prefix: "/public/" });
 
   app.addHook("onRequest", async (req, reply) => {
     if (!authEnabled) return;
-    if (PUBLIC_PATHS.has(req.url.split("?")[0] ?? req.url)) return;
-    if (req.url.startsWith("/docs")) return;
+    if (isPublicPath(req.url)) return;
 
     const apiKey = req.headers["x-api-key"];
     if (typeof apiKey !== "string" || !config.apiKeys.has(apiKey)) {

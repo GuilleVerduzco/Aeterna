@@ -20,6 +20,9 @@ export const config = {
   /** Ruta a un binario de Chromium ya instalado (ej. imagen base de Playwright, o entornos sandbox
    *  con navegador preinstalado). Si no se define, Playwright gestiona su propio Chromium descargado. */
   chromiumExecutablePath: process.env.CHROMIUM_EXECUTABLE_PATH?.trim() || undefined,
+  /** SOLO desarrollo/pruebas locales: desactiva la protección SSRF que bloquea IPs privadas/loopback.
+   *  NUNCA habilitar en una instancia expuesta públicamente. */
+  allowPrivateUrls: process.env.ALLOW_PRIVATE_URLS === "true",
 } as const;
 
 export const authEnabled = config.apiKeys.size > 0;

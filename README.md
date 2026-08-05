@@ -62,12 +62,43 @@ curl -X POST http://localhost:3000/api/v1/analyses \
 Respuesta (`202 Accepted`):
 
 ```json
-{ "id": "job_abc123", "status": "queued", "statusUrl": "/api/v1/analyses/job_abc123" }
+{
+  "id": "job_abc123",
+  "status": "queued",
+  "statusUrl": "/api/v1/analyses/job_abc123",
+  "eventsUrl": "/api/v1/analyses/job_abc123/events"
+}
 ```
 
-Todos los campos del body son opcionales salvo `url`. Por defecto se analizan todas las categorías con screenshots activados.
+Todos los campos del body son opcionales salvo `url`. Por defecto se analizan todas las categorías con screenshots activados. La URL pasa primero por un guard anti-SSRF (`src/lib/ssrf.ts`) que rechaza IPs privadas/loopback/metadata de nube.
 
-### 2. Consultar estado / resultado
+### 2. Seguir el progreso en tiempo real (Server-Sent Events)
+
+```bash
+curl -N http://localhost:3000/api/v1/analyses/job_abc123/events
+```
+
+Emite un evento en cuanto cada pieza termina, **sin esperar a que acabe todo el análisis**:
+
+```
+event: crawl_completed
+data: {"type":"crawl_completed","finalUrl":"https://ejemplo.com/","screenshots":[...]}
+
+event: category_completed
+data: {"type":"category_completed","result":{"category":"performance","score":92,"findings":[...],"metrics":{...}}}
+
+event: category_completed
+data: {"type":"category_completed","result":{"category":"seo","score":78,...}}
+
+...
+
+event: job_completed
+data: {"type":"job_completed","result":{"id":"job_abc123","overallScore":81,"categories":[...],...}}
+```
+
+Un cliente que se conecta después de que ya corrieron algunas categorías recibe primero el historial completo y luego los eventos en vivo — no se pierde nada. Esto es lo que usa el widget embebible para pintar cada categoría en cuanto está lista (ver más abajo).
+
+### 3. Consultar estado / resultado (polling, alternativa a SSE)
 
 ```bash
 curl http://localhost:3000/api/v1/analyses/job_abc123 -H "x-api-key: TU_API_KEY"
@@ -75,16 +106,35 @@ curl http://localhost:3000/api/v1/analyses/job_abc123 -H "x-api-key: TU_API_KEY"
 
 `status` es uno de `queued` | `running` | `completed` | `failed`. Cuando está `completed`, el objeto incluye `result` con el JSON completo (`overallScore`, `categories[]`, `screenshots[]`, `errors[]`).
 
-### 3. Obtener el reporte visual
+### 4. Obtener el reporte visual
 
 ```bash
-curl http://localhost:3000/api/v1/analyses/job_abc123/report.html -H "x-api-key: TU_API_KEY" -o reporte.html
-curl http://localhost:3000/api/v1/analyses/job_abc123/report.pdf  -H "x-api-key: TU_API_KEY" -o reporte.pdf
+curl http://localhost:3000/api/v1/analyses/job_abc123/report.html -o reporte.html
+curl http://localhost:3000/api/v1/analyses/job_abc123/report.pdf  -o reporte.pdf
 ```
+
+## Widget embebible para tu sitio web
+
+`public/widget.js` + `public/widget.css` son un widget vanilla-JS (sin dependencias) con la identidad de marca de Æterna: input de URL, progreso en vivo por categoría vía SSE, score final y links al reporte. Se sirven directamente desde la propia API en `/public/*`.
+
+Para incrustarlo en cualquier sitio (WordPress, Webflow, HTML a mano, lo que sea), agrega esto donde quieras que aparezca:
+
+```html
+<div id="aeterna-audit-widget"></div>
+<link rel="stylesheet" href="https://tu-api.tu-dominio.com/public/widget.css" />
+<script>
+  window.AETERNA_AUDIT_CONFIG = { apiBase: "https://tu-api.tu-dominio.com" };
+</script>
+<script src="https://tu-api.tu-dominio.com/public/widget.js" defer></script>
+```
+
+También hay una página de demo lista para usar en `/public/audit.html` (útil como landing standalone o para incrustar por `<iframe>`).
+
+**Nota de seguridad importante:** las rutas `/api/v1/analyses*` son públicas por diseño (no requieren `x-api-key`), porque el widget las llama directamente desde el navegador del visitante — una API key en JS del cliente nunca es realmente secreta. En su lugar se protegen con: guard anti-SSRF, rate limit específico de 5 solicitudes/minuto por IP en la creación de análisis (además del límite global de 30/min), y CORS abierto para que cualquier sitio pueda incrustar el widget. Si además necesitas una API privada para uso interno/programático, despliega una segunda instancia con `API_KEYS` definido.
 
 ## Autenticación
 
-Si `API_KEYS` está definido en el entorno (una o varias claves separadas por coma), todas las rutas excepto `/health` y `/docs` requieren el header `x-api-key`. Si se deja vacío, la autenticación queda deshabilitada (solo recomendable en desarrollo local).
+`API_KEYS` (una o varias claves separadas por coma) protege todo excepto `/health`, `/docs`, `/public/*` y `/api/v1/analyses*` (ver nota de seguridad arriba — estas últimas son el producto público). Si se deja vacío, la autenticación queda deshabilitada.
 
 ## Variables de entorno
 
@@ -94,6 +144,7 @@ Ver `.env.example`. Las más relevantes:
 - `MAX_CONCURRENT_ANALYSES` — cuántas auditorías (cada una lanza un navegador Chromium) corren en paralelo.
 - `ANALYSIS_TIMEOUT_MS` — tiempo máximo por auditoría.
 - `CHROMIUM_EXECUTABLE_PATH` — útil en entornos con un Chromium ya instalado en una ruta distinta a la gestionada por Playwright.
+- `ALLOW_PRIVATE_URLS` — **peligroso, solo desarrollo local**: desactiva el guard anti-SSRF. Nunca en producción.
 
 ## Tests
 
@@ -110,15 +161,23 @@ src/
   analyzers/       crawler (Playwright) + un analizador por categoría + orquestador
   scoring/         cálculo del score general ponderado
   report/          template HTML de marca Æterna + render a PDF
-  queue/           cola de jobs en memoria
-  routes/          endpoints Fastify (health, analyses)
-  lib/             utilidades (contraste WCAG, HTTP, ids, logger)
+  queue/           cola de jobs en memoria + EventEmitter de progreso por job
+  routes/          endpoints Fastify (health, analyses, events SSE)
+  lib/             utilidades (contraste WCAG, HTTP, ids, logger, guard SSRF)
   config.ts        configuración desde variables de entorno
-  app.ts            construcción de la app Fastify (plugins, auth, swagger)
+  app.ts            construcción de la app Fastify (plugins, auth, swagger, estáticos)
   server.ts         punto de entrada
+public/
+  widget.js        widget embebible (vanilla JS, sin dependencias)
+  widget.css        estilos con la identidad de marca de Æterna
+  audit.html         página de demo / hosting standalone del widget
 ```
 
 Cada análisis: (1) el crawler carga la página una sola vez con Playwright, capturando HTML, red, consola, estilos computados y screenshots; (2) los cinco analizadores corren en paralelo sobre esa misma captura (más una llamada a Google PageSpeed Insights si hay API key); (3) se agregan los hallazgos y se calcula el score.
+
+## Desplegarla y ponerla en tu sitio web
+
+Guía paso a paso completa (VPS + Docker + HTTPS + cómo pegar el widget en cualquier plataforma) en [`DEPLOY.md`](./DEPLOY.md).
 
 ## Escalar a producción
 

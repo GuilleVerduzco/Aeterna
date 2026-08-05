@@ -55,6 +55,9 @@ async function getBrowser(): Promise<Browser> {
     sharedBrowser = await chromium.launch({
       headless: true,
       executablePath: config.chromiumExecutablePath,
+      // Fuerza el nuevo modo headless de Chromium: el modo "old" fue removido en builds
+      // recientes del navegador y puede no coincidir con la versión que resuelva Playwright.
+      args: ["--headless=new"],
     });
   }
   return sharedBrowser;

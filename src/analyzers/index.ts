@@ -9,7 +9,7 @@ import { analyzeCodeQuality } from "./codeQuality.js";
 import { computeOverallScore } from "../scoring/score.js";
 import { newJobId } from "../lib/ids.js";
 import { logger } from "../lib/logger.js";
-import type { AnalysisOptions, AnalysisResult, Category, CategoryResult } from "../types/index.js";
+import type { AnalysisEvent, AnalysisOptions, AnalysisResult, Category, CategoryResult } from "../types/index.js";
 
 const require = createRequire(import.meta.url);
 let axeSourceCache: string | null = null;
@@ -21,27 +21,36 @@ function loadAxeSource(): string {
   return axeSourceCache;
 }
 
-export async function runAnalysis(options: AnalysisOptions, timeoutMs: number): Promise<AnalysisResult> {
+export async function runAnalysis(
+  options: AnalysisOptions,
+  timeoutMs: number,
+  onEvent?: (event: AnalysisEvent) => void
+): Promise<AnalysisResult> {
   const startedAt = new Date();
   const errors: string[] = [];
   const categoriesRequested = new Set(options.categories);
 
+  onEvent?.({ type: "crawl_started" });
   const crawlResult = await crawl(options.url, {
     captureScreenshots: options.screenshots,
     timeoutMs,
     axeSource: loadAxeSource(),
   });
+  onEvent?.({ type: "crawl_completed", finalUrl: crawlResult.finalUrl, screenshots: crawlResult.screenshots });
 
   const tasks: Promise<CategoryResult | null>[] = [];
   const taskLabels: Category[] = [];
 
   const runSafely = async (label: Category, fn: () => Promise<CategoryResult>): Promise<CategoryResult | null> => {
     try {
-      return await fn();
+      const result = await fn();
+      onEvent?.({ type: "category_completed", result });
+      return result;
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       logger.error({ err, category: label }, "Falló el analizador");
       errors.push(`${label}: ${message}`);
+      onEvent?.({ type: "category_failed", category: label, error: message });
       return null;
     }
   };

@@ -5,6 +5,7 @@ export async function renderHtmlToPdf(html: string): Promise<Buffer> {
   const browser = await chromium.launch({
     headless: true,
     executablePath: config.chromiumExecutablePath,
+    args: ["--headless=new"],
   });
   try {
     const page = await browser.newPage();
