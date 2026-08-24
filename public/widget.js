@@ -244,9 +244,83 @@
     };
   };
 
+  function pollJobResult(apiBase, jobId) {
+    return new Promise(function (resolve, reject) {
+      var attempts = 0;
+      var maxAttempts = 60; // ~2 min a intervalos de 2s
+      var interval = setInterval(function () {
+        attempts++;
+        fetch(apiBase + "/api/v1/analyses/" + jobId)
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (job) {
+            if (job.status === "completed") {
+              clearInterval(interval);
+              resolve(job.result);
+            } else if (job.status === "failed") {
+              clearInterval(interval);
+              reject(new Error(job.error || "El análisis falló."));
+            } else if (attempts >= maxAttempts) {
+              clearInterval(interval);
+              reject(new Error("Tiempo de espera agotado esperando el análisis."));
+            }
+          })
+          .catch(function (err) {
+            clearInterval(interval);
+            reject(err);
+          });
+      }, 2000);
+    });
+  }
+
+  // WebMCP (https://webmachinelearning.github.io/webmcp/): expone la auditoría de sitios como una
+  // tool que un agente corriendo en el navegador del visitante puede invocar directamente.
+  function registerWebMcpTools(config) {
+    if (!navigator.modelContext || typeof navigator.modelContext.provideContext !== "function") return;
+    navigator.modelContext.provideContext({
+      tools: [
+        {
+          name: "audit_website",
+          description:
+            "Ejecuta una auditoría real de un sitio web (rendimiento, SEO, accesibilidad, diseño/UX y código/seguridad) con la API de Æterna y devuelve el score general y los hallazgos por categoría.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              url: { type: "string", description: "URL absoluta del sitio a auditar, ej. https://ejemplo.com" },
+              categories: {
+                type: "array",
+                items: { type: "string", enum: CATEGORY_ORDER },
+                description: "Subconjunto de categorías a analizar. Por defecto, todas.",
+              },
+            },
+            required: ["url"],
+          },
+          execute: function (args) {
+            return fetch(config.apiBase + "/api/v1/analyses", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: args.url, categories: args.categories, screenshots: false }),
+            })
+              .then(function (res) {
+                return res.json().then(function (body) {
+                  if (!res.ok) throw new Error(body.message || body.error || "No se pudo iniciar el análisis.");
+                  return body;
+                });
+              })
+              .then(function (job) {
+                return pollJobResult(config.apiBase, job.id);
+              });
+          },
+        },
+      ],
+    });
+  }
+
   function init() {
     var config = resolveConfig();
     if (!config.apiBase) return;
+    registerWebMcpTools(config);
     var root = document.getElementById(config.containerId);
     if (!root) {
       console.error('[Æterna Audit Widget] No se encontró el contenedor #' + config.containerId + ".");

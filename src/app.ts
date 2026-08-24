@@ -8,18 +8,22 @@ import swaggerUi from "@fastify/swagger-ui";
 import fastifyStatic from "@fastify/static";
 import { healthRoutes } from "./routes/health.js";
 import { analysesRoutes } from "./routes/analyses.js";
+import { agentDiscoveryRoutes } from "./routes/agentDiscovery.js";
 import { config, authEnabled } from "./config.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_ASSETS_DIR = join(__dirname, "..", "public");
 
-const PUBLIC_EXACT_PATHS = new Set(["/health", "/docs", "/docs/json", "/docs/uiConfig", "/docs/static/index.html"]);
+const PUBLIC_EXACT_PATHS = new Set(["/", "/robots.txt", "/health", "/docs", "/docs/json", "/docs/uiConfig", "/docs/static/index.html"]);
 // El producto de auditoría (crear análisis, seguir su progreso por SSE, leer el reporte) es de cara al
 // público: se pensó para incrustarse en un sitio web y ser llamado desde JS en el navegador del visitante,
 // donde una API key no puede mantenerse en secreto. Se protege en su lugar con SSRF guard + rate limiting
 // (ver routes/analyses.ts). Si necesitas una API privada además de esta, despliega una segunda instancia
 // con API_KEYS definido y sin esta excepción.
-const PUBLIC_PATH_PREFIXES = ["/docs", "/public", "/api/v1/analyses"];
+// Los endpoints de descubrimiento para agentes (RFC 8288 Link headers, RFC 9727 API catalog, agent-skills,
+// ARD) bajo /.well-known también son públicos por definición: un agente no puede autenticarse antes de
+// descubrir cómo hacerlo.
+const PUBLIC_PATH_PREFIXES = ["/docs", "/public", "/api/v1/analyses", "/.well-known"];
 
 function isPublicPath(url: string): boolean {
   const path = url.split("?")[0] ?? url;
@@ -74,6 +78,7 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   await app.register(healthRoutes);
   await app.register(analysesRoutes);
+  await app.register(agentDiscoveryRoutes);
 
   app.setErrorHandler((err: FastifyError, _req, reply) => {
     app.log.error({ err }, "Error no controlado");

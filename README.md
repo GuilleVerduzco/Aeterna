@@ -24,6 +24,20 @@ API para auditorías profundas de sitios web: **rendimiento**, **SEO técnico**,
 
 Cada hallazgo incluye severidad (`critical`/`high`/`medium`/`low`/`info`), descripción, recomendación accionable y evidencia. Cada categoría tiene un score 0-100; el score general es un promedio ponderado.
 
+## Descubrimiento para agentes de IA
+
+Esta API se anuncia a sí misma ante agentes de IA:
+
+- `Link` headers (RFC 8288) en `/` apuntando a `service-doc`, `service-desc`, `api-catalog`, `agent-skills` y `ai-catalog`.
+- `/robots.txt` con `Content-Signal` (contentsignals.org): `ai-train=no, search=yes, ai-input=yes`.
+- `/` responde en Markdown (`Content-Type: text/markdown`) cuando el cliente manda `Accept: text/markdown`.
+- `/.well-known/api-catalog` (RFC 9727, `application/linkset+json`) enlazando al OpenAPI (`/docs/json`), la doc (`/docs`) y el health check (`/health`).
+- `/.well-known/agent-skills/index.json` + `/.well-known/agent-skills/audit-website/SKILL.md` (Agent Skills Discovery).
+- `/.well-known/ai-catalog.json` (manifiesto ARD) con `Access-Control-Allow-Origin: *`.
+- `public/widget.js` registra la auditoría como tool WebMCP (`navigator.modelContext.provideContext`) cuando el navegador del visitante la soporta.
+
+Todo lo anterior describe capacidades que la API ya implementa. Deliberadamente **no** se publicó metadata de OAuth/OIDC, `auth.md` ni un MCP Server Card: esta API no usa OAuth (autentica con `x-api-key`, ver arriba) ni expone un servidor MCP real, y anunciar esos endpoints sin la implementación detrás induciría a error a los agentes. Tampoco se pueden publicar registros DNS-AID desde este repo — requieren acceso al proveedor DNS de `c4b.mx`; si se agregan, deben ser algo como `_index._agents.c4b.mx` con registros SVCB/HTTPS en `ServiceMode` (`alpn`, `endpoint`) y la zona firmada con DNSSEC.
+
 ## Quickstart
 
 ```bash
