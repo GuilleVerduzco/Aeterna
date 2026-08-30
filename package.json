@@ -29,6 +29,7 @@
     "fastify-plugin": "^5.0.1",
     "html-validate": "^9.1.4",
     "nanoid": "^5.0.7",
+    "omniroute": "^3.8.50",
     "p-limit": "^6.1.0",
     "pino": "^9.5.0",
     "pino-pretty": "^11.3.0",
