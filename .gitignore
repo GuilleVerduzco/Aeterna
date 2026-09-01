@@ -7,3 +7,7 @@ coverage/
 test-results/
 playwright-report/
 storage/
+
+# agent-skills hooks: caches/backups, not source
+.claude/sdd-cache/
+.claude/.simplify-ignore-cache/
