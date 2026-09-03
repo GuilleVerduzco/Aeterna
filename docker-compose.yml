@@ -11,9 +11,29 @@ services:
       ANALYSIS_TIMEOUT_MS: ${ANALYSIS_TIMEOUT_MS:-120000}
       LOG_LEVEL: ${LOG_LEVEL:-info}
       NODE_ENV: production
+      LLM_GATEWAY_BASE_URL: ${LLM_GATEWAY_BASE_URL:-http://ccr:3456}
+      LLM_GATEWAY_API_KEY: ${LLM_GATEWAY_API_KEY:-}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 3
+
+  # Claude Code Router (CCR): gateway/proxy de modelos LLM opcional.
+  # Punto único para enrutar cualquier llamada a modelo (Anthropic, OpenAI, Gemini, DeepSeek, etc.)
+  # con failover, rotación de credenciales y observabilidad, sin acoplar el código de la API a un
+  # proveedor específico. No se levanta por defecto: usa `docker compose --profile ai up -d --build`.
+  # Config de proveedores/rutas vía la UI en el puerto 3458 (ver DEPLOY.md).
+  ccr:
+    profiles: ["ai"]
+    build:
+      context: https://github.com/musistudio/claude-code-router.git
+    ports:
+      - "3458:8080"
+    volumes:
+      - ccr-data:/data
+    restart: unless-stopped
+
+volumes:
+  ccr-data:
