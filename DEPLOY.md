@@ -135,6 +135,25 @@ tu-sitio.com (cualquier hosting)  ──JS/EventSource──▶  api-auditor.tu-
                                                    en cuanto cada categoría termina
 ```
 
+## 10. (Opcional) Gateway de modelos LLM con Claude Code Router
+
+Si vas a agregar funciones con IA a la API (resúmenes ejecutivos, recomendaciones generadas por un
+modelo, etc.), no llames a un proveedor directo desde el código: levanta
+[Claude Code Router](https://github.com/musistudio/claude-code-router) (CCR) como sidecar. Te da un
+endpoint local único (`http://ccr:3456` dentro de la red de Docker) desde el que enrutas a Anthropic,
+OpenAI, Gemini, DeepSeek, etc., con failover, rotación de credenciales y logs de uso — todo sin
+acoplar el código de la API a un proveedor específico.
+
+```bash
+docker compose --profile ai up -d --build ccr
+```
+
+Abre `http://<IP-del-VPS>:3458` (protégelo con el reverse proxy/firewall, no lo expongas público) para
+configurar proveedores y reglas de enrutamiento. En `.env`, `LLM_GATEWAY_BASE_URL` ya apunta al
+contenedor `ccr` por defecto; agrega tu `LLM_GATEWAY_API_KEY` si defines una clave de cliente en CCR.
+Este servicio no se levanta con `docker compose up` normal (requiere el flag `--profile ai`) porque
+hoy la API todavía no consume ningún modelo LLM.
+
 ## Costos y límites a tener en cuenta
 
 - Cada auditoría abre un navegador Chromium real: es lo más pesado en CPU/RAM del sistema. `MAX_CONCURRENT_ANALYSES` limita cuántas corren a la vez; el resto espera en cola.

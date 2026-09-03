@@ -11,6 +11,7 @@ API para auditorías profundas de sitios web: **rendimiento**, **SEO técnico**,
 - **cheerio** para el análisis SEO del HTML.
 - **html-validate** para validación de marcado.
 - Cola de trabajos en memoria con concurrencia limitada (`p-limit`), pensada para sustituirse por BullMQ + Redis si se necesita escalar horizontalmente.
+- (Opcional) [Claude Code Router](https://github.com/musistudio/claude-code-router) como gateway de modelos LLM, para cuando se agreguen funciones con IA (ver [DEPLOY.md](DEPLOY.md#10-opcional-gateway-de-modelos-llm-con-claude-code-router)).
 
 ## Categorías de análisis
 
