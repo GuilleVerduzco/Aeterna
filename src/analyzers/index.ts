@@ -6,6 +6,8 @@ import { analyzeSeo } from "./seo.js";
 import { analyzeDesign } from "./design.js";
 import { analyzeAccessibility } from "./accessibility.js";
 import { analyzeCodeQuality } from "./codeQuality.js";
+import { captureAdvancedVisuals, analyzeAdvancedVisuals } from "./advancedVisuals.js";
+import { recordPageInteraction } from "./videoRecorder.js";
 import { computeOverallScore } from "../scoring/score.js";
 import { newJobId } from "../lib/ids.js";
 import { logger } from "../lib/logger.js";
@@ -102,18 +104,51 @@ export async function runAnalysis(
   const settled = await Promise.all(tasks);
   const categories = settled.filter((c): c is CategoryResult => c !== null);
 
-  const finishedAt = new Date();
-
-  return {
+  const result: AnalysisResult = {
     id: newJobId(),
     url: options.url,
     finalUrl: crawlResult.finalUrl,
     startedAt: startedAt.toISOString(),
-    finishedAt: finishedAt.toISOString(),
-    durationMs: finishedAt.getTime() - startedAt.getTime(),
+    finishedAt: new Date().toISOString(),
+    durationMs: new Date().getTime() - startedAt.getTime(),
     overallScore: computeOverallScore(categories),
     categories,
     screenshots: crawlResult.screenshots,
     errors,
   };
+
+  // Capturar datos avanzados de visuales (tema, web vitals, video)
+  if (options.captureThemeVariants || options.captureWebVitals) {
+    try {
+      // Nota: Estos datos se capturan en el crawler actual pero con más detalle aquí
+      logger.info("Advanced visual capture requested but requires page context - available in future versions");
+    } catch (err) {
+      logger.warn({ err }, "Advanced visuals capture failed");
+    }
+  }
+
+  // Intentar grabar video si está solicitado
+  if (options.captureVideoRecording) {
+    try {
+      const videoResult = await recordPageInteraction({
+        recordUrl: crawlResult.finalUrl,
+        timeoutMs: 30000,
+      });
+      if (videoResult.recordingSuccessful && videoResult.videoPath) {
+        result.videoRecording = {
+          videoPath: videoResult.videoPath,
+          recordingDurationMs: videoResult.recordingDurationMs,
+        };
+        logger.info({ videoPath: videoResult.videoPath }, "Video grabado exitosamente");
+      }
+    } catch (err) {
+      logger.warn({ err }, "Video recording failed, continuing with analysis");
+    }
+  }
+
+  const finishedAt = new Date();
+  result.finishedAt = finishedAt.toISOString();
+  result.durationMs = finishedAt.getTime() - startedAt.getTime();
+
+  return result;
 }

@@ -39,6 +39,9 @@ export interface AnalysisOptions {
   categories: Category[];
   screenshots: boolean;
   maxLinksChecked: number;
+  captureThemeVariants?: boolean;
+  captureWebVitals?: boolean;
+  captureVideoRecording?: boolean;
 }
 
 export interface AnalysisResult {
@@ -52,6 +55,22 @@ export interface AnalysisResult {
   categories: CategoryResult[];
   screenshots: ViewportScreenshot[];
   errors: string[];
+  themeVariants?: {
+    lightModeScreenshots: ViewportScreenshot[];
+    darkModeScreenshots: ViewportScreenshot[];
+  };
+  webVitals?: {
+    lcp: number | null;
+    fid: number | null;
+    cls: number | null;
+    inp: number | null;
+    ttfb: number | null;
+    fcp: number | null;
+  };
+  videoRecording?: {
+    videoPath: string;
+    recordingDurationMs: number;
+  };
 }
 
 export type AnalysisEvent =

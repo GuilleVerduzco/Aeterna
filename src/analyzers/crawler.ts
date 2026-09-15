@@ -41,6 +41,19 @@ export interface CrawlResult {
   };
   viewportOverflow: { hasHorizontalOverflow: boolean; scrollWidth: number; clientWidth: number }[];
   axeResults: unknown;
+  webVitals?: {
+    lcp: number | null;
+    fid: number | null;
+    cls: number | null;
+    inp: number | null;
+    ttfb: number | null;
+    fcp: number | null;
+  };
+  imageAnalysis?: {
+    totalImages: number;
+    imagesWithoutAlt: number;
+    legacyFormatImages: number;
+  };
 }
 
 const MOBILE_VIEWPORT = { name: "mobile" as const, width: 390, height: 844 };
@@ -213,6 +226,41 @@ export async function crawl(
     axeResults = { error: err instanceof Error ? err.message : String(err) };
   }
 
+  // Capturar Web Vitals
+  const webVitals = await page.evaluate(async () => {
+    const metrics: { lcp: number | null; fid: number | null; cls: number | null; inp: number | null; ttfb: number | null; fcp: number | null } = {
+      lcp: null,
+      fid: null,
+      cls: null,
+      inp: null,
+      ttfb: null,
+      fcp: null,
+    };
+
+    const perfEntries = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    if (perfEntries) {
+      metrics.ttfb = Math.round(perfEntries.responseStart);
+      metrics.fcp = Math.round(
+        (performance.getEntriesByType("paint").find((e) => e.name === "first-contentful-paint")?.startTime as number) || 0
+      );
+    }
+
+    return metrics;
+  });
+
+  // Capturar análisis básico de imágenes
+  const imageAnalysis = await page.evaluate(() => {
+    const images = Array.from(document.querySelectorAll("img"));
+    const imagesWithoutAlt = images.filter((img) => !img.alt || img.alt.trim() === "").length;
+    const legacyFormatImages = images.filter((img) => /\.(jpe?g|png|gif)(\?|$)/i.test(img.src || "")).length;
+
+    return {
+      totalImages: images.length,
+      imagesWithoutAlt,
+      legacyFormatImages,
+    };
+  });
+
   await context.close();
 
   return {
@@ -229,5 +277,7 @@ export async function crawl(
     computedStyles,
     viewportOverflow,
     axeResults,
+    webVitals,
+    imageAnalysis,
   };
 }
