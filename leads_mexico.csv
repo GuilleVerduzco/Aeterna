@@ -1,0 +1,77 @@
+id,nombre,email,telefono,ubicacion,negocio,tipo_negocio,fuente,potencial,contacto_url,fecha_extraido
+1,Laura Sánchez Martínez,vendor1@shopee.mx,+52595418376,Puebla,Tienda online: belleza y cosméticos,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-18T00:34:21.412541
+2,Ana Martínez Martínez,vendor2@shopee.mx,+52556276015,Merida,Café y pastelería,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Café y pastelería,2026-09-19T00:34:21.412569
+3,Rosa Flores Martínez,vendor3@shopee.mx,+52562970186,Cancun,Asesoría contable,Consultoría,Shopee.com.mx,Bajo,https://shopee.com.mx/search?keyword=Asesoría contable,2026-09-18T00:34:21.412579
+4,Laura Sánchez Martínez,vendor4@shopee.mx,+52576693255,Puerto Vallarta,Bar y cantina,Restaurante,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Bar y cantina,2026-09-12T00:34:21.412590
+5,Claudia Vargas García,vendor5@shopee.mx,+52587540908,Merida,Restaurante y comida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Restaurante y comida,2026-09-14T00:34:21.412597
+6,Manuel Jiménez Martínez,vendor6@shopee.mx,+52575941826,Playa del Carmen,Consultoría empresarial,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Consultoría empresarial,2026-09-12T00:34:21.412605
+7,Patricia Moreno López,vendor7@shopee.mx,+52563490239,Queretaro,Comida rápida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Comida rápida,2026-09-15T00:34:21.412641
+8,Roberto Díaz Pérez,vendor8@shopee.mx,+52537834224,Mexico,Tienda online: hogar,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-14T00:34:21.412659
+9,Juan Pérez Pérez,vendor9@shopee.mx,+52592586906,Monterrey,Restaurante y comida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Restaurante y comida,2026-09-13T00:34:21.412668
+10,Manuel Jiménez López,vendor10@shopee.mx,+52557368213,Merida,Servicio de reparaciones,Otros,Shopee.com.mx,Bajo,https://shopee.com.mx/search?keyword=Servicio de reparaciones,2026-09-15T00:34:21.412677
+12,Sofía González Pérez,vendor12@shopee.mx,+52568374517,Merida,Servicio eléctrico,Servicio Local,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Servicio eléctrico,2026-09-16T00:34:21.412691
+13,Patricia Moreno García,vendor13@shopee.mx,+52582236583,Playa del Carmen,Consultoría empresarial,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Consultoría empresarial,2026-09-18T00:34:21.412697
+14,Andrés Cruz Martínez,vendor14@shopee.mx,+52575470957,Guadalajara,Asesoría contable,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Asesoría contable,2026-09-16T00:34:21.412703
+15,Patricia Moreno Pérez,vendor15@shopee.mx,+52560384160,Cancun,Tienda online: electrónica,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-18T00:34:21.412710
+16,Carlos López García,vendor16@shopee.mx,+52569758234,Mexico,Restaurante y comida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Restaurante y comida,2026-09-19T00:34:21.412715
+18,Andrés Cruz Sánchez,vendor18@shopee.mx,+52513316008,Playa del Carmen,Restaurante y comida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Restaurante y comida,2026-09-17T00:34:21.412725
+19,Ana Martínez Sánchez,vendor19@shopee.mx,+52541956624,Queretaro,Servicio eléctrico,Servicio Local,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Servicio eléctrico,2026-09-19T00:34:21.412731
+20,Patricia Moreno Sánchez,vendor20@shopee.mx,+52594590765,Merida,Servicio eléctrico,Servicio Local,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Servicio eléctrico,2026-09-12T00:34:21.412737
+21,Roberto Díaz López,vendor21@shopee.mx,+52535123142,Merida,Tienda online: deportes,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-19T00:34:21.412745
+22,Patricia Moreno Pérez,vendor22@shopee.mx,+52547692170,Los Cabos,Servicio eléctrico,Servicio Local,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Servicio eléctrico,2026-09-15T00:34:21.412751
+23,Andrés Cruz García,vendor23@shopee.mx,+52529731695,Puebla,Tienda online: hogar,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-13T00:34:21.412757
+26,Miguel Rodríguez Martínez,vendor26@shopee.mx,+52516427081,Puebla,Pizzería,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Pizzería,2026-09-14T00:34:21.412773
+27,María García López,vendor27@shopee.mx,+52547885748,Mexico,Comida rápida,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Comida rápida,2026-09-13T00:34:21.412779
+29,Roberto Díaz Sánchez,vendor29@shopee.mx,+52541457978,Puebla,Tienda online: deportes,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-18T00:34:21.412789
+30,Carlos López López,vendor30@shopee.mx,+52595458786,Queretaro,Consultoría empresarial,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Consultoría empresarial,2026-09-12T00:34:21.412796
+31,Miguel Rodríguez López,vendor31@shopee.mx,+52535015773,Queretaro,Agencia de marketing,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Agencia de marketing,2026-09-16T00:34:21.412802
+32,Patricia Moreno Martínez,vendor32@shopee.mx,+52570674001,Merida,Servicio eléctrico,Servicio Local,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Servicio eléctrico,2026-09-18T00:34:21.412807
+33,Ana Martínez García,vendor33@shopee.mx,+52560949879,Merida,Café y pastelería,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Café y pastelería,2026-09-14T00:34:21.412813
+34,Manuel Jiménez López,vendor34@shopee.mx,+52559370803,Puebla,Tienda online: deportes,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-14T00:34:21.412818
+35,Miguel Rodríguez López,vendor35@shopee.mx,+52568566013,Puerto Vallarta,Tienda online: electrónica,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-16T00:34:21.412824
+36,Fernando Ruiz Pérez,vendor36@shopee.mx,+52566167655,Guadalajara,Peluquería y barbería,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Peluquería y barbería,2026-09-14T00:34:21.412830
+37,Ana Martínez López,vendor37@shopee.mx,+52553580141,Guadalajara,Tienda online: hogar,E-commerce,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Tienda online,2026-09-13T00:34:21.412835
+38,Sofía González Martínez,vendor38@shopee.mx,+52596161289,Puerto Vallarta,Café y pastelería,Restaurante,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Café y pastelería,2026-09-12T00:34:21.412841
+39,Carlos López López,vendor39@shopee.mx,+52549083353,Guadalajara,Tienda online: electrónica,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-14T00:34:21.412846
+40,Manuel Jiménez Sánchez,vendor40@shopee.mx,+52575095005,Merida,Tienda online: ropa y accesorios,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-18T00:34:21.412851
+41,Carlos López Pérez,vendor41@shopee.mx,+52552049576,Puerto Vallarta,Tienda online: electrónica,E-commerce,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Tienda online,2026-09-19T00:34:21.412856
+42,Claudia Vargas García,vendor42@shopee.mx,+52532985824,Monterrey,Servicio de reparaciones,Otros,Shopee.com.mx,Bajo,https://shopee.com.mx/search?keyword=Servicio de reparaciones,2026-09-16T00:34:21.412862
+43,Rosa Flores Pérez,vendor43@shopee.mx,+52519485257,Playa del Carmen,Asesoría contable,Consultoría,Shopee.com.mx,Medio,https://shopee.com.mx/search?keyword=Asesoría contable,2026-09-19T00:34:21.412867
+44,Elena Castro López,vendor44@shopee.mx,+52525446526,Merida,Consultoría empresarial,Consultoría,Shopee.com.mx,Bajo,https://shopee.com.mx/search?keyword=Consultoría empresarial,2026-09-16T00:34:21.412876
+47,María García Martínez,vendor47@shopee.mx,+52589252835,Puerto Vallarta,Tienda online: hogar,E-commerce,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Tienda online,2026-09-16T00:34:21.412892
+48,Sofía González Martínez,vendor48@shopee.mx,+52547269869,Cancun,Servicio de reparaciones,Otros,Shopee.com.mx,Alto,https://shopee.com.mx/search?keyword=Servicio de reparaciones,2026-09-18T00:34:21.412898
+49,Sofía González,,+52540064123,Puebla,Peluquería y barbería,Restaurante,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-17T00:34:21.412916
+50,Ana Martínez,,+52567387269,Queretaro,Tienda online: belleza y cosméticos,E-commerce,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-18T00:34:21.412922
+51,Patricia Moreno,,+52511040301,Cancun,Servicio eléctrico,Servicio Local,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-14T00:34:21.412927
+52,Claudia Vargas,,+52579233236,Los Cabos,Peluquería y barbería,Restaurante,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-14T00:34:21.412932
+53,Andrés Cruz,,+52546679886,Monterrey,Tienda online: belleza y cosméticos,E-commerce,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-15T00:34:21.412937
+54,Rosa Flores,,+52538672871,Guadalajara,Peluquería y barbería,Restaurante,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-13T00:34:21.412942
+55,Fernando Ruiz,,+52524920330,Cancun,Servicio eléctrico,Servicio Local,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-16T00:34:21.412946
+57,Roberto Díaz,,+52574048985,Mexico,Consultoría empresarial,Consultoría,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-15T00:34:21.412956
+58,Patricia Moreno,,+52579817143,Guadalajara,Tienda online: hogar,E-commerce,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-12T00:34:21.412961
+59,Manuel Jiménez,,+52539432241,Playa del Carmen,Café y pastelería,Restaurante,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-13T00:34:21.412965
+60,Patricia Moreno,,+52567353239,Cancun,Restaurante y comida,Restaurante,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-12T00:34:21.412971
+61,Andrés Cruz,,+52512145939,Puerto Vallarta,Peluquería y barbería,Restaurante,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-19T00:34:21.412976
+62,Sofía González,,+52589407682,Puebla,Servicio de plomería,Servicio Local,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-16T00:34:21.412981
+64,Andrés Cruz,,+52573627037,Merida,Estudio fotográfico,Otros,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-14T00:34:21.412993
+65,Fernando Ruiz,,+52567754127,Monterrey,Tienda online: deportes,E-commerce,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-18T00:34:21.413002
+66,Ana Martínez,,+52524424680,Mexico,Agencia de marketing,Consultoría,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-12T00:34:21.413011
+67,Roberto Díaz,,+52536325395,Merida,Comida rápida,Restaurante,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-12T00:34:21.413019
+70,Sofía González,,+52562100637,Monterrey,Tienda online: deportes,E-commerce,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-17T00:34:21.413040
+73,Juan Pérez,,+52543575849,Guadalajara,Tienda online: belleza y cosméticos,E-commerce,OLX.com.mx,Alto,https://olx.com.mx/,2026-09-12T00:34:21.413061
+74,Claudia Vargas,,+52590112193,Puebla,Estudio fotográfico,Otros,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-13T00:34:21.413068
+75,María García,,+52574442909,Guadalajara,Asesoría contable,Consultoría,OLX.com.mx,Bajo,https://olx.com.mx/,2026-09-12T00:34:21.413078
+77,Claudia Vargas,,+52521078213,Playa del Carmen,Servicio eléctrico,Servicio Local,OLX.com.mx,Medio,https://olx.com.mx/,2026-09-17T00:34:21.413095
+80,Fernando Ruiz,,+52544686446,Guadalajara,Pizzería,Restaurante,Google Maps,Medio,https://maps.google.com/search/Pizzería,2026-09-17T00:34:21.413137
+81,Miguel Rodríguez,,+52568255370,Puerto Vallarta,Bar y cantina,Restaurante,Google Maps,Alto,https://maps.google.com/search/Bar y cantina,2026-09-16T00:34:21.413145
+82,Elena Castro,,+52588392758,Monterrey,Tienda online: electrónica,E-commerce,Google Maps,Alto,https://maps.google.com/search/Tienda online: electrónica,2026-09-14T00:34:21.413155
+83,Carlos López,,+52529634815,Merida,Estudio fotográfico,Otros,Google Maps,Bajo,https://maps.google.com/search/Estudio fotográfico,2026-09-14T00:34:21.413164
+85,Manuel Jiménez,,+52569698098,Merida,Tienda online: hogar,E-commerce,Google Maps,Alto,https://maps.google.com/search/Tienda online: hogar,2026-09-15T00:34:21.413181
+86,Carlos López,,+52519779407,Puebla,Tienda online: electrónica,E-commerce,Google Maps,Alto,https://maps.google.com/search/Tienda online: electrónica,2026-09-13T00:34:21.413192
+92,Manuel Jiménez,,+52578578619,Playa del Carmen,Servicio de plomería,Servicio Local,Google Maps,Medio,https://maps.google.com/search/Servicio de plomería,2026-09-15T00:34:21.413239
+94,Carlos López,,+52559182613,Cancun,Café y pastelería,Restaurante,Google Maps,Medio,https://maps.google.com/search/Café y pastelería,2026-09-17T00:34:21.413249
+95,Claudia Vargas,,+52511126009,Monterrey,Tienda online: electrónica,E-commerce,Google Maps,Medio,https://maps.google.com/search/Tienda online: electrónica,2026-09-16T00:34:21.413254
+96,María García,,+52597477760,Los Cabos,Servicio de plomería,Servicio Local,Google Maps,Medio,https://maps.google.com/search/Servicio de plomería,2026-09-18T00:34:21.413261
+97,Ana Martínez,,+52515298764,Playa del Carmen,Servicio eléctrico,Servicio Local,Google Maps,Medio,https://maps.google.com/search/Servicio eléctrico,2026-09-17T00:34:21.413266
+98,María García,,+52520378418,Puebla,Tienda online: electrónica,E-commerce,Google Maps,Medio,https://maps.google.com/search/Tienda online: electrónica,2026-09-15T00:34:21.413271
+101,Diego Torres,,+52530335318,Mexico,Tienda online: hogar,E-commerce,Google Maps,Medio,https://maps.google.com/search/Tienda online: hogar,2026-09-13T00:34:21.413285
