@@ -180,6 +180,10 @@ Cada análisis: (1) el crawler carga la página una sola vez con Playwright, cap
 
 Guía paso a paso completa (VPS + Docker + HTTPS + cómo pegar el widget en cualquier plataforma) en [`DEPLOY.md`](./DEPLOY.md).
 
+## CRM (Twenty)
+
+El repo incluye la instalación self-hosted de [Twenty](https://github.com/twentyhq/twenty), CRM open source, en [`crm/twenty/`](./crm/twenty/INSTALL.md): `cd crm/twenty && ./setup.sh https://crm.tu-dominio.com`.
+
 ## Escalar a producción
 
 - Sustituir la cola en memoria (`src/queue/jobQueue.ts`) por BullMQ + Redis si se necesita más de una instancia.
