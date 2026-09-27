@@ -182,7 +182,7 @@ Guía paso a paso completa (VPS + Docker + HTTPS + cómo pegar el widget en cual
 
 ## CRM (Twenty)
 
-El repo incluye la instalación self-hosted de [Twenty](https://github.com/twentyhq/twenty), CRM open source, en [`crm/twenty/`](./crm/twenty/INSTALL.md): `cd crm/twenty && ./setup.sh https://crm.tu-dominio.com`.
+El repo incluye la instalación self-hosted de [Twenty](https://github.com/twentyhq/twenty), CRM open source, en [`crm/twenty/`](./crm/twenty/INSTALL.md): en un VPS basta `cd crm/twenty && ./install-vps.sh crm.tu-dominio.com` (Docker + HTTPS + respaldos), y `configure-aeterna.py` deja el pipeline y los campos listos para la agencia.
 
 ## Escalar a producción
 

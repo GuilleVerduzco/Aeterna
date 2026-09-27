@@ -9,6 +9,9 @@ Esta carpeta trae todo lo necesario para levantarlo con Docker, junto a la API d
 | `docker-compose.yml` | Compose oficial de Twenty (`packages/twenty-docker`), con el puerto cambiado a **3001** y expuesto solo en `127.0.0.1` |
 | `.env.example` | Variables de entorno comentadas en español, versión fijada a `v2.43.0` |
 | `setup.sh` | Genera `.env` con contraseñas/llaves aleatorias y levanta todo |
+| `install-vps.sh` | Instalación completa en un VPS Ubuntu/Debian: Docker + Twenty + HTTPS (Caddy) + respaldo diario |
+| `configure-aeterna.py` | Deja el workspace listo para Æterna: pipeline en español y campos de agencia (vía API) |
+| `backup.sh` | Respaldo de base de datos, adjuntos y `.env`, con retención de 14 días |
 
 ## Qué se levanta
 
@@ -29,7 +32,21 @@ Esta carpeta trae todo lo necesario para levantarlo con Docker, junto a la API d
   ```
 - Un subdominio apuntando al servidor, p. ej. `A  crm.tu-dominio.com → <IP del VPS>`.
 
-## 2. Instalación rápida
+## 2. Instalación en un VPS (un comando)
+
+Con el DNS ya apuntando al servidor, como root:
+
+```bash
+git clone https://github.com/GuilleVerduzco/Aeterna.git /opt/aeterna
+cd /opt/aeterna/crm/twenty
+./install-vps.sh crm.tu-dominio.com
+```
+
+Instala Docker si falta, levanta Twenty con `https://crm.tu-dominio.com`, agrega el sitio a Caddy (lo instala si falta; si ya tienes Caddy por `DEPLOY.md`, solo agrega el bloque) y programa `backup.sh` diario a las 03:17. Se puede volver a correr sin duplicar nada. Después continúa en **4. Primer acceso**.
+
+Las secciones 2b y 3 describen lo mismo paso a paso, por si prefieres hacerlo a mano o no usas Ubuntu/Debian.
+
+## 2b. Instalación manual
 
 ```bash
 git clone https://github.com/GuilleVerduzco/Aeterna.git
@@ -72,7 +89,19 @@ systemctl reload caddy
 
 1. Abre `https://crm.tu-dominio.com`.
 2. Regístrate con correo y contraseña: **el primer usuario crea el workspace y queda como administrador**.
-3. En *Settings* configura el workspace (nombre, logo, idioma), invita a tu equipo y ajusta el modelo de datos (p. ej. campos para "Servicio de interés", "Presupuesto", "País" en Oportunidades/Empresas).
+   El onboarding pide nombre del workspace (p. ej. «Æterna»), tu perfil e invitar al equipo (se puede omitir).
+3. Idioma: cada usuario lo cambia en *Settings → Experience → Language* (hay Español).
+4. Crea una API key: *Settings → MCP & APIs → pestaña API → Create API key*, rol **Admin**. Cópiala: solo se muestra una vez.
+5. Configura el workspace para Æterna:
+   ```bash
+   TWENTY_API_KEY=<la key> python3 configure-aeterna.py --url https://crm.tu-dominio.com --limpiar-demo
+   ```
+   - **Pipeline de Oportunidades**: Nuevo lead → Diagnóstico → Reunión → Propuesta enviada → Negociación → Cliente → Perdido.
+   - **Oportunidad**: *Servicio de interés* (marketing digital, sitio web, tienda en línea, redes sociales, chatbot/IA, automatización, consultoría), *Fuente del lead* (Site Auditor, sitio web, chatbot, WhatsApp, redes, anuncios, referido, evento) y *Tipo de contrato* (proyecto único / iguala mensual).
+   - **Empresa**: *País* (LATAM), *Score sitio web* y *Reporte de auditoría* (para el Site Auditor).
+   - `--limpiar-demo` borra las empresas, personas y oportunidades de ejemplo (Airbnb, Stripe…) que Twenty crea al inicio; no toca registros creados por personas o por la API.
+
+   El script es idempotente: si lo vuelves a correr no duplica nada. Para cambiar opciones o agregar campos, edita `CUSTOM_FIELDS` en el script o hazlo desde *Settings → Data model*.
 
 ## 5. Opcionales recomendados
 
@@ -100,23 +129,43 @@ docker compose restart            # reiniciar
 docker compose down               # detener (los datos quedan en los volúmenes)
 ```
 
-**Respaldo diario de la base** (agrégalo a `crontab -e`):
+**Respaldos**: `./backup.sh [/var/backups/twenty]` guarda en ese directorio el dump de Postgres (`twenty-db-*.sql.gz`), los adjuntos (`twenty-files-*.tar.gz`) y una copia de `.env` (`twenty-env-*`), y borra los de más de `RETENTION_DAYS` (14) días. `install-vps.sh` ya lo deja en cron; a mano:
 
 ```bash
-0 3 * * * cd /root/Aeterna/crm/twenty && docker compose exec -T db pg_dump -U postgres default | gzip > /root/backups/twenty-$(date +\%F).sql.gz
+17 3 * * * /opt/aeterna/crm/twenty/backup.sh /var/backups/twenty >> /var/log/twenty-backup.log 2>&1
 ```
 
-Respalda también el volumen `twenty_server-local-data` si usas `STORAGE_TYPE=local`.
+Copia los respaldos **fuera del VPS** (p. ej. `rclone` a Google Drive o S3): si el servidor se pierde, los respaldos se pierden con él.
+
+**Restaurar** (en un servidor nuevo o tras un desastre). Usa el `.env` del respaldo: la `ENCRYPTION_KEY` debe ser la misma.
+
+```bash
+cd /opt/aeterna/crm/twenty
+cp /var/backups/twenty/twenty-env-<FECHA> .env
+docker compose down -v                       # ⚠️ borra lo que haya en esta instancia
+docker compose up -d --wait db
+zcat /var/backups/twenty/twenty-db-<FECHA>.sql.gz | docker compose exec -T db psql -q -U postgres default
+docker compose run --rm --no-deps -T -v /var/backups/twenty:/bk --entrypoint sh server \
+  -c 'tar -C /app/packages/twenty-server/.local-storage -xzf /bk/twenty-files-<FECHA>.tar.gz'
+docker compose up -d --wait
+```
 
 **Actualizar**: Twenty solo soporta subir **de una versión *minor* a la siguiente** (v2.43 → v2.44, sin saltos). Por cada salto:
 
-1. Respalda la base (`pg_dump`, arriba).
+1. Respalda (`./backup.sh`).
 2. Cambia `TAG` en `.env` a la siguiente versión (lista en https://github.com/twentyhq/twenty/releases) y lee sus notas de upgrade.
 3. `docker compose pull && docker compose up -d` — el `server` corre las migraciones al arrancar.
 
 ## 7. Integración con el resto de Æterna
 
-- **API de Twenty** (Settings → APIs & Webhooks → crear API key): permite crear leads desde el widget del Site Auditor, el chatbot o formularios del sitio, p. ej. `POST https://crm.tu-dominio.com/rest/people` con `Authorization: Bearer <API_KEY>`.
+- **API de Twenty** (*Settings → MCP & APIs*): permite crear leads desde el widget del Site Auditor, el chatbot o formularios del sitio. Con los campos de `configure-aeterna.py`:
+  ```bash
+  curl -X POST https://crm.tu-dominio.com/rest/opportunities \
+    -H "Authorization: Bearer $TWENTY_API_KEY" -H "Content-Type: application/json" \
+    -d '{"name":"Rediseño web + chatbot","stage":"NEW","fuente":"SITE_AUDITOR",
+         "servicio":["SITIO_WEB","CHATBOT_IA"],"companyId":"<id de /rest/companies>"}'
+  ```
+- **MCP**: Twenty expone un servidor MCP (*Settings → MCP & APIs → MCP*) para consultar y actualizar el CRM desde Claude.
 - **Webhooks**: notifican cuando cambia una oportunidad (útil para n8n/Make/Zapier o automatizaciones propias).
 - **Oferta a clientes**: el mismo compose sirve para desplegar un CRM por cliente PyME (un VPS o un workspace por cliente), como servicio gestionado de Æterna.
 
