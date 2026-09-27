@@ -32,7 +32,7 @@ Esta carpeta trae todo lo necesario para levantarlo con Docker, junto a la API d
   ```
 - Un subdominio apuntando al servidor, p. ej. `A  crm.tu-dominio.com → <IP del VPS>`.
 
-**HostGator México**: el hosting compartido (planes web con cPanel) **no sirve**: no da acceso root ni permite Docker. Sí sirve un **VPS NVMe 4 o superior** con la opción **«SO simple» + Ubuntu 22.04**. No elijas las variantes con cPanel ni n8n: ocupan los puertos 80/443 (Apache/Traefik) y chocan con Caddy. HostGator no respalda los VPS, así que `backup.sh` + copia externa es obligatorio. El DNS del subdominio se crea en el cPanel del hosting actual (*Zone Editor → + A Record*), si el dominio usa los nameservers de HostGator.
+**HostGator México**: el hosting compartido (planes web con cPanel) **no sirve**: no da acceso root ni permite Docker. Sí sirve un **VPS NVMe 4 o superior** con la opción **«SO simple» + Ubuntu 22.04**. No elijas las variantes con cPanel ni n8n: ocupan los puertos 80/443 (Apache/Traefik) y chocan con Caddy. HostGator no respalda los VPS, así que `backup.sh` + copia externa es obligatorio. SSH puede estar en el puerto **22022** (`ssh -p 22022 root@IP`); los datos de acceso llegan por correo al activarse. El DNS del subdominio se crea en el cPanel del hosting actual (*Zone Editor → + A Record*), si el dominio usa los nameservers de HostGator.
 
 ## 2. Instalación en un VPS (un comando)
 
@@ -44,7 +44,7 @@ cd /opt/aeterna/crm/twenty
 ./install-vps.sh crm.tu-dominio.com
 ```
 
-Instala Docker si falta, levanta Twenty con `https://crm.tu-dominio.com`, agrega el sitio a Caddy (lo instala si falta; si ya tienes Caddy por `DEPLOY.md`, solo agrega el bloque) y programa `backup.sh` diario a las 03:17. Se puede volver a correr sin duplicar nada. Después continúa en **4. Primer acceso**.
+Activa el firewall (ufw) dejando abiertos solo SSH —detecta su puerto real, p. ej. 22022 en HostGator—, 80 y 443; instala Docker si falta, levanta Twenty con `https://crm.tu-dominio.com`, agrega el sitio a Caddy (lo instala si falta; si ya tienes Caddy por `DEPLOY.md`, solo agrega el bloque) y programa `backup.sh` diario a las 03:17. Se puede volver a correr sin duplicar nada. Después continúa en **4. Primer acceso**.
 
 Las secciones 2b y 3 describen lo mismo paso a paso, por si prefieres hacerlo a mano o no usas Ubuntu/Debian.
 

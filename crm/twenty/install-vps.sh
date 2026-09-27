@@ -24,6 +24,22 @@ if [ -n "$server_ip" ] && [ "$dns_ip" != "$server_ip" ]; then
   [[ "$ok" =~ ^[sS]$ ]] || exit 1
 fi
 
+echo "🧱 Firewall (ufw)"
+# Algunos proveedores (p. ej. HostGator) usan SSH en el puerto 22022: se detecta el puerto real
+# antes de activar ufw para no dejarte fuera del servidor.
+ssh_ports=$( { sshd -T 2>/dev/null | awk '$1 == "port" {print $2}'
+               ss -Htlnp 2>/dev/null | awk '/"sshd"/ {n = split($4, a, ":"); print a[n]}'; } | sort -un)
+if [ -z "$ssh_ports" ]; then
+  echo "  ⚠️  No pude detectar el puerto de SSH; no activo el firewall (actívalo a mano, ver INSTALL.md)."
+else
+  command -v ufw >/dev/null || apt-get install -y ufw
+  for p in $ssh_ports; do ufw allow "$p/tcp" >/dev/null; done
+  ufw allow 80/tcp >/dev/null
+  ufw allow 443/tcp >/dev/null
+  ufw --force enable >/dev/null
+  echo "  ✓ Abiertos: SSH ($(echo $ssh_ports | tr '\n' ' ')), 80 y 443"
+fi
+
 echo "🐳 Docker"
 if ! command -v docker >/dev/null; then
   curl -fsSL https://get.docker.com | sh
