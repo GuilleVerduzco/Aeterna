@@ -32,6 +32,8 @@ Esta carpeta trae todo lo necesario para levantarlo con Docker, junto a la API d
   ```
 - Un subdominio apuntando al servidor, p. ej. `A  crm.tu-dominio.com → <IP del VPS>`.
 
+**HostGator México**: el hosting compartido (planes web con cPanel) **no sirve**: no da acceso root ni permite Docker. Sí sirve un **VPS NVMe 4 o superior** con la opción **«SO simple» + Ubuntu 22.04**. No elijas las variantes con cPanel ni n8n: ocupan los puertos 80/443 (Apache/Traefik) y chocan con Caddy. HostGator no respalda los VPS, así que `backup.sh` + copia externa es obligatorio. El DNS del subdominio se crea en el cPanel del hosting actual (*Zone Editor → + A Record*), si el dominio usa los nameservers de HostGator.
+
 ## 2. Instalación en un VPS (un comando)
 
 Con el DNS ya apuntando al servidor, como root:
