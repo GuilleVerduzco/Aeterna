@@ -1,0 +1,603 @@
+[
+ {
+  "id": "V01-1011-1130",
+  "fecha": "2026-10-11",
+  "hora": "11:30",
+  "tipo": "carrusel",
+  "tema": "5 cosas que puedes hacer hoy gratis en aeterna4.com",
+  "destino": "#soluciones",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Guárdalo",
+    "title": "5 cosas que puedes hacer hoy gratis por tu empresa"
+   },
+   {
+    "layout": "content",
+    "kicker": "Antes de empezar",
+    "title": "Sin llamadas de venta. Sin tarjeta. Sin descargar nada.",
+    "body": "Todo vive en aeterna4.com, nuestro nuevo sitio. Elige la que resuelva la duda que tienes hoy."
+   },
+   {
+    "layout": "content",
+    "kicker": "01 · 60 segundos",
+    "title": "Audita tu sitio web",
+    "body": "El auditor revisa SEO, velocidad y código en cerca de un minuto. Sabrás qué está frenando a tus clientes antes de que lleguen."
+   },
+   {
+    "layout": "content",
+    "kicker": "02 · 9 preguntas",
+    "title": "Mide tu madurez en IA",
+    "body": "Una evaluación corta para saber en qué nivel está tu empresa y qué paso sigue, sin tecnicismos."
+   },
+   {
+    "layout": "content",
+    "kicker": "03 · 20 preguntas",
+    "title": "Haz el ARIA Assessment",
+    "body": "Un diagnóstico más profundo sobre automatización, clientes, datos y adopción. Te dice por dónde conviene empezar."
+   },
+   {
+    "layout": "content",
+    "kicker": "04 · Demo en vivo",
+    "title": "Prueba un eCRM y una tienda con agente de IA",
+    "body": "Explora con datos de ejemplo cómo se ve un equipo de ventas ordenado y una tienda donde un agente acompaña al cliente hasta el pago."
+   },
+   {
+    "layout": "content",
+    "kicker": "05 · 15 minutos",
+    "title": "Lee el paper ejecutivo",
+    "body": "Lo esencial de McKinsey, MIT, Deloitte y Gartner sobre IA en empresas, con un checklist para elegir tu primer proceso."
+   },
+   {
+    "layout": "cta",
+    "title": "Empieza por la que más te duela",
+    "body": "Guarda este carrusel y mándaselo a tu socio. Todo está en la sección Soluciones.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Cinco cosas que puedes hacer hoy por tu empresa, gratis y sin hablar con un vendedor.\n\nEstrenamos aeterna4.com y lo primero que pusimos fue lo que más nos piden: herramientas para entender dónde está tu negocio antes de gastar en tecnología.\n\n1. Audita tu sitio web en unos 60 segundos: SEO, velocidad y código.\n2. Mide tu madurez en IA con 9 preguntas.\n3. Haz el ARIA Assessment: 20 preguntas sobre automatización, clientes, datos y adopción.\n4. Prueba en vivo un eCRM para ventas y una tienda donde un agente de IA acompaña al cliente hasta el pago.\n5. Lee nuestro paper ejecutivo: 15 minutos con lo esencial de la investigación global y un checklist para elegir tu primer proceso.\n\nNo necesitas hacer las cinco. Empieza por la que resuelva tu duda de hoy.\n\nGuárdalo para después y compártelo con quien decide la tecnología en tu empresa. Todo está en aeterna4.com, sección Soluciones. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #Automatizacion #Emprendedores #NegociosLATAM #ConsultoriaIA #HerramientasGratis",
+  "alt_text": "Carrusel de Æterna con cinco herramientas gratuitas en aeterna4.com: auditor web, madurez en IA, ARIA Assessment, demos y paper ejecutivo.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-07.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V01-1130-08.jpg"
+  ],
+  "estado": "publicado",
+  "permalink": "https://www.instagram.com/p/DeXLX_vG-7p/"
+ },
+ {
+  "id": "V02-1011-1530",
+  "fecha": "2026-10-11",
+  "hora": "15:30",
+  "tipo": "carrusel",
+  "tema": "Opinión contraria: comprar IA no es una estrategia",
+  "destino": "#metodo",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Opinión impopular",
+    "title": "Comprar IA no es una estrategia"
+   },
+   {
+    "layout": "quote",
+    "kicker": "Lo que vemos cada semana",
+    "title": "Licencias pagadas. Equipo igual de saturado.",
+    "body": "El problema casi nunca es la herramienta. Es empezar por la herramienta."
+   },
+   {
+    "layout": "content",
+    "kicker": "Por qué pasa",
+    "title": "Se compra lo que suena moderno, no lo que duele",
+    "body": "Se elige un software por la demo, no por el proceso que más tiempo o dinero le cuesta a la empresa hoy."
+   },
+   {
+    "layout": "content",
+    "kicker": "Regla 01",
+    "title": "Un proceso que duele",
+    "body": "Antes de cualquier compra: ¿qué tarea concreta frena ventas, cobranza o servicio? Esa es la única por donde empezar."
+   },
+   {
+    "layout": "content",
+    "kicker": "Regla 02 y 03",
+    "title": "Un número medido y un dueño",
+    "body": "Mide cómo está hoy y nombra a una persona que responda por el cambio. Sin línea base no hay resultado, solo opinión."
+   },
+   {
+    "layout": "content",
+    "kicker": "Regla 04",
+    "title": "Máximo 90 días",
+    "body": "Si en un ciclo no se movió el número, se ajusta o se cierra. Así la tecnología se gana su lugar."
+   },
+   {
+    "layout": "cta",
+    "title": "Primero el proceso. Después la herramienta.",
+    "body": "Conoce el método completo y qué comprar y qué no, sin comisiones de proveedores.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Opinión impopular: comprar IA no es una estrategia.\n\nCada semana vemos empresas con licencias pagadas y equipos igual de saturados que antes. No falló la herramienta. Falló el orden: se empezó por el software y no por el problema.\n\nAsí trabajamos en Æterna antes de recomendar cualquier compra:\n\nUn proceso que duele. El que hoy frena ventas, cobranza o servicio.\nUn número medido. Cómo está hoy, para comparar después.\nUn dueño. Una persona que responde por el cambio.\nMáximo 90 días. Si el número no se mueve, se ajusta o se cierra.\n\nY una regla más: no cobramos comisiones de proveedores. Te decimos qué comprar y qué no.\n\n¿Estás de acuerdo o crees que primero hay que tener la herramienta? Te leemos en comentarios.\n\nEl método completo está en aeterna4.com, sección Método. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #EstrategiaDigital #PyMEs #PyMEMexico #TransformacionDigital #ConsultoriaIA #Liderazgo #NegociosLATAM #GestionDeProcesos",
+  "alt_text": "Carrusel de Æterna: comprar IA no es una estrategia. Cuatro reglas: un proceso, un número, un dueño y 90 días.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V02-1530-07.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V03-1012-1130",
+  "fecha": "2026-10-12",
+  "hora": "11:30",
+  "tipo": "carrusel",
+  "tema": "Paso a paso: el método de 90 días",
+  "destino": "#metodo",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Guárdalo",
+    "title": "Cómo implementar IA en tu empresa en 90 días"
+   },
+   {
+    "layout": "content",
+    "kicker": "La idea",
+    "title": "No es un proyecto eterno. Son tres fases cortas.",
+    "body": "Cada fase tiene una meta clara y un punto de decisión. Si algo no funciona, se ajusta a tiempo."
+   },
+   {
+    "layout": "content",
+    "kicker": "Paso 01 · Días 1 a 30",
+    "title": "Elige el proceso que más duele",
+    "body": "Ventas, cobranza, servicio o captura de datos. Uno solo. El que hoy te cuesta más tiempo o dinero."
+   },
+   {
+    "layout": "content",
+    "kicker": "Paso 02 · Días 1 a 30",
+    "title": "Mide cómo está hoy",
+    "body": "Tiempo de respuesta, horas de captura, ventas cerradas. Esa línea base es contra la que vas a comparar."
+   },
+   {
+    "layout": "content",
+    "kicker": "Paso 03 · Días 31 a 60",
+    "title": "Rediseña y lanza en un segmento real",
+    "body": "Con un dueño a cargo, el nuevo proceso se prueba con clientes reales, no en una presentación."
+   },
+   {
+    "layout": "content",
+    "kicker": "Paso 04 · Días 61 a 90",
+    "title": "Compara contra la línea base",
+    "body": "Los números deciden: si se movió, se escala. Si no, se ajusta o se cierra sin seguir gastando."
+   },
+   {
+    "layout": "list",
+    "kicker": "Resumen",
+    "title": "Las cuatro reglas",
+    "items": [
+     "Un proceso que duele",
+     "Un número medido",
+     "Un dueño responsable",
+     "Máximo 90 días"
+    ]
+   },
+   {
+    "layout": "cta",
+    "title": "¿Cuál sería tu primer proceso?",
+    "body": "Mándale esto a quien decide la tecnología en tu empresa. El método completo está en la sección Método.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Cómo implementar IA en tu empresa en 90 días, sin proyectos eternos.\n\nLa mayoría de las implementaciones se estancan porque intentan cambiar todo a la vez. Nosotros hacemos lo contrario: un proceso, un número, un dueño y tres fases cortas.\n\nDías 1 a 30: elegir el proceso que más duele y medir cómo está hoy.\nDías 31 a 60: rediseñarlo y lanzarlo en un segmento real, con una persona a cargo.\nDías 61 a 90: comparar contra la línea base. Si el número se movió, se escala. Si no, se ajusta o se cierra.\n\nAsí la inversión se justifica con resultados y no con promesas.\n\nGuarda este carrusel para tu próxima junta de planeación. El método completo está en aeterna4.com, sección Método. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #GestionDeProcesos #ConsultoriaIA #Productividad #NegociosLATAM #Estrategia",
+  "alt_text": "Carrusel paso a paso del método de 90 días de Æterna: elegir proceso, medir, lanzar en segmento real y comparar contra la línea base.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-07.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-08.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V04-1012-1530",
+  "fecha": "2026-10-12",
+  "hora": "15:30",
+  "tipo": "carrusel",
+  "tema": "Tu PyME antes y después de automatizar",
+  "destino": "#servicios",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "¿Te suena?",
+    "title": "Tu PyME antes y después de automatizar"
+   },
+   {
+    "layout": "list",
+    "kicker": "Antes",
+    "title": "Un lunes cualquiera",
+    "items": [
+     "Pedidos por WhatsApp sin registrar",
+     "El mismo dato en tres Excel",
+     "Clientes esperando respuesta",
+     "Reportes armados a mano el viernes"
+    ]
+   },
+   {
+    "layout": "list",
+    "kicker": "Después",
+    "title": "El mismo lunes, con el proceso ordenado",
+    "items": [
+     "Cada pedido entra a un solo lugar",
+     "El dato se captura una vez",
+     "Respuestas rápidas con reglas claras",
+     "El reporte ya está listo"
+    ]
+   },
+   {
+    "layout": "cta",
+    "title": "El cambio empieza por un solo proceso",
+    "body": "Etiqueta a quien vive el antes todos los días. Conoce cómo lo hacemos en la sección Servicios.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Tu PyME antes y después de automatizar. ¿En cuál te ves hoy?\n\nAntes: pedidos que llegan por WhatsApp y nadie registra, el mismo dato capturado en tres hojas de Excel, clientes esperando respuesta y un reporte que alguien arma a mano cada viernes.\n\nDespués: cada pedido entra a un solo lugar, el dato se captura una vez, las respuestas siguen reglas claras y el reporte ya está listo cuando lo necesitas.\n\nNo se logra comprando todo de golpe. Se logra eligiendo un proceso, midiéndolo y asignándole un dueño.\n\nEtiqueta a quien vive el antes todos los días. Y si quieres ver cómo lo hacemos, entra a aeterna4.com, sección Servicios. Link en bio.\n\n#Aeterna4Business #Automatizacion #InteligenciaArtificial #PyMEs #PyMEMexico #WhatsAppBusiness #Productividad #TransformacionDigital #Emprendedores #NegociosLATAM",
+  "alt_text": "Mini carrusel que compara una PyME antes y después de automatizar: pedidos, captura de datos, respuestas y reportes.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-04.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V05-1013-1130",
+  "fecha": "2026-10-13",
+  "hora": "11:30",
+  "tipo": "carrusel",
+  "tema": "Checklist: ¿tu PyME está lista para la IA?",
+  "destino": "#soluciones",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Checklist",
+    "title": "¿Tu PyME está lista para la IA? Cuenta cuántas marcas"
+   },
+   {
+    "layout": "content",
+    "kicker": "Cómo usarlo",
+    "title": "Si marcas tres o más, ya puedes empezar",
+    "body": "No necesitas un área de sistemas ni un gran presupuesto. Necesitas estas condiciones."
+   },
+   {
+    "layout": "content",
+    "kicker": "01",
+    "title": "Tu equipo captura lo mismo dos veces",
+    "body": "Si los datos viajan de WhatsApp a Excel y de Excel al sistema a mano, ahí hay horas que puedes recuperar."
+   },
+   {
+    "layout": "content",
+    "kicker": "02",
+    "title": "Tus clientes preguntan lo mismo todos los días",
+    "body": "Precios, horarios, existencias, estatus. Las preguntas repetidas son lo primero que conviene automatizar."
+   },
+   {
+    "layout": "content",
+    "kicker": "03",
+    "title": "Ya mides algo, aunque sea en una hoja",
+    "body": "No hace falta un tablero perfecto. Basta un número que hoy puedas consultar para compararlo después."
+   },
+   {
+    "layout": "content",
+    "kicker": "04",
+    "title": "Hay alguien dispuesto a ser el dueño",
+    "body": "La tecnología sin responsable se abandona. Una persona que empuje el cambio vale más que cualquier licencia."
+   },
+   {
+    "layout": "content",
+    "kicker": "05",
+    "title": "Te frustra más el desorden que la falta de herramientas",
+    "body": "Si el problema es el proceso, primero se ordena y después se automatiza."
+   },
+   {
+    "layout": "cta",
+    "title": "¿Cuántas marcaste? Mídelo en serio",
+    "body": "ARIA Assessment: 20 preguntas sobre automatización, clientes, datos y adopción. Gratis.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "¿Tu PyME está lista para la IA? Cuenta cuántas de estas marcas.\n\n1. Tu equipo captura la misma información dos veces.\n2. Tus clientes hacen las mismas preguntas todos los días.\n3. Ya mides al menos un número, aunque sea en una hoja.\n4. Hay una persona dispuesta a ser dueña del cambio.\n5. Te frustra más el desorden que la falta de herramientas.\n\nSi marcaste tres o más, vale la pena hacer un diagnóstico serio antes de comprar cualquier software.\n\nPara eso creamos ARIA Assessment: 20 preguntas que te muestran dónde está tu empresa y por dónde conviene empezar. Es gratis.\n\nCuéntanos en comentarios cuántas marcaste y guarda el checklist. ARIA está en aeterna4.com, sección Soluciones. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #Automatizacion #DiagnosticoEmpresarial #ConsultoriaIA #NegociosLATAM #Emprendedores",
+  "alt_text": "Checklist en carrusel con cinco señales de que una PyME está lista para la IA y una invitación al ARIA Assessment gratuito.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-07.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-08.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V06-1013-1530",
+  "fecha": "2026-10-13",
+  "hora": "15:30",
+  "tipo": "carrusel",
+  "tema": "Prueba de 60 segundos a tu sitio web",
+  "destino": "#soluciones",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Reto de 60 segundos",
+    "title": "Haz esta prueba a tu sitio web antes de pagar anuncios"
+   },
+   {
+    "layout": "list",
+    "kicker": "Qué revisa",
+    "title": "El auditor web de Æterna",
+    "items": [
+     "SEO: si Google te entiende",
+     "Velocidad: si tus clientes esperan",
+     "Código: errores que no se ven"
+    ]
+   },
+   {
+    "layout": "quote",
+    "kicker": "Por qué importa",
+    "title": "Un anuncio no arregla un sitio lento.",
+    "body": "Antes de invertir en tráfico, asegúrate de que tu sitio esté listo para recibirlo."
+   },
+   {
+    "layout": "cta",
+    "title": "Toma 60 segundos. Es gratis.",
+    "body": "Comparte tu resultado en comentarios. El auditor está en la sección Soluciones.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Antes de pagar un solo anuncio, haz esta prueba de 60 segundos a tu sitio web.\n\nNuestro auditor web revisa tres cosas que deciden si un visitante se queda o se va:\n\nSEO: si Google entiende de qué trata tu negocio.\nVelocidad: si tus clientes tienen que esperar.\nCódigo: errores que no se ven, pero que te cuestan.\n\nUn anuncio no arregla un sitio lento. Solo manda más gente a una puerta que no abre bien.\n\nEs gratis y toma cerca de un minuto. Entra a aeterna4.com, sección Soluciones, y cuéntanos en comentarios qué encontraste. Link en bio.\n\n#Aeterna4Business #SEO #MarketingDigital #PaginaWeb #PyMEs #PyMEMexico #VelocidadWeb #HerramientasGratis #Emprendedores #NegociosLATAM",
+  "alt_text": "Mini carrusel que invita a probar gratis el auditor web de Æterna: SEO, velocidad y código en unos 60 segundos.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-04.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V07-1014-1130",
+  "fecha": "2026-10-14",
+  "hora": "11:30",
+  "tipo": "carrusel",
+  "tema": "Antes vs después: WhatsApp como chat vs canal de ventas",
+  "destino": "#servicios",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Chat vs canal",
+    "title": "WhatsApp no es un chat. Es tu canal de ventas."
+   },
+   {
+    "layout": "content",
+    "kicker": "La diferencia",
+    "title": "Un chat responde. Un canal vende.",
+    "body": "Muchas empresas ya venden por WhatsApp, pero sin reglas, sin registro y sin un responsable claro."
+   },
+   {
+    "layout": "content",
+    "kicker": "Chat · Canal",
+    "title": "Responde quien esté libre · Hay un dueño",
+    "body": "En un canal de ventas, una persona responde por los tiempos, el seguimiento y los resultados."
+   },
+   {
+    "layout": "content",
+    "kicker": "Chat · Canal",
+    "title": "Mensajes perdidos · Cada conversación registrada",
+    "body": "Si no queda registro, no hay seguimiento. Y sin seguimiento, la venta se enfría."
+   },
+   {
+    "layout": "content",
+    "kicker": "Chat · Canal",
+    "title": "Respuestas improvisadas · Reglas claras",
+    "body": "Tiempos de respuesta, mensajes base y cuándo pasar a una llamada. Todo definido de antemano."
+   },
+   {
+    "layout": "content",
+    "kicker": "Chat · Canal",
+    "title": "Nadie sabe cuánto vende · Se mide en ventas",
+    "body": "El número que importa no son los mensajes enviados, sino las ventas cerradas desde el canal."
+   },
+   {
+    "layout": "cta",
+    "title": "Convierte tu WhatsApp en canal de ventas",
+    "body": "Mándaselo a quien atiende tu WhatsApp hoy. Conoce cómo lo hacemos en la sección Servicios.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "WhatsApp no es un chat. Es tu canal de ventas, si lo tratas como tal.\n\nCasi todas las PyMEs ya venden por WhatsApp. La diferencia está en cómo:\n\nChat: responde quien esté libre. Canal: hay un dueño que responde por los resultados.\nChat: mensajes que se pierden. Canal: cada conversación queda registrada.\nChat: respuestas improvisadas. Canal: reglas claras de tiempo y seguimiento.\nChat: nadie sabe cuánto vende. Canal: se mide en ventas cerradas.\n\nEn Æterna ayudamos a convertir WhatsApp en un canal de ventas con reglas y un responsable.\n\nMándale este carrusel a quien atiende tu WhatsApp hoy. Conoce el servicio en aeterna4.com, sección Servicios, o escríbenos por WhatsApp al +52 1 220 873 2605. Link en bio.\n\n#Aeterna4Business #WhatsAppBusiness #VentasOnline #PyMEs #PyMEMexico #AtencionAlCliente #TransformacionDigital #Ventas #NegociosLATAM #Emprendedores",
+  "alt_text": "Carrusel que compara WhatsApp como chat contra WhatsApp como canal de ventas: dueño, registro, reglas y medición.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-07.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V08-1014-1530",
+  "fecha": "2026-10-14",
+  "hora": "15:30",
+  "tipo": "carrusel",
+  "tema": "Paper ejecutivo gratis",
+  "destino": "#paper",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Lectura de 15 minutos",
+    "title": "Lo que la investigación dice sobre IA en empresas"
+   },
+   {
+    "layout": "list",
+    "kicker": "Qué incluye",
+    "title": "Nuestro paper ejecutivo",
+    "items": [
+     "Hallazgos de McKinsey y MIT",
+     "Hallazgos de Deloitte y Gartner",
+     "Sin tecnicismos ni relleno",
+     "Checklist para tu primer proceso"
+    ]
+   },
+   {
+    "layout": "quote",
+    "kicker": "Para quién es",
+    "title": "Para quien decide, no para quien programa.",
+    "body": "Escrito para dueños y directores que necesitan contexto claro antes de invertir."
+   },
+   {
+    "layout": "cta",
+    "title": "Recíbelo gratis hoy",
+    "body": "Guárdalo para tu próximo café. Pídelo en la sección Paper de nuestro sitio.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Quince minutos para entender lo que la investigación global dice sobre IA en empresas.\n\nPreparamos un paper ejecutivo que resume hallazgos de McKinsey, MIT, Deloitte y Gartner en un lenguaje claro, pensado para quien decide y no para quien programa.\n\nIncluye un checklist para elegir el primer proceso de tu empresa, para que la lectura se convierta en una decisión concreta.\n\nEs gratis. Solo te pedimos nombre, correo de trabajo e industria para enviártelo.\n\nGuarda este post y pídelo en aeterna4.com, sección Paper, con el botón Recibir paper gratis. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #Liderazgo #PyMEs #PyMEMexico #TransformacionDigital #Estrategia #ConsultoriaIA #NegociosLATAM #Directivos",
+  "alt_text": "Mini carrusel que presenta el paper ejecutivo gratuito de Æterna sobre IA en empresas, con checklist para el primer proceso.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-04.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V09-1015-1130",
+  "fecha": "2026-10-15",
+  "hora": "11:30",
+  "tipo": "carrusel",
+  "tema": "Opinión contraria: la IA no arregla procesos rotos, los acelera",
+  "destino": "#metodo",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Verdad incómoda",
+    "title": "La IA no arregla procesos rotos. Los acelera."
+   },
+   {
+    "layout": "quote",
+    "kicker": "Piénsalo así",
+    "title": "Automatizar el desorden es desordenarte más rápido.",
+    "body": "Si el proceso falla a mano, fallará igual con IA, solo que más veces por hora."
+   },
+   {
+    "layout": "content",
+    "kicker": "Señal 01",
+    "title": "Nadie sabe quién es responsable",
+    "body": "Si una tarea no tiene dueño, ninguna herramienta va a decidir por tu equipo."
+   },
+   {
+    "layout": "content",
+    "kicker": "Señal 02",
+    "title": "Cada persona lo hace distinto",
+    "body": "Antes de automatizar, define una forma de hacerlo. La IA repite lo que le enseñas."
+   },
+   {
+    "layout": "content",
+    "kicker": "Señal 03",
+    "title": "No sabes cuánto tarda hoy",
+    "body": "Sin línea base no puedes demostrar mejora. Mide antes de cambiar."
+   },
+   {
+    "layout": "content",
+    "kicker": "El orden correcto",
+    "title": "Ordenar, medir y después automatizar",
+    "body": "Primero el proceso, luego el número, al final la herramienta. Ese orden ahorra dinero y frustración."
+   },
+   {
+    "layout": "cta",
+    "title": "Ordena primero. Automatiza después.",
+    "body": "¿Estás de acuerdo? Te leemos en comentarios. El método está en la sección Método.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Verdad incómoda: la IA no arregla procesos rotos. Los acelera.\n\nSi un proceso falla cuando lo hace una persona, fallará igual con IA, solo que más veces por hora.\n\nTres señales de que primero hay que ordenar:\n\n1. Nadie sabe quién es responsable de la tarea.\n2. Cada persona la hace de forma distinta.\n3. No sabes cuánto tarda o cuánto cuesta hoy.\n\nEl orden que recomendamos: ordenar el proceso, medirlo y después automatizarlo. Así la tecnología multiplica lo que ya funciona.\n\n¿Estás de acuerdo o has visto lo contrario? Te leemos en comentarios.\n\nConoce el método completo en aeterna4.com, sección Método. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #Automatizacion #GestionDeProcesos #PyMEs #PyMEMexico #TransformacionDigital #ConsultoriaIA #NegociosLATAM #Productividad",
+  "alt_text": "Carrusel de opinión: la IA no arregla procesos rotos, los acelera. Tres señales y el orden correcto: ordenar, medir, automatizar.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-07.jpg"
+  ],
+  "estado": "pendiente"
+ },
+ {
+  "id": "V10-1015-1530",
+  "fecha": "2026-10-15",
+  "hora": "15:30",
+  "tipo": "carrusel",
+  "tema": "Primera conversación gratis de 30 minutos",
+  "destino": "#preguntas",
+  "slides": [
+   {
+    "layout": "cover",
+    "kicker": "Sin compromiso",
+    "title": "30 minutos para encontrar tu primer proceso"
+   },
+   {
+    "layout": "list",
+    "kicker": "En la llamada",
+    "title": "Qué hacemos en esos 30 minutos",
+    "items": [
+     "Escuchamos dónde duele hoy",
+     "Elegimos un proceso candidato",
+     "Definimos qué número medir",
+     "Te decimos si podemos ayudarte"
+    ]
+   },
+   {
+    "layout": "list",
+    "kicker": "Lo que nos preguntan",
+    "title": "Respuestas rápidas",
+    "items": [
+     "Precio fijo por ciclo de 90 días",
+     "No hay que cambiar tus sistemas",
+     "Atendemos en toda LATAM"
+    ]
+   },
+   {
+    "layout": "cta",
+    "title": "Agenda tu conversación gratis",
+    "body": "Escríbenos por WhatsApp al +52 1 220 873 2605 o entra a nuestro sitio.",
+    "cta": "Link en bio · aeterna4.com"
+   }
+  ],
+  "caption": "Treinta minutos pueden ser suficientes para encontrar el primer proceso que vale la pena mejorar en tu empresa.\n\nEn la primera conversación, sin costo:\n\nEscuchamos dónde duele hoy.\nElegimos un proceso candidato.\nDefinimos qué número conviene medir.\nY te decimos con honestidad si podemos ayudarte o no.\n\nLo que más nos preguntan: trabajamos con precio fijo por ciclo de 90 días, no necesitas reemplazar tus sistemas y atendemos empresas en toda Latinoamérica.\n\nEscríbenos por WhatsApp al +52 1 220 873 2605 o entra a aeterna4.com, sección Preguntas. Link en bio.\n\n#Aeterna4Business #ConsultoriaIA #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #NegociosLATAM #Emprendedores #Estrategia #Asesoria",
+  "alt_text": "Mini carrusel que invita a una primera conversación gratuita de 30 minutos con Æterna, con preguntas frecuentes.",
+  "imagenes": [
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-04.jpg"
+  ],
+  "estado": "pendiente"
+ }
+]
