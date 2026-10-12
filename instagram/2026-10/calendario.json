@@ -220,693 +220,300 @@
   "puntaje_vera": 7
  },
  {
-  "id": "V03-1012-1130",
+  "id": "N01-1012-0900",
+  "base": "V03-1012-1130",
   "fecha": "2026-10-12",
   "hora": "09:00",
   "tipo": "carrusel",
   "tema": "Paso a paso: el método de 90 días",
   "destino": "#metodo",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Guárdalo",
-    "title": "Cómo implementar IA en tu empresa en 90 días"
-   },
-   {
-    "layout": "content",
-    "kicker": "La idea",
-    "title": "No es un proyecto eterno. Son tres fases cortas.",
-    "body": "Cada fase tiene una meta clara y un punto de decisión. Si algo no funciona, se ajusta a tiempo."
-   },
-   {
-    "layout": "content",
-    "kicker": "Paso 01 · Días 1 a 30",
-    "title": "Elige el proceso que más duele",
-    "body": "Ventas, cobranza, servicio o captura de datos. Uno solo. El que hoy te cuesta más tiempo o dinero."
-   },
-   {
-    "layout": "content",
-    "kicker": "Paso 02 · Días 1 a 30",
-    "title": "Mide cómo está hoy",
-    "body": "Tiempo de respuesta, horas de captura, ventas cerradas. Esa línea base es contra la que vas a comparar."
-   },
-   {
-    "layout": "content",
-    "kicker": "Paso 03 · Días 31 a 60",
-    "title": "Rediseña y lanza en un segmento real",
-    "body": "Con un dueño a cargo, el nuevo proceso se prueba con clientes reales, no en una presentación."
-   },
-   {
-    "layout": "content",
-    "kicker": "Paso 04 · Días 61 a 90",
-    "title": "Compara contra la línea base",
-    "body": "Los números deciden: si se movió, se escala. Si no, se ajusta o se cierra sin seguir gastando."
-   },
-   {
-    "layout": "list",
-    "kicker": "Resumen",
-    "title": "Las cuatro reglas",
-    "items": [
-     "Un proceso que duele",
-     "Un número medido",
-     "Un dueño responsable",
-     "Máximo 90 días"
-    ]
-   },
-   {
-    "layout": "cta",
-    "title": "Elige tu primer proceso esta semana",
-    "body": "Guárdalo para tu próxima junta de planeación. El método completo está en la sección Método.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "tinta",
+  "portada": "tipografica",
+  "prueba": "P2-persona",
+  "variante": "A",
+  "objetivo": "Guardados + visitas a Método",
+  "cover": {
+   "kicker": "Guárdalo · Método",
+   "title": "IA en tu empresa en 90 días. Sin proyectos eternos."
+  },
   "caption": "Cómo implementar IA en tu empresa en 90 días, sin proyectos eternos.\n\nMuchas implementaciones se estancan porque intentan cambiar todo a la vez. Nosotros hacemos lo contrario: un proceso, un número, un dueño y tres fases cortas.\n\nDías 1 a 30: elegir el proceso que más duele y medir cómo está hoy.\nDías 31 a 60: rediseñarlo y lanzarlo en un segmento real, con una persona a cargo.\nDías 61 a 90: comparar contra la línea base. Si el número se movió, se escala. Si no, se ajusta o se cierra.\n\nAsí la inversión se justifica con resultados y no con promesas.\n\nGuárdalo y llévalo a tu próxima junta de planeación. El método completo está en aeterna4.com, sección Método. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #GestionDeProcesos #ConsultoriaIA #Productividad #NegociosLATAM #Estrategia",
   "alt_text": "Carrusel paso a paso del método de 90 días de Æterna: elegir proceso, medir, lanzar en segmento real y comparar contra la línea base.",
-  "orden": 3,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-04.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-05.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-06.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-07.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V03-1012-1130-08.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-07.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N01-1012-0900-08.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Caption: 'La mayoría' cambiado a 'Muchas implementaciones'",
-   "Lámina 8: CTA unificado en guardar, alineado con el caption",
-   "Lámina 8: título pasa de pregunta a acción ('Elige tu primer proceso esta semana')",
-   "Caption: cierre reescrito para diferenciarlo de V12"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V04-1012-1530",
+  "id": "N02-1012-1700",
+  "base": "V04-1012-1530",
   "fecha": "2026-10-12",
   "hora": "17:00",
   "tipo": "carrusel",
   "tema": "Tu PyME antes y después de automatizar",
   "destino": "#servicios",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Antes y después",
-    "title": "¿Tu lunes también empieza persiguiendo pedidos en WhatsApp?"
-   },
-   {
-    "layout": "list",
-    "kicker": "Antes",
-    "title": "Un lunes cualquiera",
-    "items": [
-     "Pedidos por WhatsApp sin registrar",
-     "El mismo dato en tres Excel",
-     "Clientes esperando respuesta",
-     "Reportes armados a mano el viernes"
-    ]
-   },
-   {
-    "layout": "list",
-    "kicker": "Después",
-    "title": "El mismo lunes, con el proceso ordenado",
-    "items": [
-     "Cada pedido entra a un solo lugar",
-     "El dato se captura una vez",
-     "Respuestas rápidas con reglas claras",
-     "El reporte ya está listo"
-    ]
-   },
-   {
-    "layout": "cta",
-    "title": "El cambio empieza por un solo proceso",
-    "body": "Etiqueta a quien vive el antes todos los días. Conoce cómo lo hacemos en la sección Servicios.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "crema",
+  "portada": "persona",
+  "prueba": "P1-color",
+  "variante": "A",
+  "objetivo": "Compartidos + visitas a Servicios",
+  "cover": {
+   "kicker": "Antes y después",
+   "title": "¿Tu lunes empieza persiguiendo pedidos en WhatsApp?"
+  },
   "caption": "¿Tu lunes también empieza persiguiendo pedidos que llegaron por WhatsApp? Así se ve una PyME antes y después de automatizar.\n\nAntes: pedidos que llegan por WhatsApp y nadie registra, el mismo dato capturado en tres hojas de Excel, clientes esperando respuesta y un reporte que alguien arma a mano cada viernes.\n\nDespués: cada pedido entra a un solo lugar, el dato se captura una vez, las respuestas siguen reglas claras y el reporte ya está listo cuando lo necesitas.\n\nNo se logra comprando todo de golpe. Se logra eligiendo un proceso, midiéndolo y asignándole un dueño.\n\nEtiqueta a quien vive el antes todos los días. Y si quieres ver cómo lo hacemos, entra a aeterna4.com, sección Servicios. Link en bio.\n\n#Aeterna4Business #Automatizacion #InteligenciaArtificial #PyMEs #PyMEMexico #WhatsAppBusiness #Productividad #TransformacionDigital #Emprendedores #NegociosLATAM",
   "alt_text": "Mini carrusel que compara una PyME antes y después de automatizar: pedidos, captura de datos, respuestas y reportes.",
-  "orden": 4,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V04-1012-1530-04.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N02-1012-1700-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N02-1012-1700-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N02-1012-1700-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N02-1012-1700-04.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Portada: nuevo gancho '¿Tu lunes también empieza persiguiendo pedidos en WhatsApp?'",
-   "Portada: kicker cambiado a 'Antes y después' para conservar el tema",
-   "Caption: primera línea con el nuevo gancho"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V05-1013-1130",
+  "id": "N03-1013-0900",
+  "base": "V05-1013-1130",
   "fecha": "2026-10-13",
   "hora": "09:00",
   "tipo": "carrusel",
   "tema": "Checklist: ¿tu PyME está lista para la IA?",
   "destino": "#soluciones",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Checklist",
-    "title": "¿Tu PyME está lista para la IA? Cuenta cuántas cumples"
-   },
-   {
-    "layout": "content",
-    "kicker": "Cómo usarlo",
-    "title": "Si cumples tres o más, ya puedes empezar",
-    "body": "No necesitas un área de sistemas. Necesitas estas condiciones."
-   },
-   {
-    "layout": "content",
-    "kicker": "01",
-    "title": "Tu equipo captura lo mismo dos veces",
-    "body": "Si los datos viajan de WhatsApp a Excel y de Excel al sistema a mano, ahí hay horas que puedes recuperar."
-   },
-   {
-    "layout": "content",
-    "kicker": "02",
-    "title": "Tus clientes preguntan lo mismo todos los días",
-    "body": "Precios, horarios, existencias, estatus. Las preguntas repetidas son lo primero que conviene automatizar."
-   },
-   {
-    "layout": "content",
-    "kicker": "03",
-    "title": "Ya mides algo, aunque sea en una hoja",
-    "body": "No hace falta un tablero perfecto. Basta un número que hoy puedas consultar para compararlo después."
-   },
-   {
-    "layout": "content",
-    "kicker": "04",
-    "title": "Hay alguien dispuesto a ser el dueño",
-    "body": "La tecnología sin responsable se abandona. Una persona que empuje el cambio vale más que cualquier licencia."
-   },
-   {
-    "layout": "content",
-    "kicker": "05",
-    "title": "Te frustra más el desorden que la falta de herramientas",
-    "body": "Si el problema es el proceso, primero se ordena y después se automatiza."
-   },
-   {
-    "layout": "cta",
-    "title": "¿Cuántas cumples? Mídelo en serio",
-    "body": "ARIA Assessment: 20 preguntas sobre automatización, clientes, datos y adopción. Gratis, en la sección Soluciones.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "tinta",
+  "portada": "persona",
+  "prueba": "P2-persona",
+  "variante": "B",
+  "objetivo": "Clics al ARIA Assessment",
+  "cover": {
+   "kicker": "Checklist · 5 señales",
+   "title": "¿Tu PyME está lista para la IA? Cuenta cuántas cumples."
+  },
   "caption": "¿Tu PyME está lista para la IA? Cuenta cuántas de estas señales cumples.\n\n1. Tu equipo captura la misma información dos veces.\n2. Tus clientes hacen las mismas preguntas todos los días.\n3. Ya mides al menos un número, aunque sea en una hoja.\n4. Hay una persona dispuesta a ser dueña del cambio.\n5. Te frustra más el desorden que la falta de herramientas.\n\nSi cumples tres o más, vale la pena hacer un diagnóstico serio antes de comprar cualquier software.\n\nPara eso creamos ARIA Assessment: 20 preguntas que te muestran dónde está tu empresa y por dónde conviene empezar. Es gratis.\n\nCuéntanos en comentarios cuántas cumples y guarda el checklist. ARIA está en aeterna4.com, sección Soluciones. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #Automatizacion #DiagnosticoEmpresarial #ConsultoriaIA #NegociosLATAM #Emprendedores",
   "alt_text": "Checklist en carrusel con cinco señales de que una PyME está lista para la IA y una invitación al ARIA Assessment gratuito.",
-  "orden": 5,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-04.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-05.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-06.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-07.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V05-1013-1130-08.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-07.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N03-1013-0900-08.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Portada y caption: 'cuántas marcas' cambiado a 'cuántas cumples' (sin ambigüedad)",
-   "Láminas 2 y 8 y caption: 'marcas/marcaste' unificado a 'cumples' por coherencia",
-   "Lámina 2: eliminado 'ni un gran presupuesto' (costo no verificado)",
-   "Lámina 8: añadida la sección Soluciones"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V06-1013-1530",
+  "id": "N04-1013-1700",
+  "base": "V06-1013-1530",
   "fecha": "2026-10-13",
   "hora": "17:00",
   "tipo": "carrusel",
   "tema": "Prueba de 60 segundos a tu sitio web",
   "destino": "#soluciones",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Prueba gratis y rápida",
-    "title": "Haz esta prueba a tu sitio web antes de pagar anuncios"
-   },
-   {
-    "layout": "list",
-    "kicker": "Qué revisa",
-    "title": "El auditor web de Æterna",
-    "items": [
-     "SEO: si Google te entiende",
-     "Velocidad: si tus clientes esperan",
-     "Código: errores que no se ven"
-    ]
-   },
-   {
-    "layout": "quote",
-    "kicker": "Por qué importa",
-    "title": "Un anuncio no arregla un sitio lento.",
-    "body": "Antes de invertir en tráfico, asegúrate de que tu sitio esté listo para recibirlo."
-   },
-   {
-    "layout": "cta",
-    "title": "Toma cerca de 60 segundos. Es gratis.",
-    "body": "Comparte tu resultado en comentarios. El auditor está en la sección Soluciones.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "petroleo",
+  "portada": "persona",
+  "prueba": "P1-color",
+  "variante": "B",
+  "objetivo": "Clics al auditor web",
+  "cover": {
+   "kicker": "Gratis · 60 segundos",
+   "title": "Antes de pagar anuncios, haz esta prueba a tu sitio."
+  },
   "caption": "Antes de pagar un solo anuncio, haz esta prueba a tu sitio web. Toma cerca de 60 segundos.\n\nNuestro auditor web revisa tres cosas que deciden si un visitante se queda o se va:\n\nSEO: si Google entiende de qué trata tu negocio.\nVelocidad: si tus clientes tienen que esperar.\nCódigo: errores que no se ven, pero que te cuestan.\n\nUn anuncio no arregla un sitio lento. Solo manda más gente a una puerta que no abre bien.\n\nEs gratis. Entra a aeterna4.com, sección Soluciones, y cuéntanos en comentarios qué encontraste. Link en bio.\n\n#Aeterna4Business #SEO #MarketingDigital #PaginaWeb #PyMEs #PyMEMexico #VelocidadWeb #HerramientasGratis #Emprendedores #NegociosLATAM",
   "alt_text": "Mini carrusel que invita a probar gratis el auditor web de Æterna: SEO, velocidad y código en unos 60 segundos.",
-  "orden": 6,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V06-1013-1530-04.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N04-1013-1700-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N04-1013-1700-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N04-1013-1700-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N04-1013-1700-04.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Lámina 4: 'Toma 60 segundos' cambiado a 'Toma cerca de 60 segundos'",
-   "Portada: kicker 'Reto de 60 segundos' cambiado a 'Prueba gratis y rápida' (adicional, mismo absoluto)",
-   "Caption: primera línea con 'cerca de 60 segundos' y sin repetir la duración al cierre"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 9
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V07-1014-1130",
+  "id": "N05-1014-0900",
+  "base": "V07-1014-1130",
   "fecha": "2026-10-14",
   "hora": "09:00",
   "tipo": "carrusel",
   "tema": "Antes vs después: WhatsApp como chat vs canal de ventas",
   "destino": "#servicios",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Chat vs canal",
-    "title": "WhatsApp no es un chat. Es tu canal de ventas."
-   },
-   {
-    "layout": "content",
-    "kicker": "La diferencia",
-    "title": "Un chat responde. Un canal vende.",
-    "body": "Muchas empresas ya venden por WhatsApp, pero sin reglas, sin registro y sin un responsable claro."
-   },
-   {
-    "layout": "content",
-    "kicker": "Diferencia 01",
-    "title": "Chat: responde quien esté libre. Canal: hay un dueño.",
-    "body": "En un canal de ventas, una persona responde por los tiempos, el seguimiento y los resultados."
-   },
-   {
-    "layout": "content",
-    "kicker": "Diferencia 02",
-    "title": "Chat: mensajes perdidos. Canal: todo queda registrado.",
-    "body": "Si no queda registro, no hay seguimiento. Y sin seguimiento, la venta se enfría."
-   },
-   {
-    "layout": "content",
-    "kicker": "Diferencia 03",
-    "title": "Chat: respuestas improvisadas. Canal: reglas claras.",
-    "body": "Tiempos de respuesta, mensajes base y cuándo pasar a una llamada. Todo definido de antemano."
-   },
-   {
-    "layout": "content",
-    "kicker": "Diferencia 04",
-    "title": "Chat: nadie sabe cuánto vende. Canal: se mide en ventas.",
-    "body": "El número que importa no son los mensajes enviados, sino las ventas cerradas desde el canal."
-   },
-   {
-    "layout": "cta",
-    "title": "Convierte tu WhatsApp en canal de ventas",
-    "body": "Mándaselo a quien atiende tu WhatsApp hoy. Conoce cómo lo hacemos en la sección Servicios.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "salvia",
+  "portada": "tipografica",
+  "prueba": "P2-persona-replica",
+  "variante": "A",
+  "objetivo": "Compartidos + conversaciones de WhatsApp",
+  "cover": {
+   "kicker": "Chat vs canal",
+   "title": "WhatsApp no es un chat. Es tu canal de ventas."
+  },
   "caption": "WhatsApp no es un chat. Es tu canal de ventas, si lo tratas como tal.\n\nMuchas PyMEs ya venden por WhatsApp. La diferencia está en cómo:\n\nChat: responde quien esté libre. Canal: hay un dueño que responde por los resultados.\nChat: mensajes que se pierden. Canal: cada conversación queda registrada.\nChat: respuestas improvisadas. Canal: reglas claras de tiempo y seguimiento.\nChat: nadie sabe cuánto vende. Canal: se mide en ventas cerradas.\n\nEn Æterna ayudamos a convertir WhatsApp en un canal de ventas con reglas y un responsable.\n\nMándale este carrusel a quien atiende tu WhatsApp hoy. Conoce el servicio en aeterna4.com, sección Servicios, o escríbenos por WhatsApp al +52 1 220 873 2605. Link en bio.\n\n#Aeterna4Business #WhatsAppBusiness #VentasOnline #PyMEs #PyMEMexico #AtencionAlCliente #TransformacionDigital #Ventas #NegociosLATAM #Emprendedores",
   "alt_text": "Carrusel que compara WhatsApp como chat contra WhatsApp como canal de ventas: dueño, registro, reglas y medición.",
-  "orden": 7,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-04.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-05.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-06.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V07-1014-1130-07.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N05-1014-0900-07.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Caption: 'Casi todas las PyMEs' cambiado a 'Muchas PyMEs'",
-   "Láminas 3 a 6: títulos con formato 'Chat: … Canal: …' en lugar de '·' (el layout es de una columna)",
-   "Láminas 3 a 6: kicker 'Chat · Canal' cambiado a 'Diferencia 01–04'"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V08-1014-1530",
+  "id": "N06-1014-1700",
+  "base": "V08-1014-1530",
   "fecha": "2026-10-14",
   "hora": "17:00",
   "tipo": "carrusel",
   "tema": "Paper ejecutivo gratis",
   "destino": "#paper",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Lectura de 15 minutos",
-    "title": "Lo que la investigación dice sobre IA en empresas"
-   },
-   {
-    "layout": "list",
-    "kicker": "Qué incluye",
-    "title": "Nuestro paper ejecutivo",
-    "items": [
-     "Hallazgos de McKinsey y MIT",
-     "Hallazgos de Deloitte y Gartner",
-     "Lenguaje claro para quien decide",
-     "Checklist para tu primer proceso"
-    ]
-   },
-   {
-    "layout": "quote",
-    "kicker": "Para quién es",
-    "title": "Para quien decide, no para quien programa.",
-    "body": "Escrito para dueños y directores que necesitan contexto claro antes de invertir."
-   },
-   {
-    "layout": "cta",
-    "title": "Recíbelo gratis",
-    "body": "Guárdalo para tu próximo café. Pídelo en la sección Paper de nuestro sitio.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "vino",
+  "portada": "persona",
+  "prueba": "P1-color-replica",
+  "variante": "A",
+  "objetivo": "Descargas del paper (registro de leads)",
+  "cover": {
+   "kicker": "Paper ejecutivo · gratis",
+   "title": "El 88% usa IA. Casi nadie la usa bien."
+  },
   "caption": "Quince minutos para entender lo que la investigación global dice sobre IA en empresas.\n\nPreparamos un paper ejecutivo que resume hallazgos de McKinsey, MIT, Deloitte y Gartner en un lenguaje claro, pensado para quien decide y no para quien programa.\n\nIncluye un checklist para elegir el primer proceso de tu empresa, para que la lectura se convierta en una decisión concreta.\n\nEs gratis. Solo te pedimos nombre, correo de trabajo e industria para enviártelo.\n\nGuarda este post y pídelo en aeterna4.com, sección Paper, con el botón \"Recibir paper gratis\". Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #Liderazgo #PyMEs #PyMEMexico #TransformacionDigital #Estrategia #ConsultoriaIA #NegociosLATAM #Directivos",
   "alt_text": "Mini carrusel que presenta el paper ejecutivo gratuito de Æterna sobre IA en empresas, con checklist para el primer proceso.",
-  "orden": 8,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V08-1014-1530-04.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N06-1014-1700-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N06-1014-1700-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N06-1014-1700-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N06-1014-1700-04.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Lámina 4: eliminado 'hoy' del título",
-   "Lámina 2: 'Sin tecnicismos ni relleno' cambiado a 'Lenguaje claro para quien decide'",
-   "Caption: nombre del botón entre comillas"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V09-1015-1130",
+  "id": "N07-1015-0900",
+  "base": "V09-1015-1130",
   "fecha": "2026-10-15",
   "hora": "09:00",
   "tipo": "carrusel",
   "tema": "Opinión contraria: la IA no arregla procesos rotos, los acelera",
   "destino": "#metodo",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Verdad incómoda",
-    "title": "La IA no arregla procesos rotos. Los acelera."
-   },
-   {
-    "layout": "quote",
-    "kicker": "Piénsalo así",
-    "title": "Automatizar el desorden es desordenarte más rápido.",
-    "body": "Si el proceso falla a mano, fallará igual con IA, solo que más veces por hora."
-   },
-   {
-    "layout": "content",
-    "kicker": "Señal 01",
-    "title": "Nadie sabe quién es responsable",
-    "body": "Si una tarea no tiene dueño, ninguna herramienta va a decidir por tu equipo."
-   },
-   {
-    "layout": "content",
-    "kicker": "Señal 02",
-    "title": "Cada persona lo hace distinto",
-    "body": "Antes de automatizar, define una forma de hacerlo. La IA repite lo que le enseñas."
-   },
-   {
-    "layout": "content",
-    "kicker": "Señal 03",
-    "title": "No sabes cuánto tarda hoy",
-    "body": "Sin línea base no puedes demostrar mejora. Mide antes de cambiar."
-   },
-   {
-    "layout": "content",
-    "kicker": "El orden correcto",
-    "title": "Ordenar, medir y después automatizar",
-    "body": "Ordena cómo se hace, mide cuánto tarda y solo entonces automatiza. Ese orden ahorra dinero y frustración."
-   },
-   {
-    "layout": "cta",
-    "title": "Ordena primero. Automatiza después.",
-    "body": "¿Lo has visto en tu empresa? Cuéntanos en comentarios. El método está en la sección Método.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "salvia",
+  "portada": "persona",
+  "prueba": "P2-persona-replica",
+  "variante": "B",
+  "objetivo": "Comentarios + visitas a Método",
+  "cover": {
+   "kicker": "Verdad incómoda",
+   "title": "La IA no arregla procesos rotos. Los acelera."
+  },
   "caption": "Verdad incómoda: la IA no arregla procesos rotos. Los acelera.\n\nSi un proceso falla cuando lo hace una persona, fallará igual con IA, solo que más veces por hora.\n\nTres señales de que primero hay que ordenar:\n\n1. Nadie sabe quién es responsable de la tarea.\n2. Cada persona la hace de forma distinta.\n3. No sabes cuánto tarda o cuánto cuesta hoy.\n\nEl orden que recomendamos: ordenar el proceso, medirlo y después automatizarlo. Así la tecnología multiplica lo que ya funciona.\n\n¿Has visto un proceso desordenado empeorar después de automatizarlo? Cuéntanos en comentarios.\n\nConoce el método completo en aeterna4.com, sección Método. Link en bio.\n\n#Aeterna4Business #InteligenciaArtificial #Automatizacion #GestionDeProcesos #PyMEs #PyMEMexico #TransformacionDigital #ConsultoriaIA #NegociosLATAM #Productividad",
   "alt_text": "Carrusel de opinión: la IA no arregla procesos rotos, los acelera. Tres señales y el orden correcto: ordenar, medir, automatizar.",
-  "orden": 9,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-04.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-05.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-06.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V09-1015-1130-07.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N07-1015-0900-07.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Caption: cierre de comentarios propio, distinto de V02",
-   "Lámina 7: cierre de comentarios distinto de V02",
-   "Lámina 6: cuerpo reescrito para no repetir el remate de V02"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 7
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V10-1015-1530",
+  "id": "N08-1015-1700",
+  "base": "V10-1015-1530",
   "fecha": "2026-10-15",
   "hora": "17:00",
   "tipo": "carrusel",
   "tema": "Primera conversación gratis de 30 minutos",
   "destino": "#preguntas",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Sin compromiso",
-    "title": "30 minutos para encontrar tu primer proceso"
-   },
-   {
-    "layout": "list",
-    "kicker": "En la llamada",
-    "title": "Qué hacemos en esos 30 minutos",
-    "items": [
-     "Escuchamos dónde duele hoy",
-     "Identificamos un proceso candidato",
-     "Definimos qué número medir",
-     "Te decimos si podemos ayudarte"
-    ]
-   },
-   {
-    "layout": "list",
-    "kicker": "Lo que nos preguntan",
-    "title": "Respuestas rápidas",
-    "items": [
-     "Precio fijo por ciclo de 90 días",
-     "No hay que cambiar tus sistemas",
-     "Atendemos en toda LATAM"
-    ]
-   },
-   {
-    "layout": "cta",
-    "title": "Agenda tu conversación gratis",
-    "body": "Escríbenos por WhatsApp al +52 1 220 873 2605 o entra a la sección Preguntas. Guárdalo para cuando lo necesites.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
-  "caption": "Treinta minutos pueden ser suficientes para encontrar el primer proceso que vale la pena mejorar en tu empresa.\n\nEn la primera conversación, sin costo:\n\nEscuchamos dónde duele hoy.\nIdentificamos un proceso candidato.\nDefinimos qué número conviene medir.\nY te decimos con honestidad si podemos ayudarte o no.\n\nLo que más nos preguntan: trabajamos con precio fijo por ciclo de 90 días, no necesitas reemplazar tus sistemas y atendemos empresas en toda Latinoamérica.\n\nGuarda este post o mándaselo a tu socio. Escríbenos por WhatsApp al +52 1 220 873 2605 o entra a aeterna4.com, sección Preguntas. Link en bio.\n\n#Aeterna4Business #ConsultoriaIA #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #NegociosLATAM #Emprendedores #Estrategia #Asesoria",
+  "paleta": "petroleo",
+  "portada": "persona",
+  "prueba": "P1-color-replica",
+  "variante": "B",
+  "objetivo": "Mensajes de WhatsApp (leads)",
+  "cover": {
+   "kicker": "Sin costo · 30 minutos",
+   "title": "Una conversación para encontrar tu primer proceso."
+  },
+  "caption": "Treinta minutos pueden ser suficientes para encontrar el primer proceso que vale la pena mejorar en tu empresa.\n\nEn la primera conversación, sin costo:\n\nEscuchamos dónde duele hoy.\nIdentificamos un proceso candidato.\nDefinimos qué número conviene medir.\nY te decimos con honestidad si podemos ayudarte o no.\n\nLo que más nos preguntan: trabajamos con precio fijo por ciclo de 90 días, casi nunca hace falta reemplazar tus sistemas y trabajamos en remoto con empresas de México, Colombia y Canadá.\n\nGuarda este post o mándaselo a tu socio. Escríbenos por WhatsApp al +52 1 220 873 2605 o entra a aeterna4.com, sección Preguntas. Link en bio.\n\n#Aeterna4Business #ConsultoriaIA #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #NegociosLATAM #Emprendedores #Estrategia #Asesoria",
   "alt_text": "Mini carrusel que invita a una primera conversación gratuita de 30 minutos con Æterna, con preguntas frecuentes.",
-  "orden": 10,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V10-1015-1530-04.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N08-1015-1700-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N08-1015-1700-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N08-1015-1700-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N08-1015-1700-04.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Lámina 4: añadida la sección Preguntas y la acción de guardar",
-   "Lámina 2 y caption: 'Elegimos' cambiado a 'Identificamos un proceso candidato'",
-   "Caption: añadida acción de guardar/compartir"
-  ],
-  "rechazos_clio": [
-   "Renombrar id según la hora: rechazado, los ids son nombres de archivo y no deben cambiar; manda el campo hora."
-  ],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V12-1016-0900",
+  "id": "N09-1016-0900",
+  "base": "V12-1016-0900",
   "fecha": "2026-10-16",
   "hora": "09:00",
   "tipo": "carrusel",
   "tema": "Marketing medido en ventas: 5 métricas",
   "destino": "#servicios",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Deja de medir likes",
-    "title": "5 métricas que sí dicen si tu marketing vende"
-   },
-   {
-    "layout": "content",
-    "kicker": "El problema",
-    "title": "Un reporte lleno de likes no paga la nómina",
-    "body": "Seguidores y alcance sirven para diagnosticar. Pero la pregunta del dueño es otra: ¿cuánto vendimos gracias a esto?"
-   },
-   {
-    "layout": "content",
-    "kicker": "01",
-    "title": "Costo por cliente nuevo",
-    "body": "Lo que invertiste en marketing dividido entre los clientes que realmente compraron. No por clic, por cliente."
-   },
-   {
-    "layout": "content",
-    "kicker": "02",
-    "title": "Tasa de conversión del canal",
-    "body": "De cada 100 personas que llegan por un canal, cuántas compran o piden cotización."
-   },
-   {
-    "layout": "content",
-    "kicker": "03",
-    "title": "Ticket promedio",
-    "body": "Cuánto compra cada cliente en promedio. Subirlo es otra forma de crecer sin depender solo de clientes nuevos."
-   },
-   {
-    "layout": "content",
-    "kicker": "04 y 05",
-    "title": "Recompra y tiempo de respuesta",
-    "body": "Cuántos clientes regresan y cuánto tardas en contestar. Las dos se pueden mejorar con procesos y automatización."
-   },
-   {
-    "layout": "cta",
-    "title": "Mide en ventas, no en aplausos",
-    "body": "Guarda estas cinco métricas para tu próximo reporte. Así trabajamos marketing en la sección Servicios.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "ganadora",
+  "portada": "persona",
+  "prueba": "aplica-ganador",
+  "variante": "-",
+  "objetivo": "Guardados + visitas a Servicios",
+  "cover": {
+   "kicker": "Deja de medir likes",
+   "title": "5 métricas que sí dicen si tu marketing vende."
+  },
   "caption": "Un reporte lleno de likes no paga la nómina.\n\nEl alcance y los seguidores sirven para diagnosticar, pero la pregunta de un dueño es otra: ¿cuánto vendimos gracias a esto?\n\nCinco métricas que sí responden esa pregunta:\n\n1. Costo por cliente nuevo.\n2. Tasa de conversión de cada canal.\n3. Ticket promedio.\n4. Tasa de recompra.\n5. Tiempo de respuesta al cliente.\n\nEn Æterna trabajamos campañas de eCommerce y marketing que se miden por ventas, no por interacciones.\n\nGuarda estas cinco métricas y úsalas en tu próximo reporte. Conoce el servicio en aeterna4.com, sección Servicios. Link en bio.\n\n#Aeterna4Business #MarketingDigital #Ventas #eCommerce #PyMEs #PyMEMexico #KPIs #Estrategia #NegociosLATAM #Emprendedores",
   "alt_text": "Carrusel con cinco métricas de marketing medidas en ventas: costo por cliente, conversión, ticket promedio, recompra y tiempo de respuesta.",
-  "orden": 11,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-04.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-05.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-06.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V12-1016-0900-07.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-04.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-05.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-06.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N09-1016-0900-07.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Lámina 3: fórmula explícita 'dividido entre'",
-   "Lámina 5: eliminada la afirmación 'suele ser más barato' (sin fuente)",
-   "Caption: 'engagement' cambiado a 'interacciones'",
-   "Caption y lámina 7: CTA de guardar para 'tu próximo reporte', distinto de V03"
-  ],
-  "rechazos_clio": [],
-  "puntaje_vera": 8
+  "aprobado_por": "Guillermo Verduzco"
  },
  {
-  "id": "V13-1016-1700",
+  "id": "N10-1016-1700",
+  "base": "V13-1016-1700",
   "fecha": "2026-10-16",
   "hora": "17:00",
   "tipo": "carrusel",
   "tema": "Kit gratis Æterna: guarda este carrusel",
   "destino": "#soluciones",
-  "slides": [
-   {
-    "layout": "cover",
-    "kicker": "Para el fin de semana",
-    "title": "Tu kit gratis para diagnosticar tu empresa"
-   },
-   {
-    "layout": "list",
-    "kicker": "Diagnóstico",
-    "title": "Para saber dónde estás",
-    "items": [
-     "Evaluación de madurez en IA",
-     "ARIA Assessment de 20 preguntas",
-     "Auditor web en cerca de 60 segundos"
-    ]
-   },
-   {
-    "layout": "list",
-    "kicker": "Inspiración",
-    "title": "Para ver cómo se ve el después",
-    "items": [
-     "Demo de eCRM para ventas",
-     "Tienda demo de eCommerce agéntico",
-     "Paper ejecutivo de 15 minutos"
-    ]
-   },
-   {
-    "layout": "cta",
-    "title": "Empieza el lunes con un plan",
-    "body": "Guarda este kit. Todo está en aeterna4.com y, si quieres, lo revisamos juntos en 30 minutos.",
-    "cta": "Link en bio · aeterna4.com"
-   }
-  ],
+  "paleta": "crema",
+  "portada": "persona",
+  "prueba": "aplica-ganador",
+  "variante": "-",
+  "objetivo": "Clics a Soluciones (todas las herramientas)",
+  "cover": {
+   "kicker": "Kit gratis · fin de semana",
+   "title": "Tu kit gratis para diagnosticar tu empresa."
+  },
   "caption": "Tu kit gratis para diagnosticar tu empresa este fin de semana.\n\nPara saber dónde estás:\nEvaluación de madurez en IA, 9 preguntas.\nARIA Assessment, 20 preguntas sobre automatización, clientes, datos y adopción.\nAuditor web, cerca de 60 segundos.\n\nPara ver cómo se ve el después:\nDemo de eCRM para equipos de ventas.\nTienda demo de eCommerce agéntico.\nPaper ejecutivo de 15 minutos con checklist para tu primer proceso.\n\nTodo es gratis y está en aeterna4.com: herramientas de diagnóstico en Soluciones, la tienda demo en eCommerce agéntico y el paper en la sección Paper. Y si quieres revisar tus resultados con nosotros, la primera conversación de 30 minutos tampoco cuesta.\n\nGuarda este carrusel y entra a aeterna4.com. Link en bio. También puedes escribirnos por WhatsApp al +52 1 220 873 2605.\n\n#Aeterna4Business #HerramientasGratis #InteligenciaArtificial #PyMEs #PyMEMexico #TransformacionDigital #DiagnosticoEmpresarial #ConsultoriaIA #NegociosLATAM #Emprendedores",
   "alt_text": "Mini carrusel con el kit gratuito de Æterna: tres herramientas de diagnóstico y tres demos para ver el resultado.",
-  "orden": 12,
   "imagenes": [
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V13-1016-1700-01.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V13-1016-1700-02.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V13-1016-1700-03.jpg",
-   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/V13-1016-1700-04.jpg"
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N10-1016-1700-01.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N10-1016-1700-02.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N10-1016-1700-03.jpg",
+   "https://raw.githubusercontent.com/GuilleVerduzco/Aeterna/ig-assets/instagram/2026-10/v2/N10-1016-1700-04.jpg"
   ],
   "estado": "aprobado",
-  "aprobado_por": "Clío",
-  "cambios_clio": [
-   "Caption: secciones correctas por herramienta (Soluciones, eCommerce agéntico, Paper); no se asigna sección a la demo eCRM por no estar verificada",
-   "Caption: cierre con puntuación corregida",
-   "Lámina 2: 'en 60 segundos' cambiado a 'en cerca de 60 segundos'",
-   "Lámina 4: añadido aeterna4.com como lugar del kit"
-  ],
-  "rechazos_clio": [],
-  "puntaje_vera": 7
+  "aprobado_por": "Guillermo Verduzco"
  }
 ]
