@@ -1,0 +1,1277 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>aeterna-dashboard-oct26</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --page:#f4f5f2; --surface:#fcfcfb; --raised:#ffffff; --sunken:#eef0ea;
+  --ink:#111312; --ink-2:#4d524f; --muted:#7b807c;
+  --grid:#e3e4de; --axis:#c3c5bd; --ring:rgba(17,19,18,.09);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b;
+  --alta-bg:#fbe3e3; --alta-ink:#a52a2a;
+  --media-bg:#fdf1d3; --media-ink:#7a5600;
+  --baja-bg:#e6eef8; --baja-ink:#1c5cab;
+  --quitar-bg:#fde9df; --quitar-ink:#a3401a;
+  --evaluar-bg:#fdf1d3; --evaluar-ink:#7a5600;
+  --mantener-bg:#dff1df; --mantener-ink:#1f6b1f;
+  --neutral-bg:#ecebe6; --neutral-ink:#4d524f;
+  --up:#a52a2a; --down:#1f6b1f;
+  --tip-bg:#111312; --tip-ink:#f4f5f2;
+  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --page:#0f100f; --surface:#1a1b1a; --raised:#202221; --sunken:#151615;
+    --ink:#f3f4f1; --ink-2:#c1c4bc; --muted:#8e928c;
+    --grid:#2b2d2b; --axis:#3a3d3a; --ring:rgba(255,255,255,.09);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --alta-bg:#3d1717; --alta-ink:#f19a9a;
+    --media-bg:#3a2c0a; --media-ink:#f0c460;
+    --baja-bg:#17304f; --baja-ink:#9ec5f4;
+    --quitar-bg:#3f2213; --quitar-ink:#f1a17f;
+    --evaluar-bg:#3a2c0a; --evaluar-ink:#f0c460;
+    --mantener-bg:#173217; --mantener-ink:#8fd88f;
+    --neutral-bg:#2b2d2b; --neutral-ink:#c1c4bc;
+    --up:#f19a9a; --down:#8fd88f;
+    --tip-bg:#f3f4f1; --tip-ink:#111312;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0f100f; --surface:#1a1b1a; --raised:#202221; --sunken:#151615;
+  --ink:#f3f4f1; --ink-2:#c1c4bc; --muted:#8e928c;
+  --grid:#2b2d2b; --axis:#3a3d3a; --ring:rgba(255,255,255,.09);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --alta-bg:#3d1717; --alta-ink:#f19a9a;
+  --media-bg:#3a2c0a; --media-ink:#f0c460;
+  --baja-bg:#17304f; --baja-ink:#9ec5f4;
+  --quitar-bg:#3f2213; --quitar-ink:#f1a17f;
+  --evaluar-bg:#3a2c0a; --evaluar-ink:#f0c460;
+  --mantener-bg:#173217; --mantener-ink:#8fd88f;
+  --neutral-bg:#2b2d2b; --neutral-ink:#c1c4bc;
+  --up:#f19a9a; --down:#8fd88f;
+  --tip-bg:#f3f4f1; --tip-ink:#111312;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:64px}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:28px 64px;display:grid;gap:22px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+h2{font-size:20px;font-weight:600;letter-spacing:-.01em}
+h3{font-size:15px;font-weight:600}
+p{margin:0}
+.num,.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 24px}
+header .left{display:grid;gap:6px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:13px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--neutral-bg);color:var(--neutral-ink)}
+
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(8px);margin-inline:calc(-1 * clamp(16px,4vw,40px));padding:8px clamp(16px,4vw,40px);border-bottom:1px solid var(--grid);overflow-x:auto}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;white-space:nowrap}
+nav a{display:block;color:var(--ink-2);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px}
+nav a:hover{background:var(--sunken);color:var(--ink)}
+nav a:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+
+section.block{display:grid;gap:14px;scroll-margin-top:64px}
+.block-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 18px}
+.block-head p{color:var(--muted);font-size:13.5px;max-width:70ch}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--grid);border:1px solid var(--grid);border-radius:14px;overflow:hidden}
+.kpi{background:var(--surface);padding:16px 18px;display:grid;gap:3px;align-content:start}
+.kpi .label{font-size:13px;color:var(--ink-2)}
+.kpi .value{font-size:28px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.kpi .value small{font-size:14px;font-weight:500;color:var(--ink-2);margin-left:3px}
+.kpi .note{font-size:12.5px;color:var(--muted)}
+.delta{font-family:var(--mono);font-size:12px;font-weight:500}
+.delta.up{color:var(--up)} .delta.down{color:var(--down)}
+
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:14px;padding:20px clamp(16px,2.4vw,24px);display:grid;gap:14px;min-width:0;align-content:start}
+.panel-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.panel-head p{color:var(--muted);font-size:13px;max-width:62ch}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:18px}
+
+.meter{display:grid;gap:6px}
+.meter-top{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.meter-track{height:10px;border-radius:5px;background:var(--sunken);overflow:hidden;border:1px solid var(--grid)}
+.meter-track div{height:100%;border-radius:5px}
+.meter .sub{font-size:12.5px;color:var(--muted)}
+.stack{display:flex;gap:2px;height:14px;border-radius:5px;overflow:hidden}
+.stack div{min-width:3px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block;flex:none}
+
+.recs{display:grid;gap:10px}
+.rec{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:start}
+.rec .chip{margin-top:2px}
+.rec h3{font-size:15px}
+.rec .area{font-size:12px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.rec .detail{grid-column:2 / 3;color:var(--ink-2);font-size:13.5px;white-space:pre-line}
+.rec .action{grid-column:2 / 3;font-size:13.5px}
+.rec .action b{font-weight:600}
+.rec .saving{grid-row:1 / span 3;grid-column:3;text-align:right;display:grid;gap:2px;min-width:110px}
+.rec .saving .num{font-size:17px;font-weight:600}
+@media (max-width:640px){.rec{grid-template-columns:1fr}.rec .detail,.rec .action,.rec .saving{grid-column:1;grid-row:auto;text-align:left}}
+
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap;font-style:normal}
+.chip.alta{background:var(--alta-bg);color:var(--alta-ink)}
+.chip.media{background:var(--media-bg);color:var(--media-ink)}
+.chip.baja{background:var(--baja-bg);color:var(--baja-ink)}
+.chip.quitar{background:var(--quitar-bg);color:var(--quitar-ink)}
+.chip.evaluar{background:var(--evaluar-bg);color:var(--evaluar-ink)}
+.chip.mantener{background:var(--mantener-bg);color:var(--mantener-ink)}
+.chip.integrada,.chip.inactivo,.chip.neutral{background:var(--neutral-bg);color:var(--neutral-ink)}
+
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--axis);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;background:transparent;color:var(--ink-2);border:0;padding:5px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--axis)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
+.seg button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+select,input[type="search"]{font:inherit;font-size:13.5px;color:var(--ink);background:var(--raised);border:1px solid var(--axis);border-radius:8px;padding:5px 9px;max-width:100%}
+label.check{display:inline-flex;gap:6px;align-items:center;font-size:13.5px;color:var(--ink-2)}
+
+.chart{position:relative;width:100%;min-height:200px}
+.chart svg{display:block;overflow:visible}
+.chart text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.hit{fill:transparent;cursor:crosshair}
+.hit:hover{fill:var(--ink);fill-opacity:.04}
+
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{font-weight:500;color:var(--muted);text-align:left;font-size:12px;padding:0 10px 8px;border-bottom:1px solid var(--grid);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+td .sub{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.t-name{font-weight:500}
+.zero{color:var(--muted)}
+.cell-bar{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.mini{width:70px;height:6px;border-radius:3px;background:var(--sunken);overflow:hidden;flex:none}
+.mini div{height:100%;background:var(--s1);border-radius:3px}
+.mini.ctx div{background:var(--s3)}
+.flags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.flag{font-size:11px;padding:1px 7px;border-radius:999px;background:var(--neutral-bg);color:var(--neutral-ink)}
+.more{justify-self:start;font:inherit;font-size:13px;color:var(--ink);background:transparent;border:1px solid var(--axis);border-radius:8px;padding:6px 12px;cursor:pointer}
+.more:hover{background:var(--sunken)}
+
+.hbar{display:grid;gap:10px}
+.hbar-item{display:grid;gap:4px}
+.hbar-top{display:flex;justify-content:space-between;gap:12px;font-size:14px}
+.hbar-top .num{white-space:nowrap}
+.track{height:8px;border-radius:4px;background:var(--sunken);overflow:hidden}
+.track div{height:100%;border-radius:4px;background:var(--s1)}
+
+.tally{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--ink-2)}
+.tally b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
+.mem{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:14px;display:grid;gap:6px;align-content:start}
+.mem-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.mem-name{font-family:var(--mono);font-size:13px;font-weight:500;overflow-wrap:anywhere}
+.mem p{color:var(--ink-2);font-size:13.5px}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+#tip{position:fixed;z-index:10;pointer-events:none;background:var(--tip-bg);color:var(--tip-ink);font-size:12.5px;line-height:1.45;padding:8px 10px;border-radius:8px;max-width:260px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+#tip .tr{display:flex;justify-content:space-between;gap:16px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+footer{color:var(--muted);font-size:12.5px;display:grid;gap:6px;max-width:86ch}
+footer code{font-family:var(--mono);font-size:.95em}
+
+/* ---- v2: menú agrupado, campañas, agentes ---- */
+nav{top:env(safe-area-inset-top,0px)}
+nav ul{align-items:center}
+nav .grp{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 4px 5px 10px}
+nav .grp:first-child{padding-left:0}
+nav .sep{width:1px;height:18px;background:var(--grid);margin:0 6px}
+nav a[aria-current="true"]{background:var(--ink);color:var(--page)}
+nav a .count{font-family:var(--mono);font-size:11px;margin-left:5px;opacity:.7}
+.hdr-tools{display:flex;gap:8px;align-items:center}
+.icon-btn{font:inherit;font-size:13px;color:var(--ink-2);background:var(--raised);border:1px solid var(--axis);border-radius:8px;padding:5px 11px;cursor:pointer}
+.icon-btn:hover{background:var(--sunken);color:var(--ink)}
+.icon-btn:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+.group-head{display:grid;gap:4px;padding-top:10px;border-top:1px solid var(--grid)}
+.group-head h2{font-size:24px}
+.stale{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;color:var(--media-ink);background:var(--media-bg);padding:2px 10px;border-radius:999px;font-weight:500}
+
+.alerts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px}
+.alert{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:12px 14px 12px 16px;display:grid;gap:4px;align-content:start;position:relative;overflow:hidden}
+.alert::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--axis)}
+.alert.alta::before{background:var(--crit)} .alert.media::before{background:var(--warn)} .alert.baja::before{background:var(--s1)}
+.alert h3{font-size:14px;display:flex;gap:8px;align-items:center}
+.alert p{font-size:13px;color:var(--ink-2)}
+.alert .do{font-size:13px;color:var(--ink)}
+
+.picker{border:1px solid var(--line,#e5e5e5);border-radius:12px;padding:12px 14px;margin:0 0 14px}.picker legend{font-weight:600;padding:0 6px}.picker-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.picker-tools button{font:inherit;padding:4px 10px;border-radius:8px;border:1px solid currentColor;background:none;cursor:pointer}.picker-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:6px 14px}.pick{display:flex;gap:8px;align-items:flex-start;font-size:14px;cursor:pointer}.pick input{margin-top:3px}
+.camp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:12px}
+.camp{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.camp-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.camp h3{font-size:15.5px;line-height:1.3}
+.camp .acct{font-size:12.5px;color:var(--muted);font-family:var(--mono);overflow-wrap:anywhere}
+.camp .obj{font-size:13.5px;color:var(--ink-2)}
+.prog{display:grid;gap:5px}
+.prog-bar{display:flex;gap:2px;height:10px;border-radius:5px;overflow:hidden;background:var(--sunken)}
+.prog-bar div{min-width:2px}
+.prog-legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;color:var(--ink-2)}
+.prog-legend b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.camp-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--grid);padding-top:9px}
+.camp-foot a{color:var(--s1);text-decoration:none;font-weight:500}
+.camp-foot a:hover{text-decoration:underline}
+.fmt{display:flex;flex-wrap:wrap;gap:4px}
+.chip.ok{background:var(--mantener-bg);color:var(--mantener-ink)}
+.chip.run{background:var(--baja-bg);color:var(--baja-ink)}
+.chip.warnc{background:var(--media-bg);color:var(--media-ink)}
+.chip.bad{background:var(--alta-bg);color:var(--alta-ink)}
+.chip.off{background:var(--neutral-bg);color:var(--neutral-ink)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:5px;vertical-align:1px}
+.dot.live{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.dot.live{animation:none}}
+
+.plan-grid{display:grid;grid-template-columns:52px repeat(10,minmax(0,1fr));gap:4px;min-width:560px}
+.plan-grid .ph{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;padding-bottom:2px}
+.plan-grid .ph.today{color:var(--ink);font-weight:600}
+.plan-grid .rl{font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;align-items:center}
+.cell{height:40px;border-radius:7px;border:2px solid var(--c);background:transparent;display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--ink-2);cursor:default;position:relative}
+.cell.ok{background:var(--c);color:var(--raised);font-weight:600}
+.cell.today{box-shadow:0 0 0 2px var(--page),0 0 0 4px var(--axis)}
+.cell:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.team{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:16px;display:grid;gap:9px;align-content:start;min-width:0}
+.team-top{display:flex;gap:12px;align-items:center}
+.ring{flex:none}
+.ring text{font-family:var(--mono);font-size:12px;font-weight:500;fill:var(--ink)}
+.team h3{font-size:15px}
+.team .acct{font-size:12.5px;color:var(--muted);font-family:var(--mono);overflow-wrap:anywhere}
+.team p{font-size:13.5px;color:var(--ink-2)}
+.team dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0;font-size:12.5px}
+.team dt{color:var(--muted)} .team dd{margin:0;font-family:var(--mono);color:var(--ink)}
+
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:10px}
+.person{background:var(--raised);border:1px solid var(--ring);border-radius:12px;padding:13px 14px;display:grid;gap:6px;align-content:start}
+.person-top{display:flex;gap:10px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:14px;flex:none;color:var(--raised)}
+.person .nm{font-weight:600;font-size:14.5px;line-height:1.2}
+.person .rl{font-size:12.5px;color:var(--muted)}
+.person p{font-size:13px;color:var(--ink-2)}
+.person .when{font-size:12px;color:var(--muted);font-family:var(--mono)}
+
+.next-list{list-style:none;margin:0;padding:0;display:grid}
+.next-list li{display:grid;grid-template-columns:86px 1fr auto;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--grid);font-size:13.5px}
+.next-list li:last-child{border-bottom:0}
+.next-list .t{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+.next-list .in{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.log{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--grid);display:grid;gap:12px}
+.log li{position:relative;display:grid;gap:2px}
+.log li::before{content:"";position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--c,var(--axis));box-shadow:0 0 0 3px var(--surface)}
+.log .who{font-weight:600;font-size:13.5px}
+.log .ts{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:8px;font-weight:400}
+.log p{font-size:13.5px;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:inherit;font-size:12.5px;border:1px solid var(--axis);background:transparent;color:var(--ink-2);padding:3px 10px;border-radius:999px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.chips button:focus-visible{outline:2px solid var(--s1);outline-offset:1px}
+.mini-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.mini-kpis div{display:grid;gap:1px}
+.mini-kpis .v{font-family:var(--mono);font-size:20px;font-weight:500;color:var(--ink)}
+.mini-kpis .l{font-size:12px;color:var(--muted)}
+.chart .lbl{fill:var(--ink-2);font-weight:500}
+.chart .dim{opacity:.35;transition:opacity .15s}
+@media (prefers-reduced-motion:reduce){.chart .dim{transition:none}}
+.log p,.person p,.alert p,.camp .obj,.hbar-top span{overflow-wrap:anywhere}
+.next-list li{grid-template-columns:78px minmax(0,1fr) auto}
+.team dl{grid-template-columns:auto minmax(0,1fr)}
+.team dd{overflow-wrap:anywhere}
+.camp-top>div,.team-top>div,.person-top>div{min-width:0}
+.panel{grid-template-columns:minmax(0,1fr)}.person,#people{min-width:0}.person-top{flex-wrap:wrap}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="left">
+      <div class="brand-row"><svg class="logo-mark" viewBox="0 0 512 512" width="34" height="34" role="img" aria-label="Æterna"><rect width="512" height="512" rx="96" fill="#0D1117"/><text x="256" y="350" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="280" fill="#F4F1EA">Æ<tspan fill="#C9A96E">.</tspan></text></svg><span class="eyebrow">Æterna 4 Business · Claude</span></div>
+      <h1>Tablero de Claude</h1>
+      <div class="meta" id="meta"></div>
+    </div>
+    <div class="hdr-tools"><button type="button" class="icon-btn" id="refresh-btn">Actualizar</button><button type="button" class="icon-btn" id="theme-btn">Tema: sistema</button></div>
+  </header>
+
+  <nav aria-label="Secciones"><ul>
+    <li class="grp">Marketing</li>
+    <li><a href="#campanas">Campañas <span class="count" id="nav-c"></span></a></li><li><a href="#agentes">Agentes <span class="count" id="nav-a"></span></a></li>
+    <li class="sep" aria-hidden="true"></li><li class="grp">Uso de Claude</li>
+    <li><a href="#hoy">Hoy</a></li><li><a href="#recomendaciones">Recomendaciones</a></li><li><a href="#costo">Costo y plan</a></li>
+    <li><a href="#consumo">Consumo</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#sesiones">Sesiones</a></li>
+    <li><a href="#extensiones">Extensiones</a></li><li><a href="#memoria">Memoria</a></li>
+    <li class="sep" aria-hidden="true"></li><li class="grp">Infraestructura</li>
+    <li><a href="#stack">Stack</a></li>
+  </ul></nav>
+
+  <div class="group-head" id="g-marketing">
+    <span class="eyebrow">Marketing · Æterna 4 Business</span>
+    <h2>Campañas y agentes</h2>
+    <p class="muted small" id="mk-meta"></p>
+  </div>
+
+  <section class="block" id="campanas">
+    <div class="block-head"><h2>Campañas lanzadas</h2><p id="camp-sub"></p></div>
+    <div class="kpis" id="camp-kpis"></div>
+    <div class="alerts" id="alerts" aria-label="Pendientes de atención"></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Línea de tiempo</h3><p>Cada barra es una campaña; la parte sólida es lo ya publicado o enviado. La línea punteada marca hoy.</p></div>
+      <div class="chart" id="ch-gantt" role="img" aria-label="Línea de tiempo de campañas del 11 al 26 de octubre"></div>
+    </div>
+    <div class="controls">
+      <div class="chips" role="group" aria-label="Filtrar campañas" id="camp-filter">
+        <button type="button" data-cf="todas" aria-pressed="true">Todas</button>
+        <button type="button" data-cf="vivas" aria-pressed="false">En curso</button>
+        <button type="button" data-cf="cerradas" aria-pressed="false">Cerradas</button>
+      </div>
+    </div>
+    <div id="picker"></div>
+    <div class="camp-grid" id="camps"></div>
+    <div id="retail" style="display:grid;gap:14px;margin-top:14px"></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Plan de 10 días · @aeterna_ig</h3><div class="legend" id="lg-plan"></div></div>
+      <p class="small muted">Relleno = publicado. Contorno = programado. Pasa el cursor para ver el tema.</p>
+      <div class="table-wrap"><div class="plan-grid" id="plan-grid"></div></div>
+    </div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>Vistas de @c4b_mx</h3><span class="small muted" id="ig-fresh"></span></div>
+        <div class="mini-kpis" id="ig-kpis"></div>
+        <div class="chart" id="ch-ig" role="img" aria-label="Vistas de los últimos 7 días por fecha de medición"></div>
+        <p class="small muted">Ventana móvil de 7 días medida por Argos cada mañana. Instagram reemplazó «impresiones» por «vistas».</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Publicaciones con más vistas</h3><p>@c4b_mx, carruseles publicados del 11 al 16 oct.</p></div>
+        <div class="hbar" id="top-posts"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="agentes">
+    <div class="block-head"><h2>Agentes activos en Claude</h2><p id="ag-sub"></p></div>
+    <div class="team-grid" id="teams"></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Ejecuciones por día</h3><p>Corridas de las tareas programadas. Barras tenues = programadas a futuro. No incluye al vigilante horario de Retail Puebla.</p></div>
+      <div class="legend" id="lg-runs"></div>
+      <div class="chart" id="ch-runs" role="img" aria-label="Ejecuciones de agentes por día y equipo"></div>
+    </div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>Próximas ejecuciones</h3><span class="small muted">hora de tu navegador</span></div>
+        <ul class="next-list" id="next"></ul>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Bitácora de la Sala de Agentes</h3><div class="chips" role="group" aria-label="Filtrar por agente" id="log-filter"></div></div>
+        <ol class="log" id="log"></ol>
+        <button class="more" id="log-more" type="button"></button>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Quién hace qué</h3><p>Los personajes de cada equipo y lo último que hicieron.</p></div>
+      <div id="people"></div>
+    </div>
+  </section>
+
+  <div class="group-head" id="g-uso">
+    <span class="eyebrow">Claude Code · consumo personal</span>
+    <h2>Uso de Claude</h2>
+    <p><span class="stale" id="usage-stale"></span></p>
+  </div>
+
+  <section class="block" id="hoy">
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="block" id="recomendaciones">
+    <div class="block-head"><h2>Recomendaciones</h2><p id="recs-sub"></p></div>
+    <div class="recs" id="recs"></div>
+  </section>
+
+  <section class="block" id="costo">
+    <div class="block-head"><h2>Costo y plan</h2><p>«Valor API» es lo que costaría tu uso pagando por token. Con Pro pagas una cuota fija y el plan pone límites de uso.</p></div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>Límites del plan</h3><span class="small muted" id="plan-fresh"></span></div>
+        <div id="plan-meters" class="hbar"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Ciclo de facturación</h3><span class="small muted" id="cycle-range"></span></div>
+        <div id="cycle"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head">
+        <h3 id="daily-title">Costo por día</h3>
+        <div class="controls">
+          <div class="seg" role="group" aria-label="Métrica"><button type="button" data-metric="cost" id="m-cost">Costo</button><button type="button" data-metric="tokens" id="m-tokens">Tokens</button></div>
+          <div class="seg" role="group" aria-label="Rango"><button type="button" data-range="7" id="r7">7 d</button><button type="button" data-range="14" id="r14">14 d</button><button type="button" data-range="30" id="r30">30 d</button><button type="button" data-range="0" id="r0">Todo</button></div>
+        </div>
+      </div>
+      <div class="legend" id="lg-daily"></div>
+      <div class="chart" id="ch-daily" role="img" aria-label="Costo o tokens por día y modelo"></div>
+    </div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>¿En qué se va el dinero?</h3><p>Valor API por tipo de token en el rango elegido arriba.</p></div>
+        <div class="stack" id="cost-stack" aria-hidden="true"></div>
+        <div class="hbar" id="cost-types"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Por modelo</h3></div>
+        <div class="table-wrap"><table><thead><tr><th>Modelo</th><th class="r">Tarifa entrada / salida</th><th class="r">Tokens</th><th class="r">Valor API</th></tr></thead><tbody id="models"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="consumo">
+    <div class="block-head"><h2>Consumo</h2></div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>¿A qué hora trabajas?</h3><p>Tokens por hora, hora local, todo el historial disponible.</p></div>
+        <div class="chart" id="ch-hours" role="img" aria-label="Tokens por hora del día"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Hábitos que mueven el costo</h3></div>
+        <div class="hbar" id="habits"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="proyectos">
+    <div class="block-head"><h2>Proyectos</h2></div>
+    <div class="panel"><div class="table-wrap"><table style="min-width:680px">
+      <thead><tr><th>Proyecto</th><th class="r">Sesiones</th><th class="r">Tokens</th><th class="r">Valor API</th><th class="r">Memorias</th><th>Última actividad</th></tr></thead>
+      <tbody id="projects"></tbody></table></div></div>
+  </section>
+
+  <section class="block" id="sesiones">
+    <div class="block-head"><h2>Sesiones</h2><p>«Contexto máx.» es el punto más lleno de la conversación; arriba de 200 k cada respuesta sale cara.</p></div>
+    <div class="panel">
+      <div class="controls">
+        <label for="f-proj" class="small muted">Proyecto</label><select id="f-proj"></select>
+        <input type="search" id="f-q" placeholder="Buscar por título" aria-label="Buscar sesión">
+        <div class="seg" role="group" aria-label="Orden"><button type="button" id="o-date" data-order="date">Recientes</button><button type="button" id="o-cost" data-order="cost">Más caras</button></div>
+      </div>
+      <div class="table-wrap"><table style="min-width:860px">
+        <thead><tr><th>Sesión</th><th class="r">Tus mensajes</th><th class="r">Tokens</th><th class="r">Contexto máx.</th><th class="r">Valor API</th><th class="r">Por mensaje</th></tr></thead>
+        <tbody id="sessions"></tbody></table></div>
+      <button class="more" id="more" type="button"></button>
+    </div>
+  </section>
+
+  <section class="block" id="extensiones">
+    <div class="block-head"><h2>Extensiones</h2><p id="ext-sub"></p></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Conectores MCP</h3><div class="tally" id="mcp-tally"></div></div>
+      <div class="table-wrap"><table style="min-width:760px"><thead><tr><th>Conector</th><th>Origen</th><th class="r">Usos (ventana)</th><th>Último uso</th><th class="r">Tokens / respuesta</th><th>Estado</th></tr></thead><tbody id="mcp"></tbody></table></div>
+    </div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>Plugins</h3></div>
+        <div class="table-wrap"><table style="min-width:520px"><thead><tr><th>Plugin</th><th class="r">Skills usadas</th><th class="r">Tokens / respuesta</th><th>Estado</th></tr></thead><tbody id="plugins"></tbody></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Hooks y texto automático</h3><p>Texto que se agrega a tus conversaciones sin que lo pidas.</p></div>
+        <div class="table-wrap"><table style="min-width:480px"><thead><tr><th>Momento</th><th>De dónde</th><th class="r">Veces</th><th class="r">Tokens c/u</th></tr></thead><tbody id="hooks"></tbody></table></div>
+        <p class="small muted" id="hooks-config"></p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Skills</h3><div class="controls"><label class="check"><input type="checkbox" id="f-builtin"> Mostrar integradas de Claude Code</label></div></div>
+      <div class="table-wrap"><table style="min-width:720px"><thead><tr><th>Skill</th><th>Origen</th><th class="r">Usos (ventana)</th><th>Último uso</th><th class="r">Tokens / respuesta</th><th>Estado</th></tr></thead><tbody id="skills"></tbody></table></div>
+    </div>
+    <div class="row">
+      <div class="panel">
+        <div class="panel-head"><h3>Herramientas más usadas</h3></div>
+        <div class="hbar" id="tools"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Agentes</h3></div>
+        <div class="table-wrap"><table style="min-width:380px"><thead><tr><th>Agente</th><th class="r">Usos</th><th>Último uso</th></tr></thead><tbody id="agents"></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="memoria">
+    <div class="block-head"><h2>Memoria y disco</h2><p>Memorias: lo que Claude recuerda entre sesiones. El índice MEMORY.md entra a cada sesión del proyecto.</p></div>
+    <div class="mem-grid" id="mem"></div>
+    <div class="panel">
+      <div class="panel-head"><h3>Espacio en <span class="mono">~/.claude</span></h3><span class="small muted" id="disk-total"></span></div>
+      <div class="hbar" id="disk"></div>
+    </div>
+  </section>
+
+<style>.stk-panel{gap:12px}
+.stk-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stk-f{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--ring);background:var(--raised);color:var(--ink-2);cursor:pointer}
+.stk-f[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.stk-fig{margin:0;display:grid;gap:8px;min-width:0}
+.stk-svg{width:100%;overflow-x:auto}
+.stk-svg svg{display:block;width:100%;min-width:640px;height:auto;color:var(--ink)}
+.stk-svg .stk-node{transition:opacity .2s}
+.stk-svg .stk-node:focus{outline:none}
+.stk-svg .stk-node:focus-visible rect{stroke:var(--ink);stroke-width:2.5}
+.stk-detail{border:1px solid var(--ring);border-radius:12px;padding:14px 16px;background:var(--raised);display:grid;gap:6px;min-width:0}
+.stk-detail h4{margin:0;font-size:16px}
+.stk-detail p{margin:0;color:var(--ink-2);font-size:14px;max-width:70ch}
+.stk-detail ul{margin:4px 0 0;padding-left:18px;font-size:13px;color:var(--ink-2);display:grid;gap:3px}
+.stk-list{margin:0;padding-left:20px;display:grid;gap:10px;font-size:14px;color:var(--ink-2);max-width:80ch}
+.stk-list b{color:var(--ink)}
+@media (prefers-reduced-motion: reduce){.stk-svg .stk-node{transition:none}}
+.brand-row{display:flex;align-items:center;gap:10px}.brand-row .eyebrow{margin:0}.logo-mark{flex:none;display:block;border-radius:8px}</style>
+  <section class="block" id="stack">
+    <div class="block-head"><h2>Stack · proyectos y conectores</h2><p>Qué está conectado y hacia dónde fluyen los datos. Estado al 18 oct, 12:50.</p></div>
+    <div class="panel stk-panel">
+      <div class="stk-tools" role="group" aria-label="Filtrar por estado">
+        <button type="button" class="stk-f" data-f="all" aria-pressed="true">Todos</button>
+        <button type="button" class="stk-f" data-f="uso" aria-pressed="false">En uso</button>
+        <button type="button" class="stk-f" data-f="conectado" aria-pressed="false">Conectado</button>
+        <button type="button" class="stk-f" data-f="pausado" aria-pressed="false">Pausado</button>
+        <span class="small muted">Toca un nodo para ver su detalle.</span>
+      </div>
+      <figure class="stk-fig">
+        <div id="stk-svg" class="stk-svg"></div>
+        <figcaption class="small muted">Las flechas van de quien actúa hacia lo que escribe o publica. Las líneas punteadas son conexiones pausadas o pendientes.</figcaption>
+      </figure>
+      <div id="stk-detail" class="stk-detail" aria-live="polite"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Análisis</h3><p>Lo que dice el diagrama sobre cómo está montado hoy.</p></div>
+      <ol class="stk-list">
+        <li><b>Una sola fuente viva.</b> El tablero lee solo la base compartida del artefacto. Supabase y Meta están listos, pero pausados. Sin Meta, las cifras de Instagram siguen siendo manuales.</li>
+        <li><b>Un punto único de falla en la publicación.</b> Instagram y Facebook salen por Composio, y WhatsApp por Kapso. Los registros del Agente Manager y del Reporte diario marcan error desde el 17 oct, aunque los posts sí aparecen. El problema está en el registro o en los permisos de la sesión automática, y hay que revisarlo.</li>
+        <li><b>Vercel está conectado pero sin uso.</b> El tablero no está desplegado en un dominio propio. Conviene desplegarlo cuando haya datos de Meta, porque Supabase ya tiene el esquema.</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Conectores disponibles</h3><p>Todo lo que Claude puede usar en esta sesión, con su uso actual y una recomendación.</p></div>
+      <div class="table-wrap"><table style="min-width:760px"><thead><tr><th>Conector</th><th>Tipo</th><th>Estado</th><th>Uso en Aeterna</th><th>Recomendación</th></tr></thead><tbody>
+        <tr><td>Vercel</td><td>Hosting</td><td><span class="chip ok">Conectado</span></td><td>Sin despliegue del tablero</td><td>Desplegar en dominio propio cuando haya datos de Meta</td></tr>
+        <tr><td>Canva</td><td>Diseño</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Piezas de carrusel de Retail, si Director no alcanza</td></tr>
+        <tr><td>Figma</td><td>Diseño</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Maquetar el tablero antes de codificar cambios grandes</td></tr>
+        <tr><td>Higgsfield · HyperFrames</td><td>Video</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Solo si hay guion de Reel con persona</td></tr>
+        <tr><td>Google Sheets · Docs · Calendar</td><td>Productividad</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso aquí</td><td>Hoja de revisión para el JSON de Retail</td></tr>
+        <tr><td>Notion · Miro · Claude Docs</td><td>Documentos</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Documentación de arquitectura, si el equipo crece</td></tr>
+        <tr><td>Firecrawl · Apify</td><td>Scraping</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Leads de talleres y ferreterías en Puebla</td></tr>
+        <tr><td>OpenSEO</td><td>SEO</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Medir aeterna4.com para la meta de tráfico de la campaña</td></tr>
+        <tr><td>Ad Superpowers</td><td>Ads (varias plataformas)</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Lectura de anuncios si Meta directo sigue pausado</td></tr>
+        <tr><td>Claude in Chrome · computer use</td><td>Navegador</td><td><span class="chip neutral">Disponible</span></td><td>Sin uso</td><td>Revisar el tablero en navegador, paso pendiente</td></tr>
+        <tr><td>Semrush</td><td>SEO</td><td><span class="chip bad">Desconectado</span></td><td>—</td><td>Reconectar si se necesita análisis de competencia</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>Skills y plugins para construirlo</h3><p>Cuáles sirven para diseñar e integrar el tablero, y en qué parte.</p></div>
+      <div class="table-wrap"><table style="min-width:680px"><thead><tr><th>Skill o plugin</th><th>Para qué sirve aquí</th><th>Estado</th></tr></thead><tbody>
+        <tr><td>artifact-diagramming</td><td>Diagrama de arquitectura de esta sección</td><td><span class="chip ok">Aplicado</span></td></tr>
+        <tr><td>aeterna-brand</td><td>Logotipo y paleta. El logo Æ ya está en el encabezado</td><td><span class="chip ok">Aplicado</span></td></tr>
+        <tr><td>artifact-design · frontend-design</td><td>Ajustes visuales del tablero, en modo claro y oscuro</td><td><span class="chip run">Siguiente</span></td></tr>
+        <tr><td>dataviz</td><td>Gráficas de alcance y de publicaciones, con escala y etiquetas claras</td><td><span class="chip run">Siguiente</span></td></tr>
+        <tr><td>design:design-system</td><td>Tokens de color y tipografía compartidos con otras páginas</td><td><span class="chip neutral">Opcional</span></td></tr>
+        <tr><td>engineering:architecture</td><td>Revisar si Supabase o la base del artefacto debe ser la fuente principal</td><td><span class="chip neutral">Opcional</span></td></tr>
+        <tr><td>engineering:deploy-checklist</td><td>Lista antes de desplegar en Vercel</td><td><span class="chip neutral">Cuando haya Meta</span></td></tr>
+        <tr><td>small-business:report-pack</td><td>Reporte semanal que alimenta el tablero sin intervención</td><td><span class="chip neutral">Opcional</span></td></tr>
+      </tbody></table></div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p><b>Cómo se actualiza:</b> el tablero local (<code>~/.claude/tablero/tablero-local.html</code>) se regenera cada vez que abres Claude Code. Para actualizar este enlace, dile a Claude «actualiza el tablero».</p>
+    <p><b>Qué incluye:</b> solo Claude Code en esta computadora. Los chats de claude.ai y Cowork no aparecen en tokens ni en valor API, pero sí cuentan en los porcentajes del plan.</p>
+    <p><b>Cómo se calcula:</b> tokens tomados de las transcripciones, sin duplicados. El valor API usa las tarifas de <code>config.json</code>: caché leída al 10 % y caché guardada al 125 % (5 min) o al 200 % (1 h). Si Claude Code registró el costo de una sesión, se ajusta a esa cifra, porque las transcripciones no guardan todas las llamadas. «Tokens por respuesta» de cada extensión ≈ caracteres que agrega al contexto ÷ 4. Estados: <i>Mantener</i> = 3 o más usos en la ventana; <i>Quitar</i> = sin usos y visto hace más de 7 días; <i>Evaluar</i> = el resto.</p>
+  </footer>
+</div>
+<div id="tip" hidden></div>
+
+<script type="module">
+let D = {"generado":"2026-10-18T22:09:01.045Z","hoy":"2026-10-18","ventanaDias":14,"plan":{"nombre":"Claude Pro","tipo":"pro","facturacion":"apple_subscription","precioUSD":20,"ciclo":{"inicio":"2026-10-08","fin":"2026-11-08"},"uso":null,"historial":[{"fetchedAt":"2026-09-13T05:46:38.433Z","cincoHoras":56,"semanal":29,"extraUSD":58.93}]},"precios":{"claude-haiku-5-5":{"entrada":5,"salida":25,"verificado":false,"key":"default"},"claude-opus-5":{"entrada":5,"salida":25,"verificado":true,"key":"claude-opus-5"},"claude-haiku-4-5-20251001":{"entrada":1,"salida":5,"verificado":true,"key":"claude-haiku-4-5"},"claude-opus-5-5":{"entrada":5,"salida":25,"verificado":true,"key":"claude-opus-5"}},"mult":{"lecturaCache":0.1,"escrituraCache5m":1.25,"escrituraCache1h":2},"dias":[{"date":"2026-08-31","input":218,"output":92232,"cacheRead":7862966,"cacheWrite":438714,"calls":109,"cost":8.879,"byModel":{"claude-sonnet-5":2900023,"claude-opus-5":5494107},"costByModel":{"claude-sonnet-5":1.9763357999999998,"claude-opus-5":6.902691249999999},"sessions":4,"prompts":14},{"date":"2026-09-01","input":12,"output":2142,"cacheRead":242066,"cacheWrite":25612,"calls":6,"cost":0.4308,"byModel":{"claude-opus-5":269832},"costByModel":{"claude-opus-5":0.430763},"sessions":1,"prompts":0},{"date":"2026-09-02","input":42,"output":12189,"cacheRead":824504,"cacheWrite":44223,"calls":21,"cost":1.1594,"byModel":{"claude-opus-5":880958},"costByModel":{"claude-opus-5":1.159417},"sessions":2,"prompts":4},{"date":"2026-09-03","input":486,"output":269076,"cacheRead":27133313,"cacheWrite":572504,"calls":243,"cost":26.5205,"byModel":{"claude-opus-5":27975379,"claude-haiku-4-5-20251001":8944},"costByModel":{"claude-opus-5":26.510082572452838,"claude-haiku-4-5-20251001":0.010456},"sessions":7,"prompts":29},{"date":"2026-09-04","input":250,"output":70898,"cacheRead":11663373,"cacheWrite":405465,"calls":125,"cost":11.5215,"byModel":{"claude-opus-5":12139986,"claude-haiku-4-5-20251001":11075},"costByModel":{"claude-opus-5":11.509665677547167,"claude-haiku-4-5-20251001":0.011798999999999999},"sessions":6,"prompts":13},{"date":"2026-09-06","input":204,"output":83352,"cacheRead":9264255,"cacheWrite":200975,"calls":102,"cost":9.2002,"byModel":{"claude-opus-5":9548786,"claude-haiku-4-5-20251001":3654},"costByModel":{"claude-opus-5":9.196364999999998,"claude-haiku-4-5-20251001":0.0038780000000000004},"sessions":2,"prompts":14},{"date":"2026-09-10","input":2796,"output":312046,"cacheRead":17665561,"cacheWrite":720492,"calls":162,"cost":25.1196,"byModel":{"claude-opus-5":18700895,"claude-haiku-4-5-20251001":4925},"costByModel":{"claude-opus-5":25.11441475000002,"claude-haiku-4-5-20251001":0.005197},"sessions":2,"prompts":18},{"date":"2026-09-11","input":304,"output":138038,"cacheRead":20560449,"cacheWrite":409030,"calls":152,"cost":18.9464,"byModel":{"claude-opus-5":21107821,"claude-haiku-4-5-20251001":3697},"costByModel":{"claude-opus-5":18.94251524999999,"claude-haiku-4-5-20251001":0.003909},"sessions":2,"prompts":12},{"date":"2026-09-12","input":2088,"output":335533,"cacheRead":23584946,"cacheWrite":684461,"calls":157,"cost":29.1325,"byModel":{"claude-opus-5":24607028,"claude-haiku-4-5-20251001":3707},"costByModel":{"claude-opus-5":29.128596286629268,"claude-haiku-4-5-20251001":0.003903},"sessions":5,"prompts":32},{"date":"2026-09-13","input":1640,"output":38027,"cacheRead":5677818,"cacheWrite":214755,"calls":70,"cost":7.0882,"byModel":{"claude-opus-5":5932240,"claude-haiku-4-5-20251001":3643},"costByModel":{"claude-opus-5":7.084321999999999,"claude-haiku-4-5-20251001":0.0038469999999999997},"sessions":2,"prompts":19},{"date":"2026-09-14","input":1564,"output":148841,"cacheRead":8910185,"cacheWrite":503921,"calls":61,"cost":13.4881,"byModel":{"claude-opus-5":9564511,"claude-haiku-4-5-20251001":8482},"costByModel":{"claude-opus-5":13.477582500000006,"claude-haiku-4-5-20251001":0.010538},"sessions":3,"prompts":7},{"date":"2026-09-16","input":124,"output":28469,"cacheRead":4662243,"cacheWrite":197230,"calls":61,"cost":5.3367,"byModel":{"claude-opus-5":4888066,"claude-haiku-4-5-20251001":926},"costByModel":{"claude-opus-5":5.33568,"claude-haiku-4-5-20251001":0.000994},"sessions":2,"prompts":17},{"date":"2026-09-20","input":50,"output":11706,"cacheRead":907264,"cacheWrite":98175,"calls":25,"cost":1.5231,"byModel":{"claude-opus-5":1017195,"claude-haiku-4-5-20251001":927},"costByModel":{"claude-opus-5":1.52210525,"claude-haiku-4-5-20251001":0.0009910000000000001},"sessions":2,"prompts":5},{"date":"2026-09-21","input":8,"output":748,"cacheRead":117854,"cacheWrite":14160,"calls":4,"cost":0.1662,"byModel":{"claude-opus-5":132770},"costByModel":{"claude-opus-5":0.166167},"sessions":1,"prompts":0},{"date":"2026-09-23","input":14,"output":1271,"cacheRead":189192,"cacheWrite":43207,"calls":7,"cost":0.3965,"byModel":{"claude-opus-5":233684},"costByModel":{"claude-opus-5":0.39648475},"sessions":1,"prompts":1},{"date":"2026-09-24","input":4,"output":748,"cacheRead":55695,"cacheWrite":17783,"calls":2,"cost":0.1938,"byModel":{"claude-opus-5":74230,"claude-haiku-4-5-20251001":23204},"costByModel":{"claude-opus-5":0.15771125,"claude-haiku-4-5-20251001":0.036052},"sessions":1,"prompts":0},{"date":"2026-09-25","input":94,"output":10244,"cacheRead":2453385,"cacheWrite":351427,"calls":20,"cost":2.3905,"byModel":{"claude-haiku-4-5-20251001":857073,"claude-opus-5-5":1963803},"costByModel":{"claude-haiku-4-5-20251001":0.9277006700000001,"claude-opus-5-5":1.4628062000000002},"sessions":2,"prompts":7},{"date":"2026-09-26","input":128,"output":22718,"cacheRead":339835,"cacheWrite":171367,"calls":14,"cost":0.39,"byModel":{"claude-haiku-4-5-20251001":536219},"costByModel":{"claude-haiku-4-5-20251001":0.39001565000000005},"sessions":1,"prompts":5},{"date":"2026-09-27","input":18,"output":815,"cacheRead":78365,"cacheWrite":38024,"calls":2,"cost":0.0595,"byModel":{"claude-haiku-4-5-20251001":117222},"costByModel":{"claude-haiku-4-5-20251001":0.0594595},"sessions":1,"prompts":1},{"date":"2026-10-05","input":436,"output":17637,"cacheRead":1627687,"cacheWrite":212862,"calls":48,"cost":1.5402,"byModel":{"claude-haiku-4-5-20251001":1924500},"costByModel":{"claude-haiku-4-5-20251001":1.5402176000000003},"sessions":3,"prompts":25},{"date":"2026-10-07","input":502,"output":43987,"cacheRead":3496423,"cacheWrite":307983,"calls":58,"cost":2.5038,"byModel":{"claude-haiku-4-5-20251001":3935518},"costByModel":{"claude-haiku-4-5-20251001":2.5037731},"sessions":1,"prompts":18},{"date":"2026-10-10","input":206,"output":57849,"cacheRead":4984749,"cacheWrite":446810,"calls":102,"cost":4.1739,"byModel":{"claude-haiku-5-5":5557464},"costByModel":{"claude-haiku-5-5":4.17386668},"sessions":4,"prompts":32},{"date":"2026-10-11","input":122,"output":36146,"cacheRead":3753589,"cacheWrite":380685,"calls":61,"cost":4.4923,"byModel":{"claude-haiku-5-5":1163661,"claude-opus-5-5":3055401},"costByModel":{"claude-haiku-5-5":1.1709122349999999,"claude-opus-5-5":3.3213880000000002},"sessions":5,"prompts":14},{"date":"2026-10-13","input":10,"output":2800,"cacheRead":201276,"cacheWrite":29349,"calls":5,"cost":0.2204,"byModel":{"claude-haiku-5-5":237651},"costByModel":{"claude-haiku-5-5":0.22036357499999998},"sessions":1,"prompts":2},{"date":"2026-10-15","input":48,"output":15137,"cacheRead":1488377,"cacheWrite":77599,"calls":24,"cost":1.0178,"byModel":{"claude-haiku-5-5":1625945},"costByModel":{"claude-haiku-5-5":1.01782043},"sessions":1,"prompts":7},{"date":"2026-10-17","input":100,"output":36691,"cacheRead":6726060,"cacheWrite":646732,"calls":46,"cost":7.4236,"byModel":{"claude-haiku-5-5":7518700},"costByModel":{"claude-haiku-5-5":7.423642759999998},"sessions":2,"prompts":12},{"date":"2026-10-18","input":22,"output":4732,"cacheRead":976087,"cacheWrite":146410,"calls":11,"cost":2.0706,"byModel":{"claude-haiku-5-5":1127251},"costByModel":{"claude-haiku-5-5":2.0705535},"sessions":1,"prompts":4}],"modelos":[{"input":108259,"output":292157,"cacheRead":15295837,"cacheWrite":1534419,"calls":214,"cost":16.0772,"model":"claude-haiku-5-5","verificado":false},{"input":76,"output":14473,"cacheRead":1270005,"cacheWrite":173325,"calls":38,"cost":2.2425,"model":"claude-opus-5","verificado":true},{"input":88462,"output":185016,"cacheRead":6221205,"cacheWrite":899980,"calls":129,"cost":5.4582,"model":"claude-haiku-4-5-20251001","verificado":true},{"input":98,"output":35466,"cacheRead":4608791,"cacheWrite":374849,"calls":48,"cost":4.7842,"model":"claude-opus-5-5","verificado":true}],"proyectos":[{"key":"C--Users-Guillermo-aeterna","nombre":"aeterna","tokens":30643402,"salida":263229,"costo":24.5697,"llamadas":429,"sesiones":24,"ultimo":"2026-10-18T21:44:21.473Z","memorias":4}],"horas":[71104,0,0,0,0,0,0,0,0,0,0,0,1323946,2042200,941057,2855291,0,233435,245041,4398212,6194376,1753990,5501903,5082847],"subagentes":{"input":70,"output":23862,"cacheRead":480065,"cacheWrite":165923,"calls":15,"cost":0.7838},"sesiones":[{"id":"db72ee80-810b-4681-8c11-a54491a4c51d","titulo":"Superpowers y suscripción de pago","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-18T18:27:24.701Z","fin":"2026-10-18T22:08:57.191Z","mensajes":4,"tokens":1127251,"salida":4732,"llamadas":11,"costo":2.0706,"costoSub":0,"contextoMax":105438,"modelo":"claude-haiku-5-5","costoRegistrado":null},{"id":"8fc2ef4d-738c-4e83-afe9-f35971581fdf","titulo":"Instalar Scrapling de GitHub","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-18T02:03:24.201Z","fin":"2026-10-18T04:03:24.547Z","mensajes":10,"tokens":6820531,"salida":34434,"llamadas":42,"costo":6.1883,"costoSub":0.6135,"contextoMax":245697,"modelo":"claude-haiku-5-5","costoRegistrado":0.9930639100000002},{"id":"461c261f-d78c-45cf-99b9-fc4f14511945","titulo":"(sin título)","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-18T01:53:17.543Z","fin":"2026-10-18T01:59:31.722Z","mensajes":1,"tokens":589052,"salida":2257,"llamadas":4,"costo":1.2354,"costoSub":0,"contextoMax":147631,"modelo":"claude-haiku-5-5","costoRegistrado":0.18397885000000003},{"id":"250136e8-dbd1-4672-bfea-9b362abb25e8","titulo":"Addyosmani agent-skills installation","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-16T04:03:59.277Z","fin":"2026-10-16T04:27:31.159Z","mensajes":7,"tokens":1581161,"salida":15137,"llamadas":24,"costo":1.0178,"costoSub":0,"contextoMax":80105,"modelo":"claude-haiku-5-5","costoRegistrado":0.053112080000000006},{"id":"29640b49-3508-461c-8ee6-aaa655d9b21c","titulo":"Plugin diagram-design instalado","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-13T23:47:58.363Z","fin":"2026-10-13T23:53:05.137Z","mensajes":2,"tokens":233435,"salida":2800,"llamadas":5,"costo":0.2204,"costoSub":0,"contextoMax":49316,"modelo":"claude-haiku-5-5","costoRegistrado":0.007892025},{"id":"03f61974-5428-4325-89b6-9bf4b64e7f0c","titulo":"Prueba de HeyGen en Claude desktop","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-12T04:36:14.318Z","fin":"2026-10-12T04:39:10.311Z","mensajes":1,"tokens":86151,"salida":1386,"llamadas":2,"costo":0.1213,"costoSub":0,"contextoMax":42778,"modelo":"claude-haiku-5-5","costoRegistrado":0.0046256100000000005},{"id":"f05b255b-f178-4e6d-b01f-cbd1d0d8f270","titulo":"MCP server list","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-12T04:32:15.884Z","fin":"2026-10-12T04:34:16.749Z","mensajes":3,"tokens":244640,"salida":1210,"llamadas":6,"costo":0.171,"costoSub":0,"contextoMax":41670,"modelo":"claude-haiku-5-5","costoRegistrado":0.007163755},{"id":"bba1ea71-71ea-4a11-b17a-53afaebcdc43","titulo":"Instalación","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-12T00:59:42.641Z","fin":"2026-10-12T02:50:56.234Z","mensajes":7,"tokens":3279920,"salida":28841,"llamadas":41,"costo":3.4714,"costoSub":0,"contextoMax":119413,"modelo":"claude-opus-5-5","costoRegistrado":2.2224131049999998},{"id":"e39fb2e8-3d5a-461c-881a-6ae661e2e9c5","titulo":"Ctx7 Claude setup","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-11T18:26:27.552Z","fin":"2026-10-11T20:15:52.498Z","mensajes":2,"tokens":488727,"salida":3336,"llamadas":11,"costo":0.485,"costoSub":0,"contextoMax":51552,"modelo":"claude-haiku-5-5","costoRegistrado":0.018249065},{"id":"91b5ec4a-5d38-4962-909c-59fb45e83406","titulo":"Agente de carruseles para Instagram","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-11T05:21:50.130Z","fin":"2026-10-11T06:11:57.127Z","mensajes":2,"tokens":731163,"salida":21818,"llamadas":13,"costo":0.9089,"costoSub":0,"contextoMax":69731,"modelo":"claude-haiku-5-5","costoRegistrado":0.030373249999999997},{"id":"ad95a584-3da0-4324-bef8-70da329c51e4","titulo":"MCP server list","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-10T20:18:07.655Z","fin":"2026-10-11T04:50:15.930Z","mensajes":20,"tokens":3186057,"salida":23881,"llamadas":54,"costo":2.5355,"costoSub":0,"contextoMax":83545,"modelo":"claude-haiku-5-5","costoRegistrado":0.0959034},{"id":"6a0eced9-f56a-41a1-8be5-2b7143d44c26","titulo":"(sin título)","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-10T19:44:15.769Z","fin":"2026-10-10T19:44:25.398Z","mensajes":1,"tokens":63297,"salida":1026,"llamadas":2,"costo":0.0882,"costoSub":0,"contextoMax":31396,"modelo":"claude-haiku-5-5","costoRegistrado":0.0028437049999999998},{"id":"298cae45-da81-4955-ae7b-92e1f04b2550","titulo":"Codex CLI installation and login","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-10T19:35:00.829Z","fin":"2026-10-10T19:55:15.020Z","mensajes":10,"tokens":1580201,"salida":12497,"llamadas":34,"costo":0.8848,"costoSub":0,"contextoMax":59370,"modelo":"claude-haiku-5-5","costoRegistrado":0.035804375},{"id":"c7888a54-507a-465f-a585-d6dafa035078","titulo":"Validar instalación de MoneyPrinterTurbo","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-08T03:38:31.293Z","fin":"2026-10-08T05:46:23.087Z","mensajes":18,"tokens":3848895,"salida":43987,"llamadas":58,"costo":2.5038,"costoSub":0,"contextoMax":106562,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":1.2518865500000003},{"id":"3251e4aa-0f94-48b2-a787-bcedaac31540","titulo":"Recomendaciones para hoy","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-06T04:18:02.015Z","fin":"2026-10-06T04:21:02.942Z","mensajes":2,"tokens":63555,"salida":1232,"llamadas":2,"costo":0.0997,"costoSub":0,"contextoMax":31726,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":0.04986669999999999},{"id":"bb2b8f55-59ef-46fb-bd63-eaea9833b8a1","titulo":"Playwright MCP installation check","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-06T01:22:48.304Z","fin":"2026-10-06T02:42:02.818Z","mensajes":9,"tokens":765800,"salida":5518,"llamadas":22,"costo":0.415,"costoSub":0,"contextoMax":38920,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":0.20748600000000003},{"id":"61ca807e-2702-4402-81d5-3b1f3959091a","titulo":"Instalar taste-skill","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-10-06T00:55:18.666Z","fin":"2026-10-06T02:44:11.096Z","mensajes":14,"tokens":1029267,"salida":10887,"llamadas":24,"costo":1.0255,"costoSub":0,"contextoMax":53760,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":0.5127561},{"id":"b369b4e6-3296-4661-add9-7fbd0fd81989","titulo":"Nuevo negocio","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-27T05:02:05.441Z","fin":"2026-09-28T00:41:06.297Z","mensajes":5,"tokens":651270,"salida":23533,"llamadas":16,"costo":0.4214,"costoSub":0.1703,"contextoMax":58455,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":null},{"id":"2cab29cb-8618-43ce-be7d-00fe47f6cad0","titulo":"Revisión instalación /caveman","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-26T05:35:11.067Z","fin":"2026-09-26T06:53:39.221Z","mensajes":2,"tokens":61468,"salida":779,"llamadas":2,"costo":0.0562,"costoSub":0,"contextoMax":30644,"modelo":"claude-haiku-4-5-20251001","costoRegistrado":0.028105400000000003},{"id":"54564d10-ef25-4be9-963c-8d0bb9df15fa","titulo":"Instalar caveman de GitHub","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-26T04:16:59.162Z","fin":"2026-09-26T05:34:40.186Z","mensajes":6,"tokens":2753682,"salida":9465,"llamadas":18,"costo":2.3624,"costoSub":0,"contextoMax":203561,"modelo":"claude-opus-5-5","costoRegistrado":1.9278087500000003},{"id":"28066817-7dda-4ae6-a2bc-b482354d16b2","titulo":"Scrapegraph-ai installation","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-24T02:46:22.370Z","fin":"2026-09-25T04:19:05.976Z","mensajes":1,"tokens":307914,"salida":2019,"llamadas":9,"costo":0.5902,"costoSub":0,"contextoMax":37057,"modelo":"claude-opus-5","costoRegistrado":0.590248},{"id":"15cf41fd-321c-481f-a5f9-f107a9112fbc","titulo":"(sin título)","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-22T01:06:07.308Z","fin":"2026-09-22T01:09:53.423Z","mensajes":0,"tokens":132770,"salida":748,"llamadas":4,"costo":0.1662,"costoSub":0,"contextoMax":33434,"modelo":"claude-opus-5","costoRegistrado":null},{"id":"e4502f6a-7923-4171-b903-11ecdb6a87a3","titulo":"(sin título)","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-21T02:43:26.197Z","fin":"2026-09-21T02:47:40.020Z","mensajes":0,"tokens":132754,"salida":760,"llamadas":4,"costo":0.1872,"costoSub":0,"contextoMax":33426,"modelo":"claude-opus-5","costoRegistrado":0.18722649999999996},{"id":"73d38d6a-dc70-4cb4-b0b3-0af935396c21","titulo":"Aeterna CRM login endpoint","proyecto":"aeterna","projKey":"C--Users-Guillermo-aeterna","inicio":"2026-09-20T17:52:18.846Z","fin":"2026-09-20T19:56:13.434Z","mensajes":5,"tokens":884441,"salida":10946,"llamadas":21,"costo":1.3359,"costoSub":0,"contextoMax":53779,"modelo":"claude-opus-5","costoRegistrado":1.3358697499999999}],"herramientas":[{"nombre":"Bash","count":167,"recent":144,"last":"2026-10-18T18:31:42.848Z"},{"nombre":"PowerShell","count":47,"recent":35,"last":"2026-10-18T21:44:15.140Z"},{"nombre":"Read","count":30,"recent":23,"last":"2026-10-18T01:56:13.481Z"},{"nombre":"WebSearch","count":27,"recent":6,"last":"2026-10-16T04:08:42.532Z"},{"nombre":"Edit","count":15,"recent":15,"last":"2026-10-12T01:15:10.646Z"},{"nombre":"Write","count":14,"recent":14,"last":"2026-10-18T04:03:00.873Z"},{"nombre":"Grep","count":11,"recent":8,"last":"2026-10-18T01:56:19.295Z"},{"nombre":"ToolSearch","count":8,"recent":6,"last":"2026-10-12T02:36:43.963Z"},{"nombre":"Glob","count":6,"recent":5,"last":"2026-10-18T03:59:14.459Z"},{"nombre":"WebFetch","count":4,"recent":1,"last":"2026-10-11T19:08:46.061Z"},{"nombre":"mcp__claude_ai_Firecrawl__firecrawl_search","count":3,"recent":3,"last":"2026-10-18T02:43:17.589Z"},{"nombre":"Agent","count":2,"recent":1,"last":"2026-10-18T03:59:06.811Z"},{"nombre":"mcp__playwright__browser_navigate","count":2,"recent":2,"last":"2026-10-12T01:14:55.951Z"},{"nombre":"AskUserQuestion","count":1,"recent":0,"last":"2026-09-26T04:31:42.975Z"},{"nombre":"SubagentHandback","count":1,"recent":1,"last":"2026-10-18T04:03:11.829Z"},{"nombre":"mcp__claude_ai_Firecrawl__firecrawl_scrape","count":1,"recent":1,"last":"2026-10-18T02:43:29.965Z"},{"nombre":"Skill","count":1,"recent":1,"last":"2026-10-12T01:09:36.702Z"},{"nombre":"mcp__playwright__browser_take_screenshot","count":1,"recent":1,"last":"2026-10-12T01:15:00.144Z"},{"nombre":"ListAgents","count":1,"recent":1,"last":"2026-10-18T21:44:11.881Z"}],"inventario":{"skills":[{"name":"context7-mcp","origen":"usuario","tokens":70,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-11T19:08:37.400Z","estado":"quitar"},{"name":"ui-ux-pro-max","origen":"usuario","tokens":128,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:40:26.717Z","estado":"quitar"},{"name":"animate","origen":"proyecto","tokens":121,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"animate-expo","origen":"proyecto","tokens":135,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"animation-vocabulary","origen":"proyecto","tokens":112,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"api-and-interface-design","origen":"proyecto","tokens":70,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"apple-design","origen":"proyecto","tokens":110,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"ask-sonner","origen":"proyecto","tokens":109,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"brandkit","origen":"proyecto","tokens":119,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"browser-testing-with-devtools","origen":"proyecto","tokens":90,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"canvas-design","origen":"proyecto","tokens":77,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T02:18:16.166Z","estado":"quitar"},{"name":"ci-cd-and-automation","origen":"proyecto","tokens":58,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"code-review-and-quality","origen":"proyecto","tokens":88,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"code-simplification","origen":"proyecto","tokens":67,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"constraint-driven-development","origen":"proyecto","tokens":228,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"context-engineering","origen":"proyecto","tokens":55,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"debugging-and-error-recovery","origen":"proyecto","tokens":89,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"deprecation-and-migration","origen":"proyecto","tokens":91,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"design-taste-frontend","origen":"proyecto","tokens":74,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"design-taste-frontend-v1","origen":"proyecto","tokens":71,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:13:15.633Z","estado":"quitar"},{"name":"documentation-and-adrs","origen":"proyecto","tokens":79,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"doubt-driven-development","origen":"proyecto","tokens":129,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"emil-design-eng","origen":"proyecto","tokens":44,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"find-animation-opportunities","origen":"proyecto","tokens":98,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"frontend-ui-engineering","origen":"proyecto","tokens":83,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"full-output-enforcement","origen":"proyecto","tokens":58,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"git-workflow-and-versioning","origen":"proyecto","tokens":114,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"gpt-taste","origen":"proyecto","tokens":81,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"high-end-visual-design","origen":"proyecto","tokens":65,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"idea-refine","origen":"proyecto","tokens":88,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"image-to-code","origen":"proyecto","tokens":143,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"imagegen-frontend-mobile","origen":"proyecto","tokens":167,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"imagegen-frontend-web","origen":"proyecto","tokens":172,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"impeccable","origen":"proyecto","tokens":227,"usos":1,"usosVentana":1,"ultimo":"2026-10-11T19:08:37.400Z","desde":"2026-09-20T18:14:25.886Z","estado":"evaluar"},{"name":"improve-animations","origen":"proyecto","tokens":117,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"incremental-implementation","origen":"proyecto","tokens":93,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-16T04:06:38.923Z","estado":"evaluar"},{"name":"industrial-brutalist-ui","origen":"proyecto","tokens":215,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:07:05.980Z","estado":"quitar"},{"name":"codex:rescue","origen":"plugin:codex","tokens":30,"usos":1,"usosVentana":1,"ultimo":"2026-10-18T02:40:34.845Z","desde":"2026-10-18T18:31:17.938Z","estado":"evaluar"},{"name":"codex:setup","origen":"plugin:codex","tokens":47,"usos":1,"usosVentana":1,"ultimo":"2026-10-18T02:39:12.951Z","desde":"2026-10-18T18:31:17.938Z","estado":"evaluar"},{"name":"frontend-design:frontend-design","origen":"plugin:frontend-design","tokens":60,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"superpowers:brainstorming","origen":"plugin:superpowers","tokens":70,"usos":2,"usosVentana":1,"ultimo":"2026-10-18T02:13:25.578Z","desde":"2026-09-20T18:14:25.886Z","estado":"evaluar"},{"name":"superpowers:dispatching-parallel-agents","origen":"plugin:superpowers","tokens":145,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"quitar"},{"name":"diagram-design:diagram-design","origen":"plugin:diagram-design","tokens":1004,"usos":1,"usosVentana":1,"ultimo":"2026-10-12T01:09:36.702Z","desde":"2026-10-12T01:05:35.158Z","estado":"evaluar"},{"name":"dataviz","origen":"integrada","tokens":362,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"artifact-design","origen":"integrada","tokens":49,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.413Z","estado":"integrada"},{"name":"artifact-diagramming","origen":"integrada","tokens":51,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.413Z","estado":"integrada"},{"name":"artifact-capabilities","origen":"integrada","tokens":184,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.413Z","estado":"integrada"},{"name":"update-config","origen":"integrada","tokens":177,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"keybindings-help","origen":"integrada","tokens":62,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"code-review","origen":"integrada","tokens":249,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"simplify","origen":"integrada","tokens":47,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"fewer-permission-prompts","origen":"integrada","tokens":48,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"loop","origen":"integrada","tokens":86,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"schedule","origen":"integrada","tokens":95,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.413Z","estado":"integrada"},{"name":"claude-api","origen":"integrada","tokens":271,"usos":5,"usosVentana":2,"ultimo":"2026-10-18T02:06:22.310Z","desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"run","origen":"integrada","tokens":92,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","estado":"integrada"},{"name":"plugin-authoring","origen":"integrada","tokens":426,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-06T01:23:29.307Z","estado":"integrada"}],"mcp":[{"id":"claude_ai_Claude_Docs","nombre":"Claude Docs","origen":"Cuenta claude.ai","herramientas":8,"tokens":542,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Composio","nombre":"Composio","origen":"Cuenta claude.ai","herramientas":11,"tokens":138,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Descript","nombre":"Descript","origen":"Cuenta claude.ai","herramientas":2,"tokens":22,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Firecrawl","nombre":"Firecrawl","origen":"Cuenta claude.ai","herramientas":9,"tokens":821,"soloInstrucciones":false,"usos":4,"usosVentana":4,"ultimo":"2026-10-18T02:43:29.965Z","desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{"firecrawl_search":3,"firecrawl_scrape":1},"estado":"mantener"},{"id":"claude_ai_Google_Docs","nombre":"Google Docs","origen":"Cuenta claude.ai","herramientas":2,"tokens":43,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Google_Sheets","nombre":"Google Sheets","origen":"Cuenta claude.ai","herramientas":9,"tokens":133,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Google_Slides","nombre":"Google Slides","origen":"Cuenta claude.ai","herramientas":4,"tokens":63,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Higgsfield","nombre":"Higgsfield","origen":"Cuenta claude.ai","herramientas":148,"tokens":2778,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_HyperFrames_by_HeyGen","nombre":"HyperFrames by HeyGen","origen":"Cuenta claude.ai","herramientas":11,"tokens":1195,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Make","nombre":"Make","origen":"Cuenta claude.ai","herramientas":112,"tokens":1162,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Meta_Ads","nombre":"Meta Ads","origen":"Cuenta claude.ai","herramientas":98,"tokens":2313,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Metricool_Social_Media_Management","nombre":"Metricool Social Media Management","origen":"Cuenta claude.ai","herramientas":2,"tokens":34,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Miro","nombre":"Miro","origen":"Cuenta claude.ai","herramientas":50,"tokens":578,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_OpenSEO","nombre":"OpenSEO","origen":"Cuenta claude.ai","herramientas":77,"tokens":1062,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Semrush","nombre":"Semrush","origen":"Cuenta claude.ai","herramientas":14,"tokens":663,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Supabase","nombre":"Supabase","origen":"Cuenta claude.ai","herramientas":28,"tokens":621,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"claude_ai_Vercel","nombre":"Vercel","origen":"Cuenta claude.ai","herramientas":237,"tokens":3069,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T01:56:09.412Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"context7","nombre":"context7","origen":"Global (terminal)","herramientas":2,"tokens":176,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-12T01:05:35.158Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"heygen","nombre":"heygen","origen":"Global (terminal)","herramientas":110,"tokens":1391,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-12T04:39:00.513Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"kapso","nombre":"kapso","origen":"Proyecto (terminal)","herramientas":161,"tokens":1482,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","herramientasUsadas":{},"estado":"quitar"},{"id":"motionsites","nombre":"motionsites","origen":"Global (terminal)","herramientas":4,"tokens":151,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","herramientasUsadas":{},"estado":"quitar"},{"id":"playwright","nombre":"playwright","origen":"Proyecto (terminal)","herramientas":25,"tokens":220,"soloInstrucciones":false,"usos":3,"usosVentana":3,"ultimo":"2026-10-12T01:15:00.144Z","desde":"2026-10-06T04:20:57.986Z","herramientasUsadas":{"browser_navigate":2,"browser_take_screenshot":1},"estado":"mantener"},{"id":"plugin_legal_docusign","nombre":"plugin legal docusign","origen":"Proyecto (terminal)","herramientas":2,"tokens":23,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_marketing_ahrefs","nombre":"plugin marketing ahrefs","origen":"Proyecto (terminal)","herramientas":2,"tokens":24,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_marketing_amplitude","nombre":"plugin marketing amplitude","origen":"Proyecto (terminal)","herramientas":2,"tokens":26,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_marketing_supermetrics","nombre":"plugin marketing supermetrics","origen":"Proyecto (terminal)","herramientas":2,"tokens":27,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_pdf-viewer_pdf","nombre":"plugin pdf-viewer pdf","origen":"Proyecto (terminal)","herramientas":3,"tokens":29,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_expensify","nombre":"plugin small-business expensify","origen":"Proyecto (terminal)","herramientas":2,"tokens":28,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_gmail","nombre":"plugin small-business gmail","origen":"Proyecto (terminal)","herramientas":23,"tokens":288,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_google-calendar","nombre":"plugin small-business google-calendar","origen":"Proyecto (terminal)","herramientas":9,"tokens":129,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_google-drive","nombre":"plugin small-business google-drive","origen":"Proyecto (terminal)","herramientas":8,"tokens":115,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_intuit-mailchimp","nombre":"plugin small-business intuit-mailchimp","origen":"Proyecto (terminal)","herramientas":2,"tokens":32,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_intuit-quickbooks","nombre":"plugin small-business intuit-quickbooks","origen":"Proyecto (terminal)","herramientas":2,"tokens":32,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_monday-com","nombre":"plugin small-business monday-com","origen":"Proyecto (terminal)","herramientas":2,"tokens":29,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_ringex-chat","nombre":"plugin small-business ringex-chat","origen":"Proyecto (terminal)","herramientas":2,"tokens":29,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_shopify","nombre":"plugin small-business shopify","origen":"Proyecto (terminal)","herramientas":40,"tokens":565,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_tiktok","nombre":"plugin small-business tiktok","origen":"Proyecto (terminal)","herramientas":2,"tokens":27,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_zapier","nombre":"plugin small-business zapier","origen":"Proyecto (terminal)","herramientas":2,"tokens":27,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_zoho-books","nombre":"plugin small-business zoho-books","origen":"Proyecto (terminal)","herramientas":2,"tokens":29,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_zoho-crm","nombre":"plugin small-business zoho-crm","origen":"Proyecto (terminal)","herramientas":2,"tokens":28,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_zoho-desk","nombre":"plugin small-business zoho-desk","origen":"Proyecto (terminal)","herramientas":2,"tokens":28,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin_small-business_zoho-projects","nombre":"plugin small-business zoho-projects","origen":"Proyecto (terminal)","herramientas":2,"tokens":30,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T02:38:47.493Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"stitch","nombre":"stitch","origen":"Global (terminal)","herramientas":16,"tokens":124,"soloInstrucciones":false,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-09-20T18:14:25.886Z","herramientasUsadas":{},"estado":"quitar"},{"id":"plugin:small-business:gmail","nombre":"plugin:small-business:gmail","origen":"Proyecto (terminal)","herramientas":0,"tokens":40,"soloInstrucciones":true,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T21:41:55.871Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin:small-business:google-calendar","nombre":"plugin:small-business:google-calendar","origen":"Proyecto (terminal)","herramientas":0,"tokens":46,"soloInstrucciones":true,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T21:41:55.871Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin:small-business:google-drive","nombre":"plugin:small-business:google-drive","origen":"Proyecto (terminal)","herramientas":0,"tokens":42,"soloInstrucciones":true,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T21:41:55.871Z","herramientasUsadas":{},"estado":"evaluar"},{"id":"plugin:small-business:shopify","nombre":"plugin:small-business:shopify","origen":"Proyecto (terminal)","herramientas":0,"tokens":284,"soloInstrucciones":true,"usos":0,"usosVentana":0,"ultimo":null,"desde":"2026-10-18T21:41:55.871Z","herramientasUsadas":{},"estado":"evaluar"}],"plugins":[{"id":"frontend-design@claude-plugins-official","nombre":"frontend-design","activo":true,"version":"ea10b213686c","instalado":"2026-09-04T03:51:33.774Z","skills":1,"skillsUsadas":0,"hooks":[],"tokensListado":60,"tokensHookPorSesion":0,"sesionesConHook":0,"usos":0,"usosVentana":0,"ultimo":null,"estado":"quitar"},{"id":"superpowers@claude-plugins-official","nombre":"superpowers","activo":true,"version":"7.0.0","instalado":"2026-09-05T04:17:38.192Z","skills":2,"skillsUsadas":1,"hooks":["SessionStart"],"tokensListado":215,"tokensHookPorSesion":848,"sesionesConHook":26,"usos":2,"usosVentana":1,"ultimo":"2026-10-18T02:13:25.578Z","estado":"evaluar"},{"id":"diagram-design@diagram-design","nombre":"diagram-design","activo":true,"version":"2.6.74","instalado":"2026-10-12T01:01:19.976Z","skills":1,"skillsUsadas":1,"hooks":[],"tokensListado":1004,"tokensHookPorSesion":0,"sesionesConHook":0,"usos":1,"usosVentana":1,"ultimo":"2026-10-12T01:09:36.702Z","estado":"evaluar"},{"id":"claude-code-setup@claude-plugins-official","nombre":"claude-code-setup","activo":true,"version":"1.0.0","instalado":"2026-10-12T02:40:54.650Z","skills":0,"skillsUsadas":0,"hooks":[],"tokensListado":0,"tokensHookPorSesion":0,"sesionesConHook":0,"usos":0,"usosVentana":0,"ultimo":null,"estado":"evaluar"},{"id":"codex@openai-codex","nombre":"codex","activo":true,"version":"1.0.6","instalado":"2026-10-18T02:38:02.892Z","skills":2,"skillsUsadas":2,"hooks":["SessionStart","SessionEnd","Stop"],"tokensListado":77,"tokensHookPorSesion":0,"sesionesConHook":0,"usos":2,"usosVentana":2,"ultimo":"2026-10-18T02:40:34.845Z","estado":"evaluar"}],"hooks":[{"origen":"Global","evento":"SessionStart","filtro":"startup","comando":"node \"C:/Users/Guillermo/.claude/tablero/generar.js\"","mensaje":""},{"origen":"Proyecto (local)","evento":"PostToolUse","filtro":"Edit|Write","comando":"[ ! -f \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/impeccable\" ] || \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/im","mensaje":"Checking UI changes"},{"origen":"Proyecto (local)","evento":"Stop","filtro":"","comando":"[ ! -f \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/impeccable\" ] || \"${CLAUDE_PROJECT_DIR}/.claude/skills/impeccable/scripts/im","mensaje":"Design deep pass"},{"origen":"Plugin superpowers","evento":"SessionStart","filtro":"","comando":"","mensaje":""},{"origen":"Plugin codex","evento":"SessionStart","filtro":"","comando":"","mensaje":""},{"origen":"Plugin codex","evento":"SessionEnd","filtro":"","comando":"","mensaje":""},{"origen":"Plugin codex","evento":"Stop","filtro":"","comando":"","mensaje":""}],"inyecciones":[{"evento":"SessionStart","veces":26,"sesiones":26,"tokensPromedio":848,"por":[{"origen":"superpowers","veces":26,"tokens":848}]},{"evento":"PostToolUse","veces":6,"sesiones":1,"tokensPromedio":118,"por":[{"origen":"impeccable","veces":6,"tokens":118}]},{"evento":"Stop","veces":1,"sesiones":1,"tokensPromedio":234,"por":[{"origen":"impeccable","veces":1,"tokens":234}]}],"agentes":[{"nombre":"ads-copy-drafter","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"ads-performance-reporter","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"impeccable-asset-producer","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"impeccable-documenter","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"impeccable-finish-reviewer","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"impeccable-manual-edit-applier","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"instagram-carousel","personalizado":true,"count":0,"recent":0,"last":null},{"nombre":"marketing-director","personalizado":true,"count":1,"recent":1,"last":"2026-10-18T03:59:06.811Z"},{"nombre":"general-purpose","personalizado":false,"count":1,"recent":0,"last":"2026-09-27T05:11:50.705Z"}],"cwd":"C:\\Users\\Guillermo\\aeterna"},"recomendaciones":[{"nivel":"alta","area":"Seguridad","titulo":"1 posible llave pegada en tus mensajes","detalle":"Token JWT (posible llave de Supabase) · 2026-10-07 · «Validar instalación de MoneyPrinterTurbo»","accion":"Genera una llave nueva en el servicio y borra la anterior. Las transcripciones guardan el texto tal cual en ~/.claude/projects.","ahorro":null},{"nivel":"media","area":"Hábitos","titulo":"1 sesiones pasaron de 200 k de contexto","detalle":"Suman US$6.19 (26 % del costo de 14 días). Usaste /clear o /compact 1 vez. La más grande: «Instalar Scrapling de GitHub» con 246 k.","accion":"Usa /clear al cambiar de tema y /compact cuando una sesión se alargue; cada respuesta vuelve a leer todo el contexto.","ahorro":{"usdMes":3.978192857142857,"nota":"estimado si recortas 30 % del contexto"}},{"nivel":"media","area":"Conectores","titulo":"3 conectores sin uso en 14 días","detalle":"kapso (1,482 tokens por respuesta)\nmotionsites (151 tokens por respuesta)\nstitch (124 tokens por respuesta)","accion":"Desconéctalos en claude.ai → Configuración → Conectores, o apágalos en la terminal con /mcp.","ahorro":{"tokensRespuesta":1757,"tokensMes":1336575,"usdMes":1.3459875}},{"nivel":"media","area":"Plugins","titulo":"Plugin superpowers: 1 de 2 skills usadas","detalle":"1 usos en 14 días. Tiene hooks (SessionStart) que agregan ≈ 848 tokens al iniciar sesión.","accion":"Escribe /plugin y desactívalo si no lo extrañas.","ahorro":{"tokensRespuesta":1063,"tokensMes":808639.2857142858,"usdMes":0.8143339285714286}},{"nivel":"media","area":"Plugins","titulo":"Plugin codex: 2 de 2 skills usadas","detalle":"2 usos en 14 días. Tiene hooks (SessionStart, SessionEnd, Stop) que agregan ≈ 0 tokens al iniciar sesión.","accion":"Escribe /plugin y desactívalo si no lo extrañas.","ahorro":{"tokensRespuesta":77,"tokensMes":58575,"usdMes":0.0589875}},{"nivel":"baja","area":"Skills","titulo":"21 skills instaladas que nunca se usan","detalle":"context7-mcp, ui-ux-pro-max, animate, animate-expo, animation-vocabulary, apple-design, ask-sonner, brandkit, canvas-design, design-taste-frontend, design-taste-frontend-v1, emil-design-eng, find-animation-opportunities, full-output-enforcement, gpt-taste, high-end-visual-design, image-to-code, imagegen-frontend-mobile, imagegen-frontend-web, improve-animations, industrial-brutalist-ui","accion":"Borra sus carpetas o accesos directos en C:\\Users\\Guillermo\\aeterna\\.claude\\skills.","ahorro":{"tokensRespuesta":2286,"tokensMes":1738992.8571428573,"usdMes":1.751239285714286}},{"nivel":"baja","area":"Plugins","titulo":"Plugin diagram-design: 1 de 1 skills usadas","detalle":"1 usos en 14 días.","accion":"Escribe /plugin y desactívalo si no lo extrañas.","ahorro":{"tokensRespuesta":1004,"tokensMes":763757.1428571428,"usdMes":0.7691357142857144}},{"nivel":"baja","area":"Plugins","titulo":"Plugin frontend-design: 0 de 1 skills usadas","detalle":"0 usos en 14 días.","accion":"Escribe /plugin y desactívalo si no lo extrañas.","ahorro":{"tokensRespuesta":60,"tokensMes":45642.857142857145,"usdMes":0.04596428571428572}},{"nivel":"baja","area":"Plugins","titulo":"Plugin claude-code-setup: 0 de 0 skills usadas","detalle":"0 usos en 14 días.","accion":"Escribe /plugin y desactívalo si no lo extrañas.","ahorro":{"tokensRespuesta":0,"tokensMes":0,"usdMes":0}}],"seguridad":[{"tipo":"Token JWT (posible llave de Supabase)","fecha":"2026-10-08T05:32:44.633Z","titulo":"Validar instalación de MoneyPrinterTurbo"}],"memoria":[{"proyecto":"aeterna","archivo":"crm-construccion-location.md","bytes":2840,"modificado":"2026-09-12T19:05:55.486Z","nombre":"crm-construccion-location","tipo":"project","descripcion":"El \"proyecto de CRM\" del usuario vive fuera del repo aeterna, en Desktop/aeterna-crm-construccion; es un DEMO sobre Supabase, activado, publicado en Vercel y verificado en móvil","tokens":704},{"proyecto":"aeterna","archivo":"MEMORY.md","bytes":534,"modificado":"2026-09-16T23:17:03.440Z","nombre":null,"tipo":"indice","descripcion":"","tokens":129},{"proyecto":"aeterna","archivo":"responder-en-espanol.md","bytes":694,"modificado":"2026-09-12T17:35:29.404Z","nombre":"responder-en-espanol","tipo":"feedback","descripcion":"Guillermo pide que todas las respuestas sean en español para poder entenderlas","tokens":171},{"proyecto":"aeterna","archivo":"stitch-mcp.md","bytes":1427,"modificado":"2026-09-13T06:10:23.960Z","nombre":"stitch-mcp","tipo":"project","descripcion":"Google Stitch está conectado como MCP HTTP en scope local del repo aeterna (2026-09-13); existe además un proxy stdio sin registrar","tokens":353},{"proyecto":"aeterna","archivo":"tablero-claude.md","bytes":1895,"modificado":"2026-09-15T04:12:29.450Z","nombre":"tablero-claude","tipo":"reference","descripcion":"Tablero diario de consumo de Claude (tokens, costo, plan, extensiones, recomendaciones); cómo regenerarlo y republicar el link","tokens":471}],"disco":[{"nombre":"plugins","bytes":201898216},{"nombre":"skills","bytes":20978928},{"nombre":"projects","bytes":16246791},{"nombre":"cache","bytes":1381703},{"nombre":"backups","bytes":381534},{"nombre":"tablero","bytes":293319},{"nombre":"file-history","bytes":91659},{"nombre":"history.jsonl","bytes":81143},{"nombre":"telemetry","bytes":19312},{"nombre":"stats-cache.json","bytes":8003},{"nombre":"settings.json","bytes":4144},{"nombre":"shell-snapshots","bytes":2552},{"nombre":"rules","bytes":1679},{"nombre":"state","bytes":1222},{"nombre":"sessions","bytes":664},{"nombre":"session-env","bytes":307},{"nombre":".last-update-result.json","bytes":161},{"nombre":".last-cleanup","bytes":24}],"habitos":{"clearCompactVentana":1,"contextoAlto":200000,"llamadasDia":25.4}};
+const _usageRemote = await (async () => { try { if (!window.claude) return null; const db = await window.claude.use('db'); const s = await db.doc('dashboard/usage').get(); return s.exists && s.data() ? s.data() : null; } catch (e) { console.warn('usage db', e); return null; } })();
+if (_usageRemote) D = _usageRemote;
+const L = 'es-MX';
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = n => { n = n || 0; return n >= 1e6 ? (n/1e6).toLocaleString(L,{maximumFractionDigits:1})+' M' : n >= 1e3 ? (n/1e3).toLocaleString(L,{maximumFractionDigits:1})+' k' : Math.round(n).toLocaleString(L); };
+const full = n => Math.round(n || 0).toLocaleString(L);
+const usd = (n, d) => 'US$' + (n || 0).toLocaleString(L, {minimumFractionDigits: d ?? 2, maximumFractionDigits: d ?? 2});
+const pct = (n, d = 0) => (n || 0).toLocaleString(L, {maximumFractionDigits: d}) + ' %';
+const bytes = b => b >= 1048576 ? (b/1048576).toLocaleString(L,{maximumFractionDigits:1})+' MB' : b >= 1024 ? (b/1024).toLocaleString(L,{maximumFractionDigits:1})+' KB' : b+' B';
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const MONTHS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const isoDay = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const dayLabel = iso => { const [y,m,d] = iso.split('-').map(Number); return `${d} ${MONTHS[m-1]}`; };
+const dt = iso => { if (!iso) return '—'; const d = new Date(iso); return `${d.getDate()} ${MONTHS[d.getMonth()]}, ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
+const ago = iso => { if (!iso) return 'nunca'; const h = (Date.now() - new Date(iso)) / 36e5; if (h < 1) return 'hace minutos'; if (h < 24) return `hace ${Math.round(h)} h`; const d = Math.round(h/24); return d === 1 ? 'ayer' : `hace ${d} días`; };
+const modelName = m => m.replace('claude-','').replace(/-\d{8}$/,'').replace(/-(\d)-(\d)$/,' $1.$2').replace(/-(\d)$/,' $1').replace(/^./,c=>c.toUpperCase());
+const modelColor = m => /opus/.test(m) ? '--s1' : /sonnet/.test(m) ? '--s2' : /haiku/.test(m) ? '--s3' : '--s4';
+const store = { get(k, d) { try { return localStorage.getItem('tablero:'+k) ?? d; } catch { return d; } }, set(k, v) { try { localStorage.setItem('tablero:'+k, v); } catch {} } };
+const tot = d => (d.input||0) + (d.output||0) + (d.cacheRead||0) + (d.cacheWrite||0);
+const STATE_LABEL = {mantener:'Mantener', evaluar:'Evaluar', quitar:'Quitar', integrada:'Integrada', inactivo:'Inactivo'};
+
+// ---------- calendar of days ----------
+const byDate = Object.fromEntries(D.dias.map(d => [d.date, d]));
+const allDays = (() => { const out = []; if (!D.dias.length) return out;
+  const start = new Date(D.dias[0].date + 'T12:00'), end = new Date(D.hoy + 'T12:00');
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate()+1)) { const k = isoDay(d); out.push(byDate[k] || {date:k,input:0,output:0,cacheRead:0,cacheWrite:0,calls:0,cost:0,byModel:{},costByModel:{},sessions:0,prompts:0}); }
+  return out; })();
+const lastN = n => n ? allDays.slice(-n) : allDays;
+const sum = (arr, f) => arr.reduce((a, x) => a + (f == null ? x || 0 : typeof f === 'function' ? f(x) : x[f] || 0), 0);
+
+// ---------- header ----------
+const plan = D.plan;
+$('meta').innerHTML = [
+  `<span class="badge">${esc(plan.nombre)}${plan.facturacion === 'apple_subscription' ? ' · Apple' : ''}</span>`,
+  `<span>Actualizado ${dt(D.generado)}</span>`,
+  `<span>Historial desde ${D.dias.length ? dayLabel(D.dias[0].date) : '—'}</span>`,
+].join('');
+
+// ---------- KPIs ----------
+const todayD = byDate[D.hoy] || {cost:0,input:0,output:0,cacheRead:0,cacheWrite:0,sessions:0,prompts:0,calls:0};
+const prev7 = allDays.filter(d => d.date < D.hoy).slice(-7);
+const avg7cost = sum(prev7, 'cost') / 7, avg7tok = sum(prev7, tot) / 7;
+const deltaHtml = (v, avg) => { if (!avg) return ''; const r = (v - avg) / avg * 100; if (Math.abs(r) < 5) return '<span class="delta">≈ promedio</span>';
+  return `<span class="delta ${r > 0 ? 'up' : 'down'}">${r > 0 ? '▲' : '▼'} ${pct(Math.abs(r))} vs promedio 7 d</span>`; };
+const cycleDays = allDays.filter(d => d.date >= plan.ciclo.inicio && d.date <= D.hoy);
+const cycleCost = sum(cycleDays, 'cost');
+const cycleLen = Math.round((new Date(plan.ciclo.fin) - new Date(plan.ciclo.inicio)) / 864e5);
+const elapsed = Math.max(1, Math.round((new Date(D.hoy) - new Date(plan.ciclo.inicio)) / 864e5) + 1);
+const projection = cycleCost / elapsed * cycleLen;
+const week = lastN(7);
+$('kpis').innerHTML = [
+  ['Valor API hoy', usd(todayD.cost), deltaHtml(todayD.cost, avg7cost) || `${full(todayD.prompts)} mensajes tuyos`],
+  ['Tokens hoy', fmt(tot(todayD)).replace(/ ([Mk])$/, '<small>$1</small>'), deltaHtml(tot(todayD), avg7tok) || `${todayD.sessions || 0} sesiones`],
+  ['Últimos 7 días', usd(sum(week, 'cost')), `${fmt(sum(week, tot))} tokens · ${sum(week, 'sessions')} sesiones`],
+  ['Valor API del ciclo', usd(cycleCost), `vs ${usd(plan.precioUSD, 0)} del plan · rinde ${(cycleCost / plan.precioUSD).toLocaleString(L,{maximumFractionDigits:1})}×`],
+  ['Proyección al cierre', usd(projection, 0), `ciclo cierra el ${dayLabel(plan.ciclo.fin)}`],
+].map(([l, v, n]) => `<div class="kpi"><span class="label">${l}</span><span class="value num">${v}</span><span class="note">${n}</span></div>`).join('');
+
+// ---------- recommendations ----------
+const recs = D.recomendaciones;
+const savingTotal = sum(recs, r => r.ahorro?.usdMes || 0);
+$('recs-sub').textContent = recs.length ? `${recs.length} pendientes · ahorro estimado ${usd(savingTotal)} de valor API al mes` : '';
+$('recs').innerHTML = recs.length ? recs.map(r => `<article class="rec">
+  <span class="chip ${r.nivel}">${r.nivel === 'alta' ? '● Alta' : r.nivel === 'media' ? '◐ Media' : '○ Baja'}</span>
+  <div><span class="area">${esc(r.area)}</span><h3>${esc(r.titulo)}</h3></div>
+  <div class="saving">${r.ahorro ? `${r.ahorro.usdMes != null ? `<span class="num">≈ ${usd(r.ahorro.usdMes)}</span><span class="small muted">al mes${r.ahorro.nota ? ' · ' + esc(r.ahorro.nota) : ''}</span>` : ''}${r.ahorro.tokensRespuesta ? `<span class="small muted">${full(r.ahorro.tokensRespuesta)} tokens por respuesta</span>` : ''}` : ''}</div>
+  <p class="detail">${esc(r.detalle)}</p>
+  <p class="action"><b>Qué hacer:</b> ${esc(r.accion)}</p>
+</article>`).join('') : '<p class="empty">Nada pendiente. Todo lo instalado se está usando.</p>';
+
+// ---------- plan meters ----------
+const U = plan.uso;
+const meterColor = p => p >= 90 ? '--crit' : p >= 70 ? '--warn' : '--s1';
+const resetIn = iso => { if (!iso) return ''; const h = (new Date(iso) - Date.now()) / 36e5; if (h <= 0) return 'ya se reinició'; return h < 24 ? `se reinicia en ${Math.round(h)} h` : `se reinicia el ${dt(iso)}`; };
+if (U) {
+  $('plan-fresh').textContent = `Dato de ${ago(U.fetchedAt)}`;
+  const meters = [];
+  const m = (label, o) => { if (!o) return; const expired = o.reinicia && new Date(o.reinicia) < Date.now();
+    meters.push(`<div class="meter"${expired ? ' style="opacity:.55"' : ''}><div class="meter-top"><span>${label}</span><span class="num">${pct(o.pct)}</span></div>
+    <div class="meter-track"><div style="width:${Math.min(100, o.pct)}%;background:var(${meterColor(o.pct)})"></div></div><span class="sub">${expired ? 'Este periodo ya se reinició; el porcentaje es de la lectura anterior' : (o.pct >= 90 ? '▲ Cerca del límite · ' : '') + resetIn(o.reinicia)}</span></div>`); };
+  m('Límite de 5 horas', U.cincoHoras); m('Límite semanal', U.semanal); m('Semanal de Opus', U.semanalOpus);
+  if (U.desglose?.length) {
+    const colors = {claude_code:'--s1', cowork:'--s2', chat:'--s3', other:'--s4'};
+    meters.push(`<div class="meter"><span>¿Qué usó tu semana?</span><div class="stack">${U.desglose.filter(r => r.percent > 0).map(r => `<div style="flex:${r.percent} 0 0;background:var(${colors[r.key] || '--s4'})" title="${esc(r.display_name)} ${r.percent} %"></div>`).join('')}</div>
+      <div class="legend">${U.desglose.map(r => `<span><i class="sw" style="background:var(${colors[r.key] || '--s4'})"></i>${esc(r.display_name === 'Other' ? 'Otros' : r.display_name)} <span class="num">${r.percent} %</span></span>`).join('')}</div></div>`);
+  }
+  if (U.extra) meters.push(`<div class="meter"><div class="meter-top"><span>Créditos de uso extra</span><span class="num">${usd(U.extra.usadoUSD)}</span></div>
+    <span class="sub">${U.extra.motivo === 'out_of_credits' ? '<span class="chip media">Sin créditos</span> Si llegas al límite, Claude se pausa hasta el reinicio.' : U.extra.activo ? 'Activos: se usan al pasar el límite.' : 'Desactivados.'}</span></div>`);
+  $('plan-meters').innerHTML = meters.join('');
+} else $('plan-meters').innerHTML = '<p class="empty">Todavía no hay datos del plan. Escribe /usage en Claude Code y vuelve a actualizar.</p>';
+
+// ---------- cycle ----------
+$('cycle-range').textContent = `${dayLabel(plan.ciclo.inicio)} – ${dayLabel(plan.ciclo.fin)} · día ${elapsed} de ${cycleLen}`;
+const maxBar = Math.max(cycleCost, projection, plan.precioUSD);
+$('cycle').innerHTML = `<div class="hbar">
+  ${[['Pagas por el plan', plan.precioUSD, '--axis'], ['Valor API hasta hoy', cycleCost, '--s1'], ['Proyección al cierre', projection, '--s1']].map(([l, v, c], i) =>
+    `<div class="hbar-item"><div class="hbar-top"><span>${l}</span><span class="num">${usd(v)}</span></div><div class="track"><div style="width:${(v / maxBar * 100).toFixed(1)}%;background:var(${c});${i === 2 ? 'opacity:.45' : ''}"></div></div></div>`).join('')}
+  <p class="small muted">${cycleCost > plan.precioUSD ? `Tu uso de este ciclo ya vale ${(cycleCost / plan.precioUSD).toLocaleString(L,{maximumFractionDigits:1})} veces lo que pagas: el plan te conviene frente a pagar por uso.` : 'Todavía no usas lo equivalente a tu cuota en este ciclo.'}${U?.extra?.usadoUSD ? ` Aparte, se registran ${usd(U.extra.usadoUSD)} en créditos de uso extra.` : ''}</p></div>`;
+
+// ---------- tooltip & chart ----------
+const tip = $('tip');
+const showTip = (e, html) => { tip.innerHTML = html; tip.hidden = false; moveTip(e); };
+const moveTip = e => { const r = tip.getBoundingClientRect(); let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14; if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px'; };
+const hideTip = () => tip.hidden = true;
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent && parent.appendChild(n); return n; };
+const niceStep = (max, n = 4) => { const raw = max / n, p = 10 ** Math.floor(Math.log10(raw)), f = raw / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; };
+const topRounded = (x, y, w, h, r) => { r = Math.min(r, h, w / 2); return `M${x},${y+h}V${y+r}Q${x},${y} ${x+r},${y}H${x+w-r}Q${x+w},${y} ${x+w},${y+r}V${y+h}Z`; };
+function barChart(host, {n, series, value, label, labelEvery = 1, tipHtml, axisFmt, height = 230, ref, peak = false, faded}) {
+  const W = Math.max(280, host.clientWidth || 600), H = height, m = {t: 18, r: 6, b: 26, l: 50};
+  host.innerHTML = '';
+  if (!n) { host.innerHTML = '<p class="empty">Sin datos en este rango.</p>'; return; }
+  const svg = el('svg', {width: '100%', height: H, viewBox: `0 0 ${W} ${H}`}, host);
+  const sums = Array.from({length: n}, (_, i) => series.reduce((a, s) => a + value(i, s.key), 0));
+  const top = Math.max(...sums, ref?.value || 0) || 1, step = niceStep(top), max = Math.ceil(top / step) * step;
+  const iw = W - m.l - m.r, ih = H - m.t - m.b, bw = iw / n, gap = Math.max(2, Math.min(10, bw * .28));
+  const y = v => m.t + ih - v / max * ih;
+  for (let v = 0; v <= max + 1e-9; v += step) {
+    el('line', {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: css(v === 0 ? '--axis' : '--grid'), 'stroke-width': 1, 'stroke-dasharray': v === 0 ? '' : '2 3'}, svg);
+    el('text', {x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end'}, svg).textContent = v === 0 ? '0' : axisFmt(v);
+  }
+  const peakI = peak ? sums.indexOf(Math.max(...sums)) : -1;
+  const cols = [];
+  for (let i = 0; i < n; i++) {
+    const g = el('g', {}, svg); cols.push(g);
+    const x = m.l + i * bw + gap / 2, w = Math.max(1, bw - gap); let acc = 0;
+    const segs = series.map(s => ({s, v: value(i, s.key)})).filter(o => o.v > 0);
+    const op = faded && faded(i) ? .35 : 1;
+    segs.forEach((o, k) => {
+      const y0 = y(acc), y1 = y(acc + o.v); acc += o.v;
+      if (k === segs.length - 1) el('path', {d: topRounded(x, y1, w, y0 - y1, 4), fill: css(o.s.color), 'fill-opacity': op}, g);
+      else el('rect', {x, y: y1 + 2, width: w, height: Math.max(0, y0 - y1 - 2), fill: css(o.s.color), 'fill-opacity': op}, g);
+    });
+    if (i === peakI && sums[i] > 0) { const t = el('text', {x: x + w / 2, y: y(sums[i]) - 6, 'text-anchor': 'middle', class: 'lbl'}, svg); t.textContent = axisFmt(sums[i]); }
+    if (i % labelEvery === 0) el('text', {x: x + w / 2, y: H - 8, 'text-anchor': 'middle'}, svg).textContent = label(i);
+  }
+  if (ref && ref.value > 0) {
+    el('line', {x1: m.l, x2: W - m.r, y1: y(ref.value), y2: y(ref.value), stroke: css('--ink-2'), 'stroke-width': 1.5, 'stroke-dasharray': '5 4'}, svg);
+    const t = el('text', {x: W - m.r, y: y(ref.value) - 5, 'text-anchor': 'end', class: 'lbl'}, svg); t.textContent = ref.label;
+  }
+  for (let i = 0; i < n; i++) {
+    const hit = el('rect', {class: 'hit', x: m.l + i * bw, y: m.t, width: bw, height: ih, tabindex: 0, 'aria-label': label(i)}, svg);
+    const on = e => { cols.forEach((c, k) => c.classList.toggle('dim', k !== i)); showTip(e, tipHtml(i)); };
+    const off = () => { cols.forEach(c => c.classList.remove('dim')); hideTip(); };
+    hit.addEventListener('mouseenter', on); hit.addEventListener('mousemove', moveTip); hit.addEventListener('mouseleave', off);
+    hit.addEventListener('focus', () => { const b = hit.getBoundingClientRect(); on({clientX: b.right, clientY: b.top}); }); hit.addEventListener('blur', off);
+  }
+}
+
+// ---------- daily chart + cost breakdown ----------
+let metric = store.get('metric', 'cost'), range = +store.get('range', '14');
+const allModels = [...new Set(D.dias.flatMap(d => Object.keys(d.costByModel || {})))].sort((a, b) => modelColor(a).localeCompare(modelColor(b)));
+function renderDaily() {
+  const days = lastN(range);
+  $('daily-title').textContent = metric === 'cost' ? 'Valor API por día' : 'Tokens por día';
+  ['m-cost','m-tokens'].forEach(id => $(id).setAttribute('aria-pressed', $(id).dataset.metric === metric));
+  ['r7','r14','r30','r0'].forEach(id => $(id).setAttribute('aria-pressed', +$(id).dataset.range === range));
+  const models = allModels.filter(m => days.some(d => (d.costByModel || {})[m]));
+  $('lg-daily').innerHTML = models.map(m => `<span><i class="sw" style="background:var(${modelColor(m)})"></i>${modelName(m)}</span>`).join('');
+  const narrow = $('ch-daily').clientWidth < 560;
+  barChart($('ch-daily'), {
+    n: days.length, series: models.map(m => ({key: m, color: modelColor(m)})),
+    value: (i, k) => metric === 'cost' ? (days[i].costByModel || {})[k] || 0 : (days[i].byModel || {})[k] || 0,
+    label: i => days.length > 20 ? dayLabel(days[i].date).split(' ')[0] : dayLabel(days[i].date),
+    labelEvery: Math.ceil(days.length / (narrow ? 6 : 15)), height: 250, peak: true,
+    ref: (() => { const act = days.filter(d => d.cost > 0); const v = metric === 'cost' ? sum(act, 'cost') / (act.length || 1) : sum(act, tot) / (act.length || 1); return {value: v, label: 'promedio día activo ' + (metric === 'cost' ? usd(v) : fmt(v))}; })(),
+    axisFmt: v => metric === 'cost' ? '$' + (v >= 100 ? Math.round(v) : v.toLocaleString(L, {maximumFractionDigits: 1})) : fmt(v).replace(' ', ''),
+    tipHtml: i => { const d = days[i]; return `<b>${dayLabel(d.date)}</b>` + (!d.calls && !d.cost ? '<div>Sin actividad</div>' :
+      models.filter(m => (d.costByModel || {})[m]).map(m => `<div class="tr"><span>${modelName(m)}</span><span>${metric === 'cost' ? usd(d.costByModel[m]) : fmt(d.byModel[m])}</span></div>`).join('') +
+      `<div class="tr"><span>Total</span><span>${metric === 'cost' ? usd(d.cost) : fmt(tot(d))}</span></div><div class="tr"><span>Sesiones · mensajes</span><span>${d.sessions} · ${d.prompts}</span></div>`); }
+  });
+  // cost by token type (approximate per model price; cache write priced at 1 h)
+  const P = D.precios, M = D.mult, parts = {input: 0, output: 0, cacheRead: 0, cacheWrite: 0};
+  const shareByModel = {};
+  days.forEach(d => Object.entries(d.costByModel || {}).forEach(([m, c]) => shareByModel[m] = (shareByModel[m] || 0) + c));
+  const totalCost = sum(days, 'cost');
+  const tokenSum = {input: sum(days, 'input'), output: sum(days, 'output'), cacheRead: sum(days, 'cacheRead'), cacheWrite: sum(days, 'cacheWrite')};
+  const wIn = Object.entries(shareByModel).reduce((a, [m, c]) => a + (P[m]?.entrada || 5) * c, 0) / (totalCost || 1);
+  const wOut = Object.entries(shareByModel).reduce((a, [m, c]) => a + (P[m]?.salida || 25) * c, 0) / (totalCost || 1);
+  parts.input = tokenSum.input * wIn / 1e6; parts.output = tokenSum.output * wOut / 1e6;
+  parts.cacheRead = tokenSum.cacheRead * wIn * M.lecturaCache / 1e6; parts.cacheWrite = tokenSum.cacheWrite * wIn * M.escrituraCache1h / 1e6;
+  const pt = sum(Object.values(parts)) || 1;
+  const TYPES = [['cacheRead','--s1','Contexto releído (caché)','Cada respuesta relee la conversación. Crece con sesiones largas.'],
+    ['output','--s3','Texto escrito por Claude','Respuestas, código y razonamiento.'],
+    ['cacheWrite','--s2','Contexto nuevo guardado en caché','Archivos leídos, resultados de herramientas, inicio de sesión.'],
+    ['input','--s4','Entrada sin caché','']];
+  $('cost-stack').innerHTML = TYPES.map(([k, c]) => `<div style="flex:${parts[k]} 0 0;background:var(${c})"></div>`).join('');
+  $('cost-types').innerHTML = TYPES.map(([k, c, l, d]) => `<div class="hbar-item"><div class="hbar-top"><span><i class="sw" style="background:var(${c});margin-right:7px"></i>${l}</span><span class="num">${usd(parts[k] / pt * totalCost)} · ${pct(parts[k] / pt * 100)}</span></div>${d ? `<span class="small muted">${d} · ${fmt(tokenSum[k])} tokens</span>` : ''}</div>`).join('');
+  $('models').innerHTML = D.modelos.slice().sort((a, b) => b.cost - a.cost).map(m => `<tr><td><span class="t-name"><i class="sw" style="background:var(${modelColor(m.model)});margin-right:7px"></i>${modelName(m.model)}</span>${P[m.model]?.verificado ? '' : '<span class="sub">tarifa estimada</span>'}</td>
+    <td class="r num">$${P[m.model]?.entrada ?? '—'} / $${P[m.model]?.salida ?? '—'}</td><td class="r num">${fmt(tot(m))}</td><td class="r num">${usd(m.cost)}</td></tr>`).join('');
+}
+document.querySelectorAll('[data-metric]').forEach(b => b.addEventListener('click', () => { metric = b.dataset.metric; store.set('metric', metric); renderDaily(); }));
+document.querySelectorAll('[data-range]').forEach(b => b.addEventListener('click', () => { range = +b.dataset.range; store.set('range', range); renderDaily(); }));
+
+// ---------- hours & habits ----------
+function renderHours() {
+  const H = D.horas, total = sum(H);
+  barChart($('ch-hours'), {n: 24, series: [{key: 'h', color: '--s1'}], value: i => H[i], label: i => String(i).padStart(2, '0'), labelEvery: 3, peak: true,
+    axisFmt: v => fmt(v).replace(' ', ''), tipHtml: i => `<b>${String(i).padStart(2,'0')}:00</b><div class="tr"><span>Tokens</span><span>${fmt(H[i])}</span></div><div class="tr"><span>Del total</span><span>${pct(H[i] / (total || 1) * 100, 1)}</span></div>`});
+}
+{
+  const W = D.ventanaDias, since = new Date(Date.now() - W * 864e5).toISOString();
+  const recent = D.sesiones.filter(s => (s.inicio || '') >= since);
+  const rc = sum(recent, 'costo') || 1e-9;
+  const long = recent.filter(s => s.contextoMax > D.habitos.contextoAlto);
+  const allCost = sum(D.modelos, 'cost') || 1e-9;
+  const rows = [
+    [`Sesiones con más de ${Math.round(D.habitos.contextoAlto / 1000)} k de contexto`, `${long.length} de ${recent.length}`, sum(long, 'costo') / rc * 100, `${usd(sum(long, 'costo'))} del costo en ${W} días`],
+    ['Costo en subagentes', usd(D.subagentes.cost), D.subagentes.cost / allCost * 100, `${full(D.subagentes.calls)} respuestas de subagentes`],
+    [`/clear o /compact en ${W} días`, `${D.habitos.clearCompactVentana}`, null, 'Limpiar el contexto al cambiar de tema abarata cada respuesta'],
+    ['Respuestas del modelo por día', `${D.habitos.llamadasDia}`, null, `promedio de los últimos ${W} días`],
+  ];
+  $('habits').innerHTML = rows.map(([l, v, p, s]) => `<div class="hbar-item"><div class="hbar-top"><span>${l}</span><span class="num">${v}${p != null ? ' · ' + pct(p) : ''}</span></div>${p != null ? `<div class="track"><div style="width:${Math.min(100, p).toFixed(1)}%;background:var(--s2)"></div></div>` : ''}<span class="small muted">${s}</span></div>`).join('');
+}
+
+// ---------- projects ----------
+{
+  const maxC = Math.max(...D.proyectos.map(p => p.costo), 1e-9);
+  $('projects').innerHTML = D.proyectos.map(p => `<tr><td><span class="t-name">${esc(p.nombre)}</span></td><td class="r num">${p.sesiones}</td><td class="r num">${fmt(p.tokens)}</td>
+    <td class="r"><div class="cell-bar"><span class="num">${usd(p.costo)}</span><div class="mini"><div style="width:${(p.costo / maxC * 100).toFixed(1)}%"></div></div></div></td>
+    <td class="r num ${p.memorias ? '' : 'zero'}">${p.memorias}</td><td>${ago(p.ultimo)}</td></tr>`).join('');
+}
+
+// ---------- sessions ----------
+{
+  const projs = [...new Set(D.sesiones.map(s => s.proyecto))].sort();
+  $('f-proj').innerHTML = '<option value="">Todos</option>' + projs.map(p => `<option>${esc(p)}</option>`).join('');
+  let order = store.get('order', 'date'), showAll = false;
+  const render = () => {
+    const q = $('f-q').value.trim().toLowerCase(), pj = $('f-proj').value;
+    ['o-date','o-cost'].forEach(id => $(id).setAttribute('aria-pressed', $(id).dataset.order === order));
+    let list = D.sesiones.filter(s => (!pj || s.proyecto === pj) && (!q || s.titulo.toLowerCase().includes(q)));
+    if (order === 'cost') list = list.slice().sort((a, b) => b.costo - a.costo);
+    const maxT = Math.max(...list.map(s => s.tokens), 1);
+    const shown = showAll ? list : list.slice(0, 12);
+    $('sessions').innerHTML = shown.length ? shown.map(s => {
+      const flags = [];
+      if (s.contextoMax > D.habitos.contextoAlto) flags.push('contexto alto');
+      if (s.costoSub > s.costo * 0.25) flags.push('subagentes ' + pct(s.costoSub / s.costo * 100));
+      if (/opus/.test(s.modelo) && s.mensajes <= 3 && s.salida < 20000) flags.push('corta en Opus');
+      return `<tr><td><span class="t-name">${esc(s.titulo)}</span><span class="sub">${dt(s.inicio)} · ${esc(s.proyecto)}</span>${flags.length ? `<div class="flags">${flags.map(f => `<span class="flag">${f}</span>`).join('')}</div>` : ''}</td>
+        <td class="r num">${s.mensajes}</td>
+        <td class="r"><div class="cell-bar"><span class="num">${fmt(s.tokens)}</span><div class="mini"><div style="width:${(s.tokens / maxT * 100).toFixed(1)}%"></div></div></div></td>
+        <td class="r"><div class="cell-bar"><span class="num">${fmt(s.contextoMax)}</span><div class="mini ctx"><div style="width:${Math.min(100, s.contextoMax / 1e6 * 100).toFixed(1)}%"></div></div></div></td>
+        <td class="r num">${usd(s.costo)}</td><td class="r num">${s.mensajes ? usd(s.costo / s.mensajes) : '—'}</td></tr>`; }).join('') : '<tr><td colspan="6" class="empty">Ninguna sesión coincide.</td></tr>';
+    $('more').hidden = list.length <= 12;
+    $('more').textContent = showAll ? 'Ver solo 12' : `Ver las ${list.length} sesiones`;
+  };
+  $('f-q').addEventListener('input', render); $('f-proj').addEventListener('change', render);
+  document.querySelectorAll('[data-order]').forEach(b => b.addEventListener('click', () => { order = b.dataset.order; store.set('order', order); render(); }));
+  $('more').addEventListener('click', () => { showAll = !showAll; render(); });
+  render();
+}
+
+// ---------- extensions ----------
+{
+  const I = D.inventario, W = D.ventanaDias;
+  const chip = s => `<span class="chip ${s}">${STATE_LABEL[s] || s}</span>`;
+  const useCell = (u, w) => `<td class="r num ${u ? '' : 'zero'}">${u}${w != null && u ? ` <span class="muted">(${w})</span>` : ''}</td>`;
+  const byState = arr => ['mantener','evaluar','quitar'].map(s => `<span>${chip(s)} <b>${arr.filter(x => x.estado === s).length}</b></span>`).join('');
+  const custom = I.skills.filter(s => s.origen !== 'integrada');
+  $('ext-sub').textContent = `Ventana de ${W} días para decidir qué funciona. «Usos (ventana)»: total histórico y, entre paréntesis, los de la ventana.`;
+  $('mcp-tally').innerHTML = byState(I.mcp);
+  const stOrder = {quitar: 0, evaluar: 1, mantener: 2};
+  $('mcp').innerHTML = I.mcp.length ? I.mcp.slice().sort((a, b) => stOrder[a.estado] - stOrder[b.estado] || b.tokens - a.tokens).map(m => `<tr>
+    <td><span class="t-name">${esc(m.nombre)}</span><span class="sub">${m.soloInstrucciones ? 'Sin herramientas activas; solo manda instrucciones' : `${m.herramientas} herramientas`}${Object.keys(m.herramientasUsadas).length ? ' · usadas: ' + esc(Object.keys(m.herramientasUsadas).join(', ')) : ''}</span></td>
+    <td>${esc(m.origen)}</td>${useCell(m.usos, m.usosVentana)}<td>${ago(m.ultimo)}</td><td class="r num">${full(m.tokens)}</td><td>${chip(m.estado)}</td></tr>`).join('') : '<tr><td colspan="6" class="empty">Sin conectores detectados.</td></tr>';
+  $('plugins').innerHTML = I.plugins.length ? I.plugins.map(p => `<tr><td><span class="t-name">${esc(p.nombre)}</span><span class="sub">v${esc(p.version || '?')}${p.hooks.length ? ' · hooks: ' + esc(p.hooks.join(', ')) : ''}</span></td>
+    <td class="r num">${p.skillsUsadas} / ${p.skills}</td><td class="r num">${full(p.tokensListado)}${p.tokensHookPorSesion ? `<span class="sub">+ ${full(p.tokensHookPorSesion)} al iniciar</span>` : ''}</td><td>${chip(p.estado)}</td></tr>`).join('') : '<tr><td colspan="4" class="empty">Sin plugins instalados.</td></tr>';
+  $('hooks').innerHTML = I.inyecciones.length ? I.inyecciones.flatMap(h => h.por.map(p => `<tr><td>${esc(h.evento)}</td><td>${esc(p.origen)}</td><td class="r num">${p.veces}</td><td class="r num">${full(p.tokens)}</td></tr>`)).join('') : '<tr><td colspan="4" class="empty">Ningún hook ha agregado texto.</td></tr>';
+  $('hooks-config').textContent = I.hooks.length ? 'Configurados: ' + I.hooks.map(h => `${h.evento} (${h.origen}${h.filtro ? ' · ' + h.filtro : ''})`).join(' · ') : '';
+  const renderSkills = () => {
+    const showBuiltin = $('f-builtin').checked; store.set('builtin', showBuiltin ? '1' : '0');
+    const list = I.skills.filter(s => showBuiltin || s.origen !== 'integrada').sort((a, b) => (stOrder[a.estado] ?? 3) - (stOrder[b.estado] ?? 3) || b.tokens - a.tokens);
+    $('skills').innerHTML = list.map(s => `<tr><td><span class="t-name mono">${esc(s.name)}</span></td><td>${esc(s.origen.replace('plugin:', 'Plugin '))}</td>${useCell(s.usos, s.usosVentana)}<td>${ago(s.ultimo)}</td><td class="r num">${full(s.tokens)}</td><td>${chip(s.estado)}</td></tr>`).join('');
+  };
+  $('f-builtin').checked = store.get('builtin', '0') === '1';
+  $('f-builtin').addEventListener('change', renderSkills); renderSkills();
+  const tools = D.herramientas.slice(0, 12), maxTool = Math.max(...tools.map(t => t.count), 1);
+  $('tools').innerHTML = tools.map(t => `<div class="hbar-item"><div class="hbar-top"><span class="mono">${esc(t.nombre.replace(/^mcp__/, '').replace(/__/g, ' › '))}</span><span class="num">${full(t.count)} <span class="muted">(${full(t.recent)} en ${W} d)</span></span></div><div class="track"><div style="width:${(t.count / maxTool * 100).toFixed(1)}%"></div></div></div>`).join('');
+  $('agents').innerHTML = I.agentes.map(a => `<tr><td><span class="t-name">${esc(a.nombre)}</span>${a.personalizado ? '<span class="sub">personalizado</span>' : ''}</td>${useCell(a.count)}<td>${ago(a.last)}</td></tr>`).join('');
+}
+
+// ---------- memory & disk ----------
+{
+  const mems = D.memoria.filter(m => m.tipo !== 'indice').sort((a, b) => b.modificado.localeCompare(a.modificado));
+  const typeLabel = {project: 'Proyecto', feedback: 'Indicación', user: 'Sobre ti', reference: 'Referencia'};
+  $('mem').innerHTML = mems.length ? mems.map(m => `<article class="mem"><div class="mem-top"><span class="mem-name">${esc(m.nombre || m.archivo)}</span><span class="chip neutral">${typeLabel[m.tipo] || esc(m.tipo || '—')}</span></div>
+    <p>${esc(m.descripcion)}</p><span class="small muted">${esc(m.proyecto)} · editada ${ago(m.modificado)} · ≈ ${full(m.tokens)} tokens</span></article>`).join('') : '<p class="empty">No hay memorias guardadas.</p>';
+  const dk = D.disco, totalB = sum(dk, 'bytes'), maxB = Math.max(...dk.map(d => d.bytes), 1);
+  $('disk-total').textContent = bytes(totalB) + ' en total';
+  $('disk').innerHTML = dk.slice(0, 7).map(d => `<div class="hbar-item"><div class="hbar-top"><span class="mono">${esc(d.nombre)}</span><span class="num">${bytes(d.bytes)}</span></div><div class="track"><div style="width:${Math.max(.5, d.bytes / maxB * 100).toFixed(1)}%"></div></div></div>`).join('');
+}
+
+let C = {"generado":"2026-10-16T15:08:00-06:00","hoy":"2026-10-16","alertas":[{"nivel":"alta","titulo":"Dos programas publican en cuentas distintas","texto":"El Publicador P01–P21 y Hermes siguen publicando en @c4b_mx y FB C4b hasta el 19 oct, mientras el Agente Manager publica en @aeterna_ig. El spec del Agente Manager pide no tocar @c4b_mx.","accion":"Decide si P12–P21 se mueven a @aeterna_ig o se pausan."},{"nivel":"media","titulo":"N05 no se publicó (14 oct, 09:00)","texto":"La sesión automática no tuvo permiso para publicar; el contenedor del post quedó creado en Instagram.","accion":"Publicarlo a mano o reprogramarlo."},{"nivel":"media","titulo":"@c4b_mx no crece","texto":"24 seguidores sin cambio del 11 al 16 oct; 5 cuentas alcanzadas en 7 días pese a 17 publicaciones.","accion":"Probar un reel con persona y una pauta pequeña antes de seguir publicando."},{"nivel":"baja","titulo":"Hermes termina hoy","texto":"Su última corrida es hoy a las 16:59 para publicar N10. Después de eso @c4b_mx solo recibe los posts P.","accion":""}],"campanas":[{"id":"plan10","nombre":"Plan de contenidos · 10 días","canal":"Instagram + Facebook","cuenta":"@aeterna_ig · FB Aeterna 4 Business","inicio":"2026-10-16","fin":"2026-10-25","total":30,"publicadas":2,"programadas":28,"errores":0,"omitidas":0,"formatos":{"Reel":9,"Carrusel":9,"Imagen":12},"objetivo":"Línea base de la cuenta nueva y conversión a la evaluación gratuita por WhatsApp.","estado":"en curso","agente":"Agente Manager","url":"https://claude.ai/artifact/6JQHwRoqzpjSD9uGPXqmUk"},{"id":"v2","nombre":"Calendario Instagram v2 · N01–N10","canal":"Instagram","cuenta":"@c4b_mx","inicio":"2026-10-12","fin":"2026-10-16","total":10,"publicadas":8,"programadas":1,"errores":1,"omitidas":0,"formatos":{"Carrusel":10},"objetivo":"Tráfico a las herramientas gratis de aeterna4.com; pruebas A/B de color y persona.","estado":"cierra hoy","agente":"Hermes · Vera · Clío · Argos","url":"https://claude.ai/artifact/KtxHZqac2w9d8HX9TGAMG4"},{"id":"p21","nombre":"Semana P01–P21","canal":"Instagram + Facebook","cuenta":"@c4b_mx · FB C4b","inicio":"2026-10-13","fin":"2026-10-19","total":21,"publicadas":11,"programadas":10,"errores":0,"omitidas":0,"formatos":{"Reel":6,"Imagen o carrusel":15},"objetivo":"Tres publicaciones diarias (9:00, 14:00, 18:00) con reporte diario.","estado":"en curso","agente":"Publicador + Reporte diario","url":"https://claude.ai/artifact/TCrS6WbVihNbaw5qW9K4BH"},{"id":"retail","nombre":"Retail Puebla · prospección","canal":"WhatsApp + email","cuenta":"Kapso · info@aeterna4.com","inicio":"2026-10-12","fin":null,"total":15,"publicadas":15,"programadas":0,"errores":0,"omitidas":0,"formatos":{"WhatsApp":8,"Email":7},"objetivo":"Distribuidores de acabados en Puebla; oportunidades registradas en Twenty.","estado":"activa","agente":"Vigilante Retail Puebla","unidad":"toques","url":null},{"id":"v1","nombre":"Calendario v1 · V01–V13","canal":"Instagram","cuenta":"@c4b_mx","inicio":"2026-10-11","fin":"2026-10-12","total":13,"publicadas":3,"programadas":0,"errores":0,"omitidas":10,"formatos":{"Carrusel":13},"objetivo":"Carruseles de formato viral (sistema y opinión contraria).","estado":"reemplazada","agente":"Hermes","url":"https://claude.ai/artifact/P5vPdrFHSHgUy2TnbsPhM7"}],"ig":{"cuenta":"@c4b_mx","followers":24,"media_count":45,"views_7d":144,"reach_7d":5,"likes_7d":1,"saves_7d":1,"profile_views_7d":3,"actualizado":"2026-10-16T09:03:00-06:00","historial":[{"fecha":"2026-10-11","followers":24,"views":13,"reach":3,"likes":0,"saves":0,"profile_views":2,"media_count":28},{"fecha":"2026-10-12","followers":24,"views":30,"reach":4,"likes":0,"saves":0,"profile_views":2,"media_count":30},{"fecha":"2026-10-13","followers":24,"views":61,"reach":5,"likes":1,"saves":0,"profile_views":3,"media_count":34},{"fecha":"2026-10-14","followers":24,"views":81,"reach":4,"likes":1,"saves":0,"profile_views":2,"media_count":38},{"fecha":"2026-10-15","followers":24,"views":105,"reach":5,"likes":1,"saves":0,"profile_views":2,"media_count":43},{"fecha":"2026-10-16","followers":24,"views":144,"reach":5,"likes":1,"saves":1,"profile_views":3,"media_count":45}]},"posts":[{"id":"V01","fecha":"2026-10-11","hora":"11:30","tema":"5 cosas que puedes hacer hoy gratis en aeterna4.com","estado":"publicado","m":{"vistas":11,"alcance":3,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeXLX_vG-7p/"},{"id":"V02","fecha":"2026-10-11","hora":"15:30","tema":"Opinión contraria: comprar IA no es una estrategia","estado":"publicado","m":{"vistas":13,"alcance":2,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeXoU0pHaSC/"},{"id":"V11","fecha":"2026-10-11","hora":"20:00","tema":"eCommerce agéntico: ¿quién atiende tu tienda a las 8 PM?","estado":"publicado","m":{"vistas":14,"alcance":4,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeYHRZZG1Yh/"},{"id":"N01","fecha":"2026-10-12","hora":"09:00","tema":"Paso a paso: el método de 90 días","estado":"publicado","m":{"vistas":7,"alcance":2,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeZgggsIFip/"},{"id":"N02","fecha":"2026-10-12","hora":"17:00","tema":"Tu PyME antes y después de automatizar","estado":"publicado","m":{"vistas":4,"alcance":2,"likes":1,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeaXVCnGaJ2/"},{"id":"N03","fecha":"2026-10-13","hora":"09:00","tema":"Checklist: ¿tu PyME está lista para la IA?","estado":"publicado","m":{"vistas":10,"alcance":4,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DecFP-mkTUd/"},{"id":"N04","fecha":"2026-10-13","hora":"17:00","tema":"Prueba de 60 segundos a tu sitio web","estado":"publicado","m":{"vistas":5,"alcance":2,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/Dec8KFqmfRB/"},{"id":"N05","fecha":"2026-10-14","hora":"09:00","tema":"Antes vs después: WhatsApp como chat vs canal de ventas","estado":"error","m":null,"url":null},{"id":"N06","fecha":"2026-10-14","hora":"17:00","tema":"Paper ejecutivo gratis","estado":"publicado","m":{"vistas":5,"alcance":2,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/Defg-GjCYa8/"},{"id":"N07","fecha":"2026-10-15","hora":"09:00","tema":"Opinión contraria: la IA no arregla procesos rotos, los acelera","estado":"publicado","m":{"vistas":9,"alcance":4,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DehO0MikS7e/"},{"id":"N08","fecha":"2026-10-15","hora":"17:00","tema":"Primera conversación gratis de 30 minutos","estado":"publicado","m":{"vistas":7,"alcance":2,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DeiFsieCX_Z/"},{"id":"N09","fecha":"2026-10-16","hora":"09:00","tema":"Marketing medido en ventas: 5 métricas","estado":"publicado","m":{"vistas":0,"alcance":0,"likes":0,"guardados":0,"compartidos":0,"comentarios":0},"url":"https://www.instagram.com/p/DejzpXhkZVf/"},{"id":"N10","fecha":"2026-10-16","hora":"17:00","tema":"Kit gratis Æterna: guarda este carrusel","estado":"aprobado","m":null,"url":null}],"plan10":[{"id":"A01","date":"2026-10-16","time":"12:00","pilar":"Dolor","formato":"reel","ok":true},{"id":"A02","date":"2026-10-16","time":"15:00","pilar":"Educar","formato":"carousel","ok":true},{"id":"A03","date":"2026-10-16","time":"20:30","pilar":"Marca","formato":"image","ok":false},{"id":"A04","date":"2026-10-17","time":"11:00","pilar":"Mitos","formato":"image","ok":false},{"id":"A05","date":"2026-10-17","time":"15:00","pilar":"Proceso","formato":"reel","ok":false},{"id":"A06","date":"2026-10-17","time":"20:00","pilar":"Dolor","formato":"image","ok":false},{"id":"A07","date":"2026-10-18","time":"11:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A08","date":"2026-10-18","time":"15:00","pilar":"Educar","formato":"image","ok":false},{"id":"A09","date":"2026-10-18","time":"20:00","pilar":"Dolor","formato":"reel","ok":false},{"id":"A10","date":"2026-10-19","time":"12:00","pilar":"Noticia","formato":"carousel","ok":false},{"id":"A11","date":"2026-10-19","time":"15:00","pilar":"Mitos","formato":"image","ok":false},{"id":"A12","date":"2026-10-19","time":"20:30","pilar":"Educar","formato":"reel","ok":false},{"id":"A13","date":"2026-10-20","time":"12:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A14","date":"2026-10-20","time":"15:00","pilar":"Proceso","formato":"reel","ok":false},{"id":"A15","date":"2026-10-20","time":"20:30","pilar":"Dolor","formato":"image","ok":false},{"id":"A16","date":"2026-10-21","time":"12:00","pilar":"Educar","formato":"reel","ok":false},{"id":"A17","date":"2026-10-21","time":"15:00","pilar":"Proceso","formato":"carousel","ok":false},{"id":"A18","date":"2026-10-21","time":"20:30","pilar":"Mitos","formato":"image","ok":false},{"id":"A19","date":"2026-10-22","time":"12:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A20","date":"2026-10-22","time":"15:00","pilar":"Dolor","formato":"reel","ok":false},{"id":"A21","date":"2026-10-22","time":"20:30","pilar":"Conversión","formato":"image","ok":false},{"id":"A22","date":"2026-10-23","time":"12:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A23","date":"2026-10-23","time":"15:00","pilar":"Educar","formato":"reel","ok":false},{"id":"A24","date":"2026-10-23","time":"20:30","pilar":"Marca","formato":"image","ok":false},{"id":"A25","date":"2026-10-24","time":"11:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A26","date":"2026-10-24","time":"15:00","pilar":"Mitos","formato":"image","ok":false},{"id":"A27","date":"2026-10-24","time":"20:00","pilar":"Marca","formato":"reel","ok":false},{"id":"A28","date":"2026-10-25","time":"11:00","pilar":"Educar","formato":"carousel","ok":false},{"id":"A29","date":"2026-10-25","time":"15:00","pilar":"Conversión","formato":"image","ok":false},{"id":"A30","date":"2026-10-25","time":"20:00","pilar":"Conversión","formato":"image","ok":false}],"equipos":[{"id":"am","nombre":"Agente Manager","cuenta":"@aeterna_ig · FB Aeterna 4 Business","rol":"Valida, mejora, publica y reporta por WhatsApp cada post del plan de 10 días.","modelo":"Sonnet 5.5","total":30,"hechas":2,"fallidas":0,"ritmo":"3 posts al día · 16–25 oct","fin":"2026-10-25","estado":"activo","color":"--s1"},{"id":"pub","nombre":"Publicador P01–P21","cuenta":"@c4b_mx · FB C4b","rol":"Publica la semana P en Instagram y Facebook y avisa por email y WhatsApp.","modelo":"Sonnet 5.5","total":21,"hechas":11,"fallidas":0,"ritmo":"9:00 · 14:00 · 18:00 · 13–19 oct","fin":"2026-10-19","estado":"activo","color":"--s2"},{"id":"hermes","nombre":"Hermes + Argos","cuenta":"@c4b_mx","rol":"Hermes publica los carruseles aprobados; Argos mide la cuenta y escribe en la Sala de Agentes.","modelo":"Opus 5.5","total":12,"hechas":11,"fallidas":0,"ritmo":"L–V 8:59 y 16:59 · 12–16 oct","fin":"2026-10-16","estado":"termina hoy","color":"--s3"},{"id":"rep","nombre":"Reporte diario","cuenta":"WhatsApp + email","rol":"Resume a las 20:00 lo que se publicó en el día.","modelo":"—","total":7,"hechas":3,"fallidas":0,"ritmo":"Diario 20:00 · 13–19 oct","fin":"2026-10-19","estado":"activo","color":"--s4"},{"id":"retail","nombre":"Vigilante Retail Puebla","cuenta":"Kapso · Twenty","rol":"Revisa cada hora si los 8 leads respondieron por WhatsApp y deja notas en el CRM.","modelo":"—","total":null,"hechas":null,"fallidas":0,"ritmo":"Cada hora de 9 a 20 h","fin":null,"estado":"activo","color":"--muted"},{"id":"pr","nombre":"Check-ins de PR","cuenta":"GitHub Aeterna","rol":"Recordatorios para revisar los PR #7 y #9.","modelo":"—","total":4,"hechas":4,"fallidas":0,"ritmo":"Puntual","fin":"2026-10-16","estado":"terminado","color":"--muted"}],"personajes":[{"id":"vera","name":"Vera","role":"Revisora de copy","status":"listo","last_activity":"Revisó la v2: 2 correcciones de veracidad en N08; legibilidad OK en las 5 paletas.","updated":"2026-10-11T19:50:00-06:00","tasks":13,"pending":"Revisar legibilidad de variantes B (A/B color y personas)","grupo":"Sala de Agentes · @c4b_mx"},{"id":"clio","name":"Clío","role":"Editora y aprobadora","status":"listo","last_activity":"Guillermo aprobó el calendario v2. Activado en calendario.json; V03–V13 omitidos.","updated":"2026-10-11T19:15:00-06:00","tasks":12,"pending":"Aprobar variantes B del lunes 12 en adelante","grupo":"Sala de Agentes · @c4b_mx"},{"id":"hermes","name":"Hermes","role":"Publicador","status":"esperando","last_activity":"Publicó «Marketing medido en ventas: 5 métricas» (09:00)","updated":"2026-10-16T09:03:00-06:00","tasks":12,"pending":"Publicar solo variantes aprobadas; si no hay, la versión vigente","grupo":"Sala de Agentes · @c4b_mx"},{"id":"argos","name":"Argos","role":"Analista de métricas","status":"listo","last_activity":"24 seguidores, 45 publicaciones; 144 vistas y 5 cuentas alcanzadas en 7 días.","updated":"2026-10-16T09:03:00-06:00","tasks":1,"pending":"Medir v2 por prueba/variante a 24h y 72h (P1 color, P2 persona)","grupo":"Sala de Agentes · @c4b_mx"},{"id":"Manager","name":"Manager","role":"Lee la publicación asignada, coordina, decide publicar/pausar y responde por el resultado","status":"programado","grupo":"Agente Manager · @aeterna_ig"},{"id":"Validador-Mejorador","name":"Validador-Mejorador","role":"Revisa checklist (captions, # sin %23, sin emojis, CTA, medios) y mejora sin cambiar tema/datos","status":"programado","grupo":"Agente Manager · @aeterna_ig"},{"id":"Publicador","name":"Publicador","role":"Publica en IG @aeterna_ig y FB Aeterna 4 Business con Composio, idempotencia 12h, verifica permalinks","status":"programado","grupo":"Agente Manager · @aeterna_ig"},{"id":"Reportero","name":"Reportero","role":"Envía reporte por WhatsApp (Kapso, plantilla reporte_agent_manager_v1); fallback Gmail; resumen del día en último post","status":"programado","grupo":"Agente Manager · @aeterna_ig"}],"ejecuciones":[{"g":"am","at":"2026-10-26T01:55:00Z","ok":false},{"g":"am","at":"2026-10-25T20:55:00Z","ok":false},{"g":"am","at":"2026-10-25T16:55:00Z","ok":false},{"g":"am","at":"2026-10-25T01:55:00Z","ok":false},{"g":"am","at":"2026-10-24T20:55:00Z","ok":false},{"g":"am","at":"2026-10-24T16:55:00Z","ok":false},{"g":"am","at":"2026-10-24T02:25:00Z","ok":false},{"g":"am","at":"2026-10-23T20:55:00Z","ok":false},{"g":"am","at":"2026-10-23T17:55:00Z","ok":false},{"g":"am","at":"2026-10-23T02:25:00Z","ok":false},{"g":"am","at":"2026-10-22T20:55:00Z","ok":false},{"g":"am","at":"2026-10-22T17:55:00Z","ok":false},{"g":"am","at":"2026-10-22T02:25:00Z","ok":false},{"g":"am","at":"2026-10-21T20:55:00Z","ok":false},{"g":"am","at":"2026-10-21T17:55:00Z","ok":false},{"g":"am","at":"2026-10-21T02:25:00Z","ok":false},{"g":"am","at":"2026-10-20T20:55:00Z","ok":false},{"g":"am","at":"2026-10-20T17:55:00Z","ok":false},{"g":"am","at":"2026-10-20T02:25:00Z","ok":false},{"g":"am","at":"2026-10-19T20:55:00Z","ok":false},{"g":"am","at":"2026-10-19T17:55:00Z","ok":false},{"g":"am","at":"2026-10-19T01:55:00Z","ok":false},{"g":"am","at":"2026-10-18T20:55:00Z","ok":false},{"g":"am","at":"2026-10-18T16:55:00Z","ok":false},{"g":"am","at":"2026-10-18T01:55:00Z","ok":false},{"g":"am","at":"2026-10-17T20:55:00Z","ok":false},{"g":"am","at":"2026-10-17T16:55:00Z","ok":false},{"g":"am","at":"2026-10-17T02:25:00Z","ok":false},{"g":"am","at":"2026-10-16T20:55:23Z","ok":true},{"g":"am","at":"2026-10-16T17:55:44Z","ok":true},{"g":"pub","at":"2026-10-20T00:00:00Z","ok":false},{"g":"pub","at":"2026-10-19T00:00:00Z","ok":false},{"g":"pub","at":"2026-10-17T20:00:00Z","ok":false},{"g":"pub","at":"2026-10-16T15:00:55Z","ok":true},{"g":"pub","at":"2026-10-15T00:00:49Z","ok":true},{"g":"pub","at":"2026-10-14T00:00:42Z","ok":true},{"g":"pub","at":"2026-10-19T15:00:00Z","ok":false},{"g":"pub","at":"2026-10-18T20:00:00Z","ok":false},{"g":"pub","at":"2026-10-18T15:00:00Z","ok":false},{"g":"pub","at":"2026-10-18T00:00:00Z","ok":false},{"g":"pub","at":"2026-10-19T20:00:00Z","ok":false},{"g":"pub","at":"2026-10-17T15:00:00Z","ok":false},{"g":"pub","at":"2026-10-17T00:00:00Z","ok":false},{"g":"pub","at":"2026-10-16T20:00:49Z","ok":true},{"g":"pub","at":"2026-10-16T00:00:56Z","ok":true},{"g":"pub","at":"2026-10-15T20:00:26Z","ok":true},{"g":"pub","at":"2026-10-15T15:00:21Z","ok":true},{"g":"pub","at":"2026-10-14T20:00:45Z","ok":true},{"g":"pub","at":"2026-10-14T15:00:24Z","ok":true},{"g":"pub","at":"2026-10-13T20:01:00Z","ok":true},{"g":"pub","at":"2026-10-13T15:00:47Z","ok":true},{"g":"retail","at":"2026-10-12T20:20:09Z","ok":true},{"g":"hermes","at":"2026-10-12T02:00:45Z","ok":true},{"g":"hermes","at":"2026-10-11T21:30:13Z","ok":true},{"g":"hermes","at":"2026-10-12T14:59:00Z","ok":true},{"g":"hermes","at":"2026-10-12T22:59:00Z","ok":true},{"g":"hermes","at":"2026-10-13T14:59:00Z","ok":true},{"g":"hermes","at":"2026-10-13T22:59:00Z","ok":true},{"g":"hermes","at":"2026-10-14T14:59:00Z","ok":true},{"g":"hermes","at":"2026-10-14T22:59:00Z","ok":true},{"g":"hermes","at":"2026-10-15T14:59:00Z","ok":true},{"g":"hermes","at":"2026-10-15T22:59:00Z","ok":true},{"g":"hermes","at":"2026-10-16T14:59:00Z","ok":true},{"g":"hermes","at":"2026-10-16T22:59:00Z","ok":false},{"g":"rep","at":"2026-10-14T02:00:00Z","ok":true},{"g":"rep","at":"2026-10-15T02:00:00Z","ok":true},{"g":"rep","at":"2026-10-16T02:00:00Z","ok":true},{"g":"rep","at":"2026-10-17T02:00:00Z","ok":false},{"g":"rep","at":"2026-10-18T02:00:00Z","ok":false},{"g":"rep","at":"2026-10-19T02:00:00Z","ok":false},{"g":"rep","at":"2026-10-20T02:00:00Z","ok":false}],"proximas":[{"g":"hermes","at":"2026-10-16T22:59:00Z","n":"Hermes · publicar @c4b_mx"},{"g":"pub","at":"2026-10-17T00:00:00Z","n":"Publicar P12 IG+FB"},{"g":"rep","at":"2026-10-17T02:00:00Z","n":"Reporte diario Agent-Manager"},{"g":"am","at":"2026-10-17T02:25:00Z","n":"Æterna A03 Imagen 16-oct 20:30"},{"g":"pub","at":"2026-10-17T15:00:00Z","n":"Publicar P13 IG+FB"},{"g":"am","at":"2026-10-17T16:55:00Z","n":"Æterna A04 Imagen 17-oct 11:00"},{"g":"pub","at":"2026-10-17T20:00:00Z","n":"Publicar P14 Reel IG+FB"},{"g":"am","at":"2026-10-17T20:55:00Z","n":"Æterna A05 Reel 17-oct 15:00"},{"g":"pub","at":"2026-10-18T00:00:00Z","n":"Publicar P15 IG+FB"},{"g":"am","at":"2026-10-18T01:55:00Z","n":"Æterna A06 Imagen 17-oct 20:00"}],"bitacora":[{"ts":"2026-10-16T09:03:00-06:00","agente":"Argos","texto":"24 seguidores, 45 publicaciones; 144 vistas, 5 cuentas alcanzadas, 1 guardado y 3 visitas al perfil en 7 días."},{"ts":"2026-10-16T09:01:22-06:00","agente":"Hermes","texto":"Publicó «Marketing medido en ventas: 5 métricas» (09:00) — https://www.instagram.com/p/DejzpXhkZVf/"},{"ts":"2026-10-15T17:02:00-06:00","agente":"Argos","texto":"24 seguidores, 43 publicaciones; 105 vistas y 5 cuentas alcanzadas en 7 días."},{"ts":"2026-10-15T17:00:35-06:00","agente":"Hermes","texto":"Publicó «Primera conversación gratis de 30 minutos» (17:00) — https://www.instagram.com/p/DeiFsieCX_Z/"},{"ts":"2026-10-15T09:02:00-06:00","agente":"Argos","texto":"24 seguidores, 40 publicaciones; 105 vistas y 5 cuentas alcanzadas en 7 días."},{"ts":"2026-10-15T09:01:00-06:00","agente":"Hermes","texto":"Publicó «Opinión contraria: la IA no arregla procesos rotos, los acelera» (09:00) — https://www.instagram.com/p/DehO0MikS7e/"},{"ts":"2026-10-14T17:02:00-06:00","agente":"Hermes","texto":"Publicó «Paper ejecutivo gratis» (17:00): https://www.instagram.com/p/Defg-GjCYa8/"},{"ts":"2026-10-14T17:02:00-06:00","agente":"Argos","texto":"24 seguidores, 38 publicaciones; 81 vistas y 4 cuentas alcanzadas en 7 días."},{"ts":"2026-10-14T09:03:00-06:00","agente":"Hermes","texto":"Error: no se publicó «Antes vs después: WhatsApp como chat vs canal de ventas» (09:00). El contenedor se creó pero la publicación fue bloqueada por permisos de la sesión automatizada; requiere publicación manual o autorizar la acción."},{"ts":"2026-10-14T09:03:00-06:00","agente":"Argos","texto":"24 seguidores, 35 publicaciones; 81 vistas y 4 cuentas alcanzadas en 7 días."},{"ts":"2026-10-13T17:02:00-06:00","agente":"Argos","texto":"24 seguidores, 34 publicaciones; 61 vistas y 5 cuentas alcanzadas en 7 días (1 like, 3 visitas al perfil)."},{"ts":"2026-10-13T17:01:02-06:00","agente":"Hermes","texto":"Publicó «Prueba de 60 segundos a tu sitio web» (carrusel 4 láminas): https://www.instagram.com/p/Dec8KFqmfRB/"},{"ts":"2026-10-13T09:02:00-06:00","agente":"Argos","texto":"24 seguidores, 31 publicaciones; 61 vistas y 5 cuentas alcanzadas en 7 días (1 like, 3 visitas al perfil)."},{"ts":"2026-10-13T09:01:15-06:00","agente":"Hermes","texto":"Publicó «Checklist: ¿tu PyME está lista para la IA?» (carrusel 8 láminas): https://www.instagram.com/p/DecFP-mkTUd/"},{"ts":"2026-10-12T17:01:00-06:00","agente":"Argos","texto":"24 seguidores, 30 publicaciones; 30 vistas y 4 cuentas alcanzadas en 7 días; 2 visitas al perfil."},{"ts":"2026-10-12T17:00:44-06:00","agente":"Hermes","texto":"Publicó «Tu PyME antes y después de automatizar» a las 17:00 (carrusel de 4 láminas, variante A crema). https://www.instagram.com/p/DeaXVCnGaJ2/"},{"ts":"2026-10-12T10:58:00-06:00","agente":"Hermes","texto":"Publicó «Paso a paso: el método de 90 días» a las 10:58 con aprobación directa de Guillermo (mismo contenedor de las 09:00)."},{"ts":"2026-10-12T09:05:00-06:00","agente":"Hermes","texto":"Error: no publicó «Paso a paso: el método de 90 días» (09:00). El contenedor del carrusel se creó, pero la publicación fue bloqueada por los permisos de la sesión automática. Pendiente publicar manualmente."},{"ts":"2026-10-12T09:05:00-06:00","agente":"Argos","texto":"24 seguidores, 28 publicaciones; 30 vistas y 4 cuentas alcanzadas en 7 días."},{"ts":"2026-10-11T20:04:00-06:00","agente":"Argos","texto":"24 seguidores, 28 publicaciones; 13 vistas y 3 cuentas alcanzadas en 7 días."},{"ts":"2026-10-11T20:01:56-06:00","agente":"Hermes","texto":"Publicó «eCommerce agéntico: ¿quién atiende tu tienda a las 8 PM?» en @c4b_mx."},{"ts":"2026-10-11T19:55:00-06:00","agente":"Clío","texto":"Validó la v2 y la dejó en «propuesta», esperando aprobación de Guillermo. Si no hay aprobación antes de cada horario, se publica la versión ya aprobada."},{"ts":"2026-10-11T19:50:00-06:00","agente":"Vera","texto":"Revisó la v2: corrigió en N08 «toda LATAM» por «México, Colombia y Canadá» y «no hay que cambiar sistemas» por «casi nunca». Los captions aprobados no cambiaron."},{"ts":"2026-10-11T19:40:00-06:00","agente":"Director","texto":"Rediseñó los 10 posts: 5 paletas (Tinta, Crema, Petróleo, Salvia, Vino), 8 portadas con fotos originales de personas y portadas nuevas más directas. Propuesta en calendario-v2.json."},{"ts":"2026-10-11T19:05:00-06:00","agente":"Guillermo","texto":"Pidió rediseñar todo el calendario lun–vie (2 posts diarios, 09:00 y 17:00), con nuevos tonos, imágenes más atractivas y propuestas de video, enfocado en tráfico al sitio."},{"ts":"2026-10-11T18:15:00-06:00","agente":"Guillermo","texto":"Nueva directiva: usar tonos de color diferentes e imágenes de personas para hacer pruebas A/B en los carruseles a partir del lunes. Ver directivas/ab-color-personas."},{"ts":"2026-10-11T15:33:00-06:00","agente":"Argos","texto":"24 seguidores, 27 publicaciones; 13 vistas y 3 cuentas alcanzadas en 7 días."},{"ts":"2026-10-11T15:31:32-06:00","agente":"Hermes","texto":"Publicó «Opinión contraria: comprar IA no es una estrategia» en @c4b_mx."},{"ts":"2026-10-11T12:06:00-06:00","agente":"Clío","texto":"Aplicó 45 correcciones, rechazó 8 renombres de id y autorizó los 12 posts."},{"ts":"2026-10-11T12:02:00-06:00","agente":"Vera","texto":"Revisó 12 posts (promedio 7.8/10) y dejó correcciones exactas para cada uno."},{"ts":"2026-10-11T11:50:00-06:00","agente":"Director","texto":"Ajustó el calendario: hoy 15:30 y 20:00; lunes a viernes 9:00 y 17:00. Creó 3 posts nuevos."},{"ts":"2026-10-11T11:40:00-06:00","agente":"Argos","texto":"Registró la línea base de la cuenta: 24 seguidores y 13 vistas en 7 días."},{"ts":"2026-10-11T11:30:04-06:00","agente":"Hermes","texto":"Publicó «5 cosas que puedes hacer hoy gratis por tu empresa» en @c4b_mx."},{"ts":"2026-10-11T11:17:00-06:00","agente":"Director","texto":"Creó los carruseles en formatos virales (sistema y opinión contraria) con el estilo de aeterna4.com."}]};
+async function boot(){
+  try {
+    const db = window.claude ? await window.claude.use('db') : null;
+    if (db) { const s = await db.doc('dashboard/main').get(); if (s.exists && s.data()) C = s.data(); }
+  } catch (e) { console.warn('db', e); }
+// =================== Campañas y agentes ===================
+const NOW = Date.now();
+$('nav-c').textContent = C.campanas.filter(c => c.estado !== 'reemplazada').length; $('nav-a').textContent = C.equipos.filter(t => t.estado !== 'terminado').length;
+const TEAM = Object.fromEntries(C.equipos.map(t => [t.id, t]));
+const hm = iso => { const d = new Date(iso); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
+const until = iso => { const h = (new Date(iso) - NOW) / 36e5; if (h < 0) return 'ya pasó'; if (h < 1) return `en ${Math.max(1, Math.round(h * 60))} min`; if (h < 24) return `en ${Math.round(h)} h`; const d = Math.round(h / 24); return d === 1 ? 'mañana' : `en ${d} días`; };
+const dayDiff = (a, b) => Math.round((new Date(b + 'T12:00') - new Date(a + 'T12:00')) / 864e5);
+const ESTADO = {'en curso': 'run', 'activa': 'run', 'cierra hoy': 'warnc', 'reemplazada': 'off', 'activo': 'ok', 'termina hoy': 'warnc', 'terminado': 'off', 'listo': 'ok', 'esperando': 'warnc', 'programado': 'run', 'error': 'bad'};
+const chipE = (s, live) => `<span class="chip ${ESTADO[s] || 'neutral'}">${live ? '<i class="dot live"></i>' : ''}${esc(s.charAt(0).toUpperCase() + s.slice(1))}</span>`;
+const vivas = c => c.estado !== 'reemplazada';
+
+{
+  const totPub = sum(C.campanas.filter(c => !c.unidad), 'publicadas'), totProg = sum(C.campanas, 'programadas'), totErr = sum(C.campanas, 'errores');
+  const activos = C.equipos.filter(t => t.estado === 'activo' || t.estado === 'termina hoy').length;
+  $('mk-meta').textContent = `Datos al ${dt(C.generado)} · tareas programadas de Claude, Sala de Agentes y calendarios en Drive`;
+  $('camp-sub').textContent = `${C.campanas.filter(vivas).length} campañas vivas en Instagram, Facebook, WhatsApp y email`;
+  $('ag-sub').textContent = `${activos} equipos activos · ${C.personajes.length} personajes · ${C.proximas.length ? 'próxima corrida ' + until(C.proximas[0].at) : ''}`;
+  $('camp-kpis').innerHTML = [
+    ['Campañas vivas', C.campanas.filter(vivas).length, `${C.campanas.length} lanzadas desde el 11 oct`],
+    ['Posts publicados', totPub, `en @c4b_mx, @aeterna_ig y Facebook`],
+    ['Programados', totProg, `los agentes los publican solos`],
+    ['Con error', totErr, totErr ? 'N05 · revisar permisos' : 'sin fallas'],
+    ['Alcance 7 días', C.ig.reach_7d, `${C.ig.cuenta} · ${C.ig.views_7d} vistas`],
+  ].map(([l, v, nt]) => `<div class="kpi"><span class="label">${l}</span><span class="value num">${v}</span><span class="note">${nt}</span></div>`).join('');
+  const LV = {alta: '● Alta', media: '◐ Media', baja: '○ Info'};
+  $('alerts').innerHTML = C.alertas.map(a => `<article class="alert ${a.nivel}"><h3><span class="chip ${a.nivel === 'baja' ? 'baja' : a.nivel}">${LV[a.nivel]}</span>${esc(a.titulo)}</h3><p>${esc(a.texto)}</p>${a.accion ? `<p class="do"><b>Qué hacer:</b> ${esc(a.accion)}</p>` : ''}</article>`).join('');
+}
+
+// ---------- campaign cards ----------
+
+// ---------- selector de campañas (casillas) ----------
+const ALL_PICK = [...C.campanas.map(c => c.id), ...(C.retail?.campaigns ?? []).map(c => 'R:' + c.id)];
+let picked = ALL_PICK;
+try { const raw = JSON.parse(store.get('pick', 'null')); if (Array.isArray(raw)) picked = raw; } catch {}
+const isPicked = id => picked.includes(id);
+const savePick = () => { try { localStorage.setItem('tablero:pick', JSON.stringify(picked)); } catch {} };
+function renderPicker(){
+  const items = [
+    ...C.campanas.map(c => ({id: c.id, g: 'Aeterna', n: c.nombre})),
+    ...(C.retail?.campaigns ?? []).map(c => ({id: 'R:' + c.id, g: 'Retail Puebla', n: c.nombre})),
+  ];
+  $('picker').innerHTML = `<fieldset class="picker"><legend>Campañas a mostrar</legend>
+    <div class="picker-tools"><button type="button" data-pa="all">Todas</button><button type="button" data-pa="none">Ninguna</button><span class="small muted">${picked.length} de ${ALL_PICK.length} seleccionadas</span></div>
+    <div class="picker-list">${items.map(i => `<label class="pick"><input type="checkbox" value="${esc(i.id)}"${isPicked(i.id) ? ' checked' : ''}><span><b>${esc(i.g)}</b> · ${esc(i.n)}</span></label>`).join('')}</div></fieldset>`;
+  $('picker').querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', () => {
+    picked = [...$('picker').querySelectorAll('input[type=checkbox]:checked')].map(x => x.value);
+    savePick(); renderPicker(); renderCamps(); renderRetail();
+  }));
+  $('picker').querySelectorAll('[data-pa]').forEach(b => b.addEventListener('click', () => {
+    picked = b.dataset.pa === 'all' ? [...ALL_PICK] : [];
+    savePick(); renderPicker(); renderCamps(); renderRetail();
+  }));
+}
+const PROG = [['publicadas', '--good', 'publicadas'], ['programadas', '--s1', 'programadas'], ['errores', '--crit', 'con error'], ['omitidas', '--axis', 'omitidas']];
+let campFilter = store.get('cf', 'todas');
+  function renderRetail(){
+    const R = C.retail, host = $('retail'); if (!host || !R) return;
+    const v = x => (x === null || x === undefined) ? '<span class="zero">sin dato</span>' : esc(String(x));
+    const verif = R.posts.filter(p => String(p.estado).startsWith('publicada')).length;
+    const showPosts = isPicked('R:camp-B-ig') || isPicked('R:camp-B-fb');
+    const showEmails = isPicked('R:camp-A-email');
+    const chipOf = e => String(e).startsWith('en curso') ? 'run' : e === 'plan' ? 'off' : 'ok';
+    host.innerHTML = `<div class="block-head"><h2>Retail Puebla · Diagnóstico y contenido</h2><p>Fuentes: ${esc(R.fuentes.join(' · '))}</p></div>
+    <div class="camp-grid">${R.campaigns.filter(c => isPicked('R:' + c.id)).map(c => `<article class="camp"><div class="camp-top"><h3>${esc(c.nombre)}</h3><span class="chip ${chipOf(c.estado)}">${esc(c.estado)}</span></div><div class="acct">${esc(c.cuenta)}</div><div class="obj">${esc(c.objetivo)}</div><div class="camp-foot"><span>${esc(c.inicio)} → ${esc(c.fin)}</span><span>Programadas ${v(c.programadas)} · Publicadas ${v(c.publicadas)} · Errores ${v(c.errores)}</span></div></article>`).join('')}</div>
+    <div class="panel" style="display:${showPosts ? '' : 'none'}"><div class="panel-head"><h3>Publicaciones (${R.posts.length})</h3><p>${verif} verificada(s) con enlace. Las demás aún no se confirman en Instagram o Facebook.</p></div>
+    <div class="table-wrap"><table style="min-width:640px"><thead><tr><th>ID</th><th>Fecha</th><th>Hora</th><th>Canal</th><th>Tema</th><th>Estado</th><th>Enlace</th></tr></thead><tbody>${R.posts.map(p => `<tr><td class="mono">${esc(p.id)}</td><td>${esc(p.fecha)}</td><td>${esc(p.hora)}</td><td>${esc(p.canal)}</td><td>${esc(p.tema)}</td><td>${esc(p.estado)}</td><td>${p.enlace ? (typeof p.enlace === 'string' ? `<a href="${esc(p.enlace)}" target="_blank" rel="noopener">Abrir</a>` : `<a href="${esc(p.enlace.instagram)}" target="_blank" rel="noopener">Instagram</a>`) : '<span class="zero">sin dato</span>'}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="panel" style="display:${showEmails ? '' : 'none'}"><div class="panel-head"><h3>Correos (${R.emails.length})</h3><p>Envíos planeados. Todavía no hay datos de envío, aperturas ni clics.</p></div>
+    <div class="table-wrap"><table style="min-width:520px"><thead><tr><th>Campaña</th><th>Fecha de envío</th><th class="r">Enviados</th><th class="r">Aperturas</th><th class="r">Clics</th><th class="r">Respuestas</th></tr></thead><tbody>${R.emails.map(e => `<tr><td>${esc(e.campana)}</td><td>${esc(e.fecha_envio)}</td><td class="r">${v(e.enviados)}</td><td class="r">${v(e.aperturas)}</td><td class="r">${v(e.clics)}</td><td class="r">${v(e.respuestas)}</td></tr>`).join('')}</tbody></table></div></div>
+    <p class="small muted">Notas: ${esc(R.notas.join(' · '))}</p>`;
+  }
+  function renderCamps() {
+  document.querySelectorAll('[data-cf]').forEach(b => b.setAttribute('aria-pressed', b.dataset.cf === campFilter));
+  const list = C.campanas.filter(c => isPicked(c.id) && (campFilter === 'todas' || (campFilter === 'vivas' ? vivas(c) : !vivas(c))));
+  $('camps').innerHTML = list.length ? list.map(c => {
+    const pctDone = c.total ? Math.round(c.publicadas / c.total * 100) : 0;
+    const unidad = c.unidad || 'posts';
+    return `<article class="camp" id="camp-${c.id}">
+      <div class="camp-top"><div><h3>${esc(c.nombre)}</h3><span class="acct">${esc(c.cuenta)}</span></div>${chipE(c.estado, c.estado === 'en curso' || c.estado === 'activa')}</div>
+      <p class="obj">${esc(c.objetivo)}</p>
+      <div class="prog"><div class="meter-top"><span class="small">${c.unidad ? `${c.publicadas} ${unidad} enviados` : `${c.publicadas} de ${c.total} ${unidad}`}</span><span class="num small">${pctDone} %</span></div>
+        <div class="prog-bar" aria-hidden="true">${PROG.filter(([k]) => c[k] > 0).map(([k, col]) => `<div style="flex:${c[k]} 0 0;background:var(${col})"></div>`).join('')}</div>
+        <div class="prog-legend">${PROG.filter(([k]) => c[k] > 0).map(([k, col, l]) => `<span><i class="sw" style="background:var(${col});margin-right:5px"></i><b>${c[k]}</b> ${c.unidad && k === 'publicadas' ? 'enviados' : l}</span>`).join('')}</div></div>
+      <div class="fmt">${Object.entries(c.formatos).map(([f, v]) => `<span class="flag">${esc(f)} · ${v}</span>`).join('')}</div>
+      <div class="camp-foot"><span>${dayLabel(c.inicio)} – ${c.fin ? dayLabel(c.fin) : 'sin fecha de cierre'} · ${esc(c.agente)}</span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">Abrir tablero ↗</a>` : ''}</div>
+    </article>`; }).join('') : '<p class="empty">No hay campañas en este filtro.</p>';
+}
+document.querySelectorAll('[data-cf]').forEach(b => b.addEventListener('click', () => { campFilter = b.dataset.cf; store.set('cf', campFilter); renderCamps(); }));
+renderPicker();
+renderCamps();
+  renderRetail();
+
+// ---------- gantt ----------
+function renderGantt() {
+  const host = $('ch-gantt'); host.innerHTML = '';
+  const start = '2026-10-11', end = '2026-10-26', days = dayDiff(start, end);
+  const rows = C.campanas, W = Math.max(320, host.clientWidth || 700), narrow = W < 560;
+  const m = {t: 24, r: 10, b: 8, l: narrow ? 118 : 210}, rh = 34, H = m.t + rows.length * rh + m.b;
+  const svg = el('svg', {width: '100%', height: H, viewBox: `0 0 ${W} ${H}`}, host);
+  const iw = W - m.l - m.r, x = iso => m.l + dayDiff(start, iso) / days * iw;
+  for (let i = 0; i <= days; i++) {
+    const d = new Date(start + 'T12:00'); d.setDate(d.getDate() + i); const k = isoDay(d), xx = x(k);
+    el('line', {x1: xx, x2: xx, y1: m.t - 4, y2: H - m.b, stroke: css('--grid'), 'stroke-width': 1}, svg);
+    if (i < days && (i % (narrow ? 3 : 1) === 0)) el('text', {x: xx + iw / days / 2, y: 14, 'text-anchor': 'middle'}, svg).textContent = narrow ? dayLabel(k) : d.getDate();
+  }
+  if (!narrow) el('text', {x: m.l, y: 14, 'text-anchor': 'end', dx: -10}, svg).textContent = 'octubre';
+  rows.forEach((c, i) => {
+    const y0 = m.t + i * rh + 7, h = rh - 14, x0 = x(c.inicio);
+    const fin = c.fin || end; const x1 = x(fin) + (c.fin ? iw / days : 0);
+    const nm = el('text', {x: m.l - 10, y: y0 + h / 2 + 4, 'text-anchor': 'end', class: 'lbl'}, svg);
+    const label = c.nombre.split(' · ')[0]; nm.textContent = narrow && label.length > 15 ? label.slice(0, 14) + '…' : label;
+    const col = c.estado === 'reemplazada' ? '--axis' : c.id === 'retail' ? '--s4' : c.cuenta.includes('aeterna_ig') ? '--s1' : '--s2';
+    el('rect', {x: x0, y: y0, width: Math.max(4, x1 - x0), height: h, rx: 5, fill: css(col), 'fill-opacity': .22, stroke: css(col), 'stroke-width': 1.5, 'stroke-dasharray': c.fin ? '' : '4 3'}, svg);
+    const frac = c.unidad ? 1 : c.publicadas / (c.total || 1);
+    const doneEnd = c.unidad ? Math.min(x(C.hoy) + iw / days / 2, x1) : x0 + (x1 - x0) * frac;
+    el('rect', {x: x0, y: y0, width: Math.max(0, doneEnd - x0), height: h, rx: 5, fill: css(col)}, svg);
+    const hit = el('rect', {class: 'hit', x: m.l, y: m.t + i * rh, width: iw, height: rh, tabindex: 0, 'aria-label': c.nombre}, svg);
+    const html = `<b>${esc(c.nombre)}</b><div class="tr"><span>Fechas</span><span>${dayLabel(c.inicio)} – ${c.fin ? dayLabel(c.fin) : 'abierta'}</span></div><div class="tr"><span>${c.unidad ? 'Toques enviados' : 'Publicados'}</span><span>${c.publicadas}${c.unidad ? '' : ' / ' + c.total}</span></div>${c.programadas ? `<div class="tr"><span>Programados</span><span>${c.programadas}</span></div>` : ''}${c.errores ? `<div class="tr"><span>Con error</span><span>${c.errores}</span></div>` : ''}<div>${esc(c.cuenta)}</div>`;
+    hit.addEventListener('mouseenter', e => showTip(e, html)); hit.addEventListener('mousemove', moveTip); hit.addEventListener('mouseleave', hideTip);
+    hit.addEventListener('focus', () => { const b = hit.getBoundingClientRect(); showTip({clientX: b.left + 40, clientY: b.top}, html); }); hit.addEventListener('blur', hideTip);
+    hit.addEventListener('click', () => { const t = $('camp-' + c.id); if (t) { if (campFilter !== 'todas') { campFilter = 'todas'; renderCamps(); } $('camp-' + c.id).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center'}); } else { campFilter = 'todas'; renderCamps(); } });
+  });
+  const tx = x(C.hoy) + iw / days * (new Date(C.generado).getHours() / 24);
+  el('line', {x1: tx, x2: tx, y1: m.t - 6, y2: H - m.b, stroke: css('--ink'), 'stroke-width': 1.5, 'stroke-dasharray': '3 3'}, svg);
+  const tl = el('text', {x: tx + 4, y: H - m.b - 2, class: 'lbl'}, svg); tl.textContent = 'hoy';
+}
+
+// ---------- plan de 10 días ----------
+{
+  const FMT = {reel: ['Reel', '--s1'], carousel: ['Carrusel', '--s2'], image: ['Imagen', '--s3']};
+  $('lg-plan').innerHTML = Object.values(FMT).map(([l, c]) => `<span><i class="sw" style="background:var(${c})"></i>${l}</span>`).join('');
+  const dates = [...new Set(C.plan10.map(p => p.date))].sort();
+  const byDay = Object.fromEntries(dates.map(d => [d, C.plan10.filter(p => p.date === d).sort((a, b) => a.time.localeCompare(b.time))]));
+  const DOW = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  let html = '<span></span>' + dates.map(d => `<span class="ph${d === C.hoy ? ' today' : ''}">${DOW[new Date(d + 'T12:00').getDay()]} ${+d.slice(8)}</span>`).join('');
+  ['Mañana', 'Tarde', 'Noche'].forEach((lbl, slot) => {
+    html += `<span class="rl">${lbl}</span>` + dates.map(d => { const p = byDay[d][slot]; if (!p) return '<span></span>';
+      const [fl, fc] = FMT[p.formato] || ['—', '--axis'];
+      return `<span class="cell${p.ok ? ' ok' : ''}${d === C.hoy ? ' today' : ''}" style="--c:var(${fc})" tabindex="0" data-tip="${esc(`<b>${p.id} · ${fl}</b><div class="tr"><span>${dayLabel(p.date)}</span><span>${p.time}</span></div><div class="tr"><span>Pilar</span><span>${p.pilar}</span></div><div>${p.ok ? 'Publicado' : 'Programado'}</div>`)}">${p.id}</span>`; }).join('');
+  });
+  $('plan-grid').innerHTML = html;
+  $('plan-grid').querySelectorAll('.cell').forEach(c => { const h = c.dataset.tip;
+    c.addEventListener('mouseenter', e => showTip(e, h)); c.addEventListener('mousemove', moveTip); c.addEventListener('mouseleave', hideTip);
+    c.addEventListener('focus', () => { const b = c.getBoundingClientRect(); showTip({clientX: b.right, clientY: b.top}, h); }); c.addEventListener('blur', hideTip); });
+}
+
+// ---------- IG line chart ----------
+function renderIG() {
+  const Hs = C.ig.historial, host = $('ch-ig'); host.innerHTML = '';
+  $('ig-fresh').textContent = `Medido ${ago(C.ig.actualizado)}`;
+  $('ig-kpis').innerHTML = [['Seguidores', C.ig.followers, 'sin cambio en 6 días'], ['Alcance 7 d', C.ig.reach_7d, 'cuentas únicas'], ['Visitas al perfil', C.ig.profile_views_7d, '7 días'], ['Guardados', C.ig.saves_7d, `${C.ig.likes_7d} like en 7 días`]]
+    .map(([l, v, s]) => `<div><span class="v">${v}</span><span class="l">${l} · ${s}</span></div>`).join('');
+  const W = Math.max(280, host.clientWidth || 500), H = 200, m = {t: 22, r: 16, b: 26, l: 40};
+  const svg = el('svg', {width: '100%', height: H, viewBox: `0 0 ${W} ${H}`}, host);
+  const top = Math.max(...Hs.map(h => h.views)), step = niceStep(top), max = Math.ceil(top / step) * step;
+  const iw = W - m.l - m.r, ih = H - m.t - m.b, x = i => m.l + i / (Hs.length - 1) * iw, y = v => m.t + ih - v / max * ih;
+  for (let v = 0; v <= max; v += step) { el('line', {x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: css(v ? '--grid' : '--axis'), 'stroke-dasharray': v ? '2 3' : ''}, svg); el('text', {x: m.l - 8, y: y(v) + 4, 'text-anchor': 'end'}, svg).textContent = v; }
+  const pts = Hs.map((h, i) => [x(i), y(h.views)]);
+  const defs = el('defs', {}, svg), gr = el('linearGradient', {id: 'igfill', x1: 0, x2: 0, y1: 0, y2: 1}, defs);
+  el('stop', {offset: '0%', 'stop-color': css('--s1'), 'stop-opacity': .28}, gr); el('stop', {offset: '100%', 'stop-color': css('--s1'), 'stop-opacity': 0}, gr);
+  el('path', {d: `M${pts[0][0]},${y(0)}L${pts.map(p => p.join(',')).join('L')}L${pts.at(-1)[0]},${y(0)}Z`, fill: 'url(#igfill)'}, svg);
+  el('path', {d: 'M' + pts.map(p => p.join(',')).join('L'), fill: 'none', stroke: css('--s1'), 'stroke-width': 2, 'stroke-linejoin': 'round'}, svg);
+  Hs.forEach((h, i) => el('text', {x: x(i), y: H - 8, 'text-anchor': i === 0 ? 'start' : i === Hs.length - 1 ? 'end' : 'middle'}, svg).textContent = dayLabel(h.fecha));
+  const last = pts.at(-1);
+  el('circle', {cx: last[0], cy: last[1], r: 5, fill: css('--s1'), stroke: css('--surface'), 'stroke-width': 2}, svg);
+  const lt = el('text', {x: last[0] - 8, y: last[1] - 9, 'text-anchor': 'end', class: 'lbl'}, svg); lt.textContent = `${Hs.at(-1).views} vistas`;
+  const cross = el('line', {y1: m.t, y2: m.t + ih, stroke: css('--axis'), 'stroke-width': 1, visibility: 'hidden'}, svg);
+  const dot = el('circle', {r: 5, fill: css('--s1'), stroke: css('--surface'), 'stroke-width': 2, visibility: 'hidden'}, svg);
+  const ov = el('rect', {class: 'hit', x: m.l, y: m.t, width: iw, height: ih, tabindex: 0, 'aria-label': 'Detalle por día'}, svg);
+  const at = (i, e) => { const h = Hs[i]; cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', x(i)); dot.setAttribute('cy', y(h.views)); dot.setAttribute('visibility', 'visible');
+    showTip(e, `<b>${dayLabel(h.fecha)}</b><div class="tr"><span>Vistas 7 d</span><span>${h.views}</span></div><div class="tr"><span>Alcance</span><span>${h.reach}</span></div><div class="tr"><span>Visitas al perfil</span><span>${h.profile_views}</span></div><div class="tr"><span>Posts en la cuenta</span><span>${h.media_count}</span></div>`); };
+  ov.addEventListener('mousemove', e => { const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width; at(Math.max(0, Math.min(Hs.length - 1, Math.round((px - m.l) / iw * (Hs.length - 1)))), e); });
+  ov.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); hideTip(); });
+  ov.addEventListener('focus', () => { const b = ov.getBoundingClientRect(); at(Hs.length - 1, {clientX: b.right - 40, clientY: b.top}); });
+  ov.addEventListener('blur', () => { cross.setAttribute('visibility', 'hidden'); dot.setAttribute('visibility', 'hidden'); hideTip(); });
+}
+
+// ---------- top posts ----------
+{
+  const pub = C.posts.filter(p => p.m).sort((a, b) => b.m.vistas - a.m.vistas || b.m.alcance - a.m.alcance).slice(0, 8);
+  const maxV = Math.max(...pub.map(p => p.m.vistas), 1);
+  const other = C.posts.filter(p => !p.m);
+  $('top-posts').innerHTML = pub.map(p => `<div class="hbar-item"><div class="hbar-top"><span>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(p.tema)}</a>` : esc(p.tema)}</span><span class="num">${p.m.vistas} <span class="muted">· ${p.m.alcance} alc.</span></span></div><div class="track"><div style="width:${Math.max(1.5, p.m.vistas / maxV * 100).toFixed(1)}%;background:var(${p.id.startsWith('V') ? '--s4' : '--s2'})"></div></div><span class="small muted">${p.id} · ${dayLabel(p.fecha)} ${p.hora}${p.m.likes ? ` · ${p.m.likes} like` : ''}</span></div>`).join('')
+    + `<div class="legend"><span><i class="sw" style="background:var(--s2)"></i>Calendario v2</span><span><i class="sw" style="background:var(--s4)"></i>Calendario v1</span></div>`
+    + (other.length ? `<p class="small muted">Sin métricas aún: ${other.map(p => `${p.id} (${p.estado})`).join(', ')}.</p>` : '');
+}
+
+// ---------- teams ----------
+{
+  const ring = (done, total, col) => { const r = 19, c = 2 * Math.PI * r, f = total ? done / total : 1;
+    return `<svg class="ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="${r}" fill="none" stroke="var(--sunken)" stroke-width="5"/><circle cx="24" cy="24" r="${r}" fill="none" stroke="var(${col})" stroke-width="5" stroke-linecap="round" stroke-dasharray="${(c * f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 24 24)"/><text x="24" y="28" text-anchor="middle">${total ? Math.round(f * 100) : '∞'}</text></svg>`; };
+  const next = id => C.proximas.find(p => p.g === id);
+  const order = {'termina hoy': 0, activo: 1, terminado: 2};
+  $('teams').innerHTML = C.equipos.slice().sort((a, b) => order[a.estado] - order[b.estado]).map(t => { const nx = next(t.id);
+    return `<article class="team"><div class="team-top">${ring(t.hechas ?? 0, t.total, t.color)}<div style="min-width:0"><h3>${esc(t.nombre)}</h3><span class="acct">${esc(t.cuenta)}</span></div><span style="margin-left:auto">${chipE(t.estado, t.estado === 'activo')}</span></div>
+      <p>${esc(t.rol)}</p>
+      <dl><dt>Corridas</dt><dd>${t.total ? `${t.hechas} de ${t.total} · ${t.fallidas} fallas` : 'continua · 0 fallas'}</dd><dt>Ritmo</dt><dd>${esc(t.ritmo)}</dd>${nx ? `<dt>Próxima</dt><dd>${dt(nx.at)} · ${until(nx.at)}</dd>` : ''}<dt>Modelo</dt><dd>${esc(t.modelo)}</dd></dl></article>`; }).join('');
+}
+
+// ---------- runs per day ----------
+const RUN_TEAMS = ['am', 'pub', 'hermes', 'rep'];
+function renderRuns() {
+  const start = '2026-10-11', end = '2026-10-25', n = dayDiff(start, end) + 1;
+  const days = Array.from({length: n}, (_, i) => { const d = new Date(start + 'T12:00'); d.setDate(d.getDate() + i); return isoDay(d); });
+  const cnt = days.map(() => ({}));
+  C.ejecuciones.forEach(r => { const k = isoDay(new Date(r.at)), i = days.indexOf(k); if (i >= 0) cnt[i][r.g] = (cnt[i][r.g] || 0) + 1; });
+  $('lg-runs').innerHTML = RUN_TEAMS.map(g => `<span><i class="sw" style="background:var(${TEAM[g].color})"></i>${esc(TEAM[g].nombre)}</span>`).join('');
+  const narrow = $('ch-runs').clientWidth < 560;
+  barChart($('ch-runs'), {n, series: RUN_TEAMS.map(g => ({key: g, color: TEAM[g].color})), value: (i, k) => cnt[i][k] || 0, height: 220,
+    label: i => narrow ? String(+days[i].slice(8)) : dayLabel(days[i]), labelEvery: narrow ? 2 : 1, axisFmt: v => String(v),
+    faded: i => days[i] > C.hoy,
+    tipHtml: i => `<b>${dayLabel(days[i])}${days[i] === C.hoy ? ' · hoy' : days[i] > C.hoy ? ' · programado' : ''}</b>` + (RUN_TEAMS.filter(g => cnt[i][g]).map(g => `<div class="tr"><span>${esc(TEAM[g].nombre)}</span><span>${cnt[i][g]}</span></div>`).join('') || '<div>Sin corridas</div>')});
+}
+
+// ---------- upcoming ----------
+$('next').innerHTML = C.proximas.length ? C.proximas.map(p => `<li><span class="t">${dt(p.at)}</span><span><i class="sw" style="background:var(${TEAM[p.g]?.color || '--axis'});margin-right:7px"></i>${esc(p.n.replace(/^Æterna /, ''))}<span class="sub small muted" style="display:block">${esc(TEAM[p.g]?.nombre || '')}</span></span><span class="in">${until(p.at)}</span></li>`).join('') : '<li class="empty">Nada programado.</li>';
+
+// ---------- bitácora ----------
+{
+  const AG_COLOR = {Hermes: '--s3', Argos: '--s1', Vera: '--s2', 'Clío': '--s4'};
+  const names = [...new Set(C.bitacora.map(l => l.agente))];
+  let who = 'Todos', all = false;
+  $('log-filter').innerHTML = ['Todos', ...names].map(n => `<button type="button" data-who="${esc(n)}" aria-pressed="${n === who}">${esc(n)}</button>`).join('');
+  const render = () => {
+    $('log-filter').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.who === who));
+    const list = C.bitacora.filter(l => who === 'Todos' || l.agente === who), shown = all ? list : list.slice(0, 7);
+    $('log').innerHTML = shown.map(l => `<li style="--c:var(${AG_COLOR[l.agente] || '--axis'})"><span class="who">${esc(l.agente)}<span class="ts">${dt(l.ts)}</span></span><p>${esc(l.texto)}</p></li>`).join('');
+    $('log-more').hidden = list.length <= 7; $('log-more').textContent = all ? 'Ver menos' : `Ver las ${list.length} entradas`;
+  };
+  $('log-filter').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { who = b.dataset.who; all = false; render(); } });
+  $('log-more').addEventListener('click', () => { all = !all; render(); });
+  render();
+}
+
+// ---------- personajes ----------
+{
+  const groups = [...new Set(C.personajes.map(p => p.grupo))];
+  const col = g => g.includes('aeterna_ig') ? '--s1' : '--s3';
+  $('people').innerHTML = groups.map(g => `<div style="display:grid;gap:8px;margin-bottom:14px"><span class="eyebrow">${esc(g)}</span><div class="people">${C.personajes.filter(p => p.grupo === g).map(p => `<article class="person">
+    <div class="person-top"><span class="av" style="background:var(${col(g)})">${esc(p.name.charAt(0))}</span><div><div class="nm">${esc(p.name)}</div><div class="rl">${esc(p.role)}</div></div><span style="margin-left:auto">${chipE(p.status)}</span></div>
+    ${p.last_activity ? `<p>${esc(p.last_activity)}</p>` : ''}${p.pending ? `<p class="small"><b>Sigue:</b> ${esc(p.pending)}</p>` : ''}${p.updated ? `<span class="when">${ago(p.updated)} · ${p.tasks} tareas</span>` : ''}</article>`).join('')}</div></div>`).join('');
+}
+
+// ---------- menú: estado activo y tema ----------
+$('usage-stale').textContent = `Datos de uso al ${dayLabel(D.hoy)} · pide «actualiza el tablero» en Claude Code para refrescarlos`;
+{
+  const links = [...document.querySelectorAll('nav a[href^="#"]')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const spy = () => { const y = innerHeight * .3; let cur = secs[0];
+    secs.forEach(s => { if (s.getBoundingClientRect().top <= y) cur = s; });
+    links.forEach(a => { const on = a.getAttribute('href') === '#' + cur.id; a.setAttribute('aria-current', on); if (on) { const nav = a.closest('nav'); if (nav) nav.scrollLeft = a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2; } }); };
+  let st; addEventListener('scroll', () => { cancelAnimationFrame(st); st = requestAnimationFrame(spy); }, {passive: true}); spy();
+  const MODES = ['sistema', 'claro', 'oscuro'], btn = $('theme-btn');
+  let mode = store.get('theme', 'sistema');
+  const apply = () => { const r = document.documentElement; if (mode === 'claro') r.dataset.theme = 'light'; else if (mode === 'oscuro') r.dataset.theme = 'dark'; else delete r.dataset.theme; btn.textContent = `Tema: ${mode}`; };
+  btn.addEventListener('click', () => { mode = MODES[(MODES.indexOf(mode) + 1) % 3]; store.set('theme', mode); apply(); });
+  apply();
+}
+
+const renderCharts = () => { renderDaily(); renderHours(); renderGantt(); renderIG(); renderRuns(); };
+renderCharts();
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(renderCharts, 120); });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', renderCharts);
+new MutationObserver(renderCharts).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  $('refresh-btn').onclick = () => location.reload();
+}
+boot();
+</script>
+
+<script>
+(function(){
+  const ST = {uso:{l:'En uso', c:'var(--good)', chip:'ok'}, conectado:{l:'Conectado', c:'var(--s1)', chip:'run'}, pausado:{l:'Pausado', c:'var(--muted)', chip:'off'}};
+  const N = [
+    {id:'memo', c:0, r:0, name:'Memoria Claude', sub:'/areas y /topics', st:'uso', desc:'Contexto persistente de campañas, decisiones y preferencias. Los agentes lo leen antes de actuar.', uso:'Contexto de cada corrida.'},
+    {id:'gdrive', c:0, r:1, name:'Google Drive', sub:'JSON de Retail Puebla', st:'uso', desc:'Fuente de las 15 publicaciones y del plan de correos de Retail. Se carga a mano.', uso:'Datos de Retail Puebla.'},
+    {id:'supa', c:0, r:2, name:'Supabase', sub:'aeterna-dashboard-oct26', st:'pausado', desc:'Proyecto con esquema listo y sin datos. Falta el token de Meta para sincronizarlo.', uso:'Pendiente.'},
+    {id:'meta', c:0, r:3, name:'Meta Ads', sub:'Conector · 4 cuentas', st:'pausado', desc:'Conector activo, sin token de sistema para la API. Pausado por decisión tuya.', uso:'Pausado.'},
+    {id:'contenido', c:1, r:0, name:'Agentes de contenido', sub:'Hermes · Manager · Publicador', st:'uso', desc:'Publican en Instagram y Facebook. Hermes cerró su calendario el 16 oct; el Manager y el Publicador siguen activos.', uso:'Publicación diaria.'},
+    {id:'comp', c:1, r:1, name:'Composio', sub:'Instagram · Facebook', st:'uso', desc:'Conector por donde salen y se leen las publicaciones de @c4b_mx, @aeterna_ig y Facebook.', uso:'Publicar y leer redes.'},
+    {id:'retail', c:1, r:2, name:'Agente Retail', sub:'Vigilante · Reporte diario', st:'uso', desc:'Revisa cada hora las respuestas de WhatsApp y manda el reporte de las 20:00. El reporte tiene error desde el 17 oct.', uso:'Seguimiento de Puebla.'},
+    {id:'kap', c:1, r:3, name:'Kapso', sub:'WhatsApp Business', st:'uso', desc:'WhatsApp de Aeterna: campañas de Retail y reportes. No hay envío confirmado de la campaña A.', uso:'WhatsApp.'},
+    {id:'twenty', c:1, r:4, name:'Twenty CRM', sub:'Oportunidades y notas', st:'uso', desc:'CRM donde se registran las oportunidades de Puebla.', uso:'CRM de prospección.'},
+    {id:'redes', c:2, r:1, name:'Instagram y Facebook', sub:'@c4b_mx · @aeterna_ig', st:'uso', desc:'Cuentas de contenido. @c4b_mx tiene 53 publicaciones y 24 seguidores; @aeterna_ig, 10 y 1.', uso:'Destino del contenido.'},
+    {id:'wa', c:2, r:3, name:'WhatsApp Retail', sub:'Diagnóstico Puebla', st:'uso', desc:'Mensajes de diagnóstico a la Ola 1. Sin confirmación de envío todavía.', uso:'Destino de Retail.'},
+    {id:'dash', c:2, r:4, name:'Tablero de Claude', sub:'Base del artefacto', st:'uso', desc:'Panel central. Los agentes escriben aquí y el botón Actualizar lee lo último guardado. Sin sincronización automática con Supabase ni Meta.', uso:'Panel central.'}
+  ];
+  const E = [
+    {a:'memo', b:'contenido', l:'contexto'},
+    {a:'gdrive', b:'dash', l:'JSON a mano'},
+    {a:'supa', b:'dash', l:'pausado', d:true},
+    {a:'meta', b:'dash', l:'pausado', d:true},
+    {a:'contenido', b:'comp', l:'publica'},
+    {a:'comp', b:'redes', l:'publica y lee'},
+    {a:'retail', b:'kap', l:'revisa WhatsApp'},
+    {a:'retail', b:'twenty', l:'notas CRM'},
+    {a:'kap', b:'wa', l:'envía'},
+    {a:'contenido', b:'dash', l:'escribe estado'},
+    {a:'retail', b:'dash', l:'escribe datos'}
+  ];
+  const W = 1000, H = 560, NW = 210, NH = 60;
+  const COLX = [160, 500, 840], ROWY = [28, 128, 228, 328, 428];
+  const byId = Object.fromEntries(N.map(n => [n.id, n]));
+  const cx = n => COLX[n.c], cy = n => ROWY[n.r] + NH / 2;
+  let filt = 'all', sel = 'dash';
+  const esc = s => String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+  const ok = n => filt === 'all' || n.st === filt;
+  const touches = (e, id) => e.a === id || e.b === id;
+  const LBL = 'font:600 11px var(--mono);fill:var(--muted);letter-spacing:.08em';
+
+  function pts(a, b){
+    const A = byId[a], B = byId[b];
+    const dx = cx(B) - cx(A), dy = cy(B) - cy(A);
+    const t = Math.min(Math.abs(dx) > 1e-6 ? (NW / 2) / Math.abs(dx) : Infinity, Math.abs(dy) > 1e-6 ? (NH / 2) / Math.abs(dy) : Infinity) + 0.03;
+    return {x1: cx(A) + dx * t, y1: cy(A) + dy * t, x2: cx(B) - dx * t, y2: cy(B) - dy * t};
+  }
+
+  function draw(){
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Stack simple: los agentes de contenido publican en Instagram y Facebook por Composio; el Agente Retail usa Kapso y Twenty; todos escriben en el tablero. Supabase y Meta están pausados.">`;
+    s += `<defs><marker id="stk-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>`;
+    ['FUENTES','CONEXIONES Y AGENTES','DESTINOS'].forEach((t, i) => { s += `<text x="${COLX[i]}" y="12" text-anchor="middle" style="${LBL}">${t}</text>`; });
+    E.forEach(e => {
+      const on = ok(byId[e.a]) && ok(byId[e.b]);
+      const hi = !!sel && touches(e, sel);
+      const p = pts(e.a, e.b);
+      const op = !on ? 0.12 : (sel ? (hi ? 1 : 0.22) : 0.75);
+      const mx = (p.x1 + p.x2) / 2, my = (p.y1 + p.y2) / 2;
+      const w = e.l.length * 6.2 + 12;
+      s += `<g opacity="${op}" style="color:var(--ink-2)">`;
+      s += `<line x1="${p.x1.toFixed(1)}" y1="${p.y1.toFixed(1)}" x2="${p.x2.toFixed(1)}" y2="${p.y2.toFixed(1)}" stroke="currentColor" stroke-width="${hi ? 2.2 : 1.4}"${e.d ? ' stroke-dasharray="6 5"' : ''} marker-end="url(#stk-arr)"/>`;
+      s += `<rect x="${(mx - w / 2).toFixed(1)}" y="${(my - 9).toFixed(1)}" width="${w.toFixed(1)}" height="17" rx="5" fill="var(--surface)"/>`;
+      s += `<text x="${mx.toFixed(1)}" y="${(my + 3.5).toFixed(1)}" text-anchor="middle" style="font:500 11px var(--sans);fill:var(--ink-2)">${esc(e.l)}</text>`;
+      s += `</g>`;
+    });
+    N.forEach(n => {
+      const st = ST[n.st], on = ok(n), isSel = sel === n.id;
+      const x = cx(n) - NW / 2, y = ROWY[n.r];
+      const dash = n.st === 'pausado' ? ' stroke-dasharray="5 4"' : '';
+      s += `<g class="stk-node" data-id="${n.id}" tabindex="0" role="button" aria-label="${esc(n.name)}, ${st.l}" style="cursor:pointer" opacity="${on ? 1 : 0.25}">`;
+      s += `<rect x="${x}" y="${y}" width="${NW}" height="${NH}" rx="10" fill="var(--raised)" stroke="${st.c}" stroke-width="${isSel ? 2.6 : 1.5}"${dash}/>`;
+      s += `<circle cx="${x + 16}" cy="${y + NH / 2}" r="4.5" fill="${st.c}"/>`;
+      s += `<text x="${x + 28}" y="${y + 25}" style="font:600 14px var(--sans);fill:var(--ink)">${esc(n.name)}</text>`;
+      s += `<text x="${x + 28}" y="${y + 44}" style="font:400 11.5px var(--mono);fill:var(--muted)">${esc(n.sub)}</text>`;
+      s += `</g>`;
+    });
+    s += `</svg>`;
+    document.getElementById('stk-svg').innerHTML = s;
+    document.querySelectorAll('.stk-f').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === filt)));
+    detail();
+  }
+
+  function detail(){
+    const n = byId[sel]; const box = document.getElementById('stk-detail');
+    if (!n) { box.innerHTML = '<p class="muted">Toca una pieza para ver su detalle.</p>'; return; }
+    const links = E.filter(e => touches(e, n.id)).map(e => {
+      const other = byId[e.a === n.id ? e.b : e.a];
+      return `<li>${e.a === n.id ? '→' : '←'} ${esc(other.name)} · ${esc(e.l)}${e.d ? ' (pendiente)' : ''}</li>`;
+    }).join('');
+    box.innerHTML = `<h4>${esc(n.name)} <span class="chip ${ST[n.st].chip}">${ST[n.st].l}</span></h4>
+      <p>${esc(n.desc)}</p>
+      <p class="small"><b>Uso hoy:</b> ${esc(n.uso)}</p>
+      <ul>${links || '<li>Sin conexiones en el diagrama.</li>'}</ul>`;
+  }
+
+  const svgBox = document.getElementById('stk-svg');
+  svgBox.addEventListener('click', ev => { const g = ev.target.closest('.stk-node'); if (!g) return; sel = g.dataset.id; draw(); });
+  svgBox.addEventListener('keydown', ev => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const g = ev.target.closest('.stk-node'); if (!g) return;
+    ev.preventDefault(); sel = g.dataset.id; draw();
+  });
+  document.querySelectorAll('.stk-f').forEach(b => b.addEventListener('click', () => { filt = b.dataset.f; draw(); }));
+  draw();
+})();
+</script>
+</body></html>
+</body></html>
