@@ -930,7 +930,7 @@ const vivas = c => c.estado !== 'reemplazada';
 // ---------- campaign cards ----------
 
 // ---------- selector de campañas (casillas) ----------
-const ALL_PICK = [...C.campanas.map(c => c.id), ...C.retail.campaigns.map(c => 'R:' + c.id)];
+const ALL_PICK = [...C.campanas.map(c => c.id), ...(C.retail?.campaigns ?? []).map(c => 'R:' + c.id)];
 let picked = ALL_PICK;
 try { const raw = JSON.parse(store.get('pick', 'null')); if (Array.isArray(raw)) picked = raw; } catch {}
 const isPicked = id => picked.includes(id);
@@ -938,7 +938,7 @@ const savePick = () => { try { localStorage.setItem('tablero:pick', JSON.stringi
 function renderPicker(){
   const items = [
     ...C.campanas.map(c => ({id: c.id, g: 'Aeterna', n: c.nombre})),
-    ...C.retail.campaigns.map(c => ({id: 'R:' + c.id, g: 'Retail Puebla', n: c.nombre})),
+    ...(C.retail?.campaigns ?? []).map(c => ({id: 'R:' + c.id, g: 'Retail Puebla', n: c.nombre})),
   ];
   $('picker').innerHTML = `<fieldset class="picker"><legend>Campañas a mostrar</legend>
     <div class="picker-tools"><button type="button" data-pa="all">Todas</button><button type="button" data-pa="none">Ninguna</button><span class="small muted">${picked.length} de ${ALL_PICK.length} seleccionadas</span></div>
