@@ -1149,7 +1149,7 @@ $('usage-stale').textContent = `Datos de uso al ${dayLabel(D.hoy)} · pide «act
   const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const spy = () => { const y = innerHeight * .3; let cur = secs[0];
     secs.forEach(s => { if (s.getBoundingClientRect().top <= y) cur = s; });
-    links.forEach(a => { const on = a.getAttribute('href') === '#' + cur.id; a.setAttribute('aria-current', on); if (on) a.scrollIntoView({block: 'nearest', inline: 'nearest'}); }); };
+    links.forEach(a => { const on = a.getAttribute('href') === '#' + cur.id; a.setAttribute('aria-current', on); if (on) { const nav = a.closest('nav'); if (nav) nav.scrollLeft = a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2; } }); };
   let st; addEventListener('scroll', () => { cancelAnimationFrame(st); st = requestAnimationFrame(spy); }, {passive: true}); spy();
   const MODES = ['sistema', 'claro', 'oscuro'], btn = $('theme-btn');
   let mode = store.get('theme', 'sistema');
